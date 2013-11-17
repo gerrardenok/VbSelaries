@@ -532,28 +532,6 @@ WHERE        (Работник.Дата_увольнения IS NULL)</CommandTe
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Отдел" msprop:Generator_TableClassName="ОтделDataTable" msprop:Generator_TableVarName="tableОтдел" msprop:Generator_TablePropName="Отдел" msprop:Generator_RowDeletingName="ОтделRowDeleting" msprop:Generator_UserTableName="Отдел" msprop:Generator_RowChangingName="ОтделRowChanging" msprop:Generator_RowEvHandlerName="ОтделRowChangeEventHandler" msprop:Generator_RowDeletedName="ОтделRowDeleted" msprop:Generator_RowEvArgName="ОтделRowChangeEvent" msprop:Generator_RowChangedName="ОтделRowChanged" msprop:Generator_RowClassName="ОтделRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Код_отдела" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnКод_отдела" msprop:Generator_ColumnPropNameInRow="Код_отдела" msprop:Generator_ColumnPropNameInTable="Код_отделаColumn" msprop:Generator_UserColumnName="Код_отдела" type="xs:long" />
-              <xs:element name="Название" msprop:Generator_ColumnVarNameInTable="columnНазвание" msprop:Generator_ColumnPropNameInRow="Название" msprop:Generator_ColumnPropNameInTable="НазваниеColumn" msprop:Generator_UserColumnName="Название">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Описание" msprop:Generator_ColumnVarNameInTable="columnОписание" msprop:Generator_ColumnPropNameInRow="Описание" msprop:Generator_ColumnPropNameInTable="ОписаниеColumn" msprop:Generator_UserColumnName="Описание" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Фонд_ЗП" msprop:Generator_ColumnVarNameInTable="columnФонд_ЗП" msprop:Generator_ColumnPropNameInRow="Фонд_ЗП" msprop:Generator_ColumnPropNameInTable="Фонд_ЗПColumn" msprop:Generator_UserColumnName="Фонд_ЗП" type="xs:decimal" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
         <xs:element name="Прибавка_ЗП" msprop:Generator_TableClassName="Прибавка_ЗПDataTable" msprop:Generator_TableVarName="tableПрибавка_ЗП" msprop:Generator_TablePropName="Прибавка_ЗП" msprop:Generator_RowDeletingName="Прибавка_ЗПRowDeleting" msprop:Generator_UserTableName="Прибавка_ЗП" msprop:Generator_RowChangingName="Прибавка_ЗПRowChanging" msprop:Generator_RowEvHandlerName="Прибавка_ЗПRowChangeEventHandler" msprop:Generator_RowDeletedName="Прибавка_ЗПRowDeleted" msprop:Generator_RowEvArgName="Прибавка_ЗПRowChangeEvent" msprop:Generator_RowChangedName="Прибавка_ЗПRowChanged" msprop:Generator_RowClassName="Прибавка_ЗПRow">
           <xs:complexType>
             <xs:sequence>
@@ -633,26 +611,58 @@ WHERE        (Работник.Дата_увольнения IS NULL)</CommandTe
               <xs:element name="Код_отдела" msprop:Generator_ColumnVarNameInTable="columnКод_отдела" msprop:Generator_ColumnPropNameInRow="Код_отдела" msprop:Generator_ColumnPropNameInTable="Код_отделаColumn" msprop:Generator_UserColumnName="Код_отдела" type="xs:long" />
               <xs:element name="Код_специальности" msprop:Generator_ColumnVarNameInTable="columnКод_специальности" msprop:Generator_ColumnPropNameInRow="Код_специальности" msprop:Generator_ColumnPropNameInTable="Код_специальностиColumn" msprop:Generator_UserColumnName="Код_специальности" type="xs:long" />
               <xs:element name="Дата_увольнения" msprop:Generator_ColumnVarNameInTable="columnДата_увольнения" msprop:Generator_ColumnPropNameInRow="Дата_увольнения" msprop:Generator_ColumnPropNameInTable="Дата_увольненияColumn" msprop:Generator_UserColumnName="Дата_увольнения" type="xs:dateTime" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="Специальность" msprop:Generator_TableClassName="СпециальностьDataTable" msprop:Generator_TableVarName="tableСпециальность" msprop:Generator_TablePropName="Специальность" msprop:Generator_RowDeletingName="СпециальностьRowDeleting" msprop:Generator_UserTableName="Специальность" msprop:Generator_RowChangingName="СпециальностьRowChanging" msprop:Generator_RowEvHandlerName="СпециальностьRowChangeEventHandler" msprop:Generator_RowDeletedName="СпециальностьRowDeleted" msprop:Generator_RowEvArgName="СпециальностьRowChangeEvent" msprop:Generator_RowChangedName="СпециальностьRowChanged" msprop:Generator_RowClassName="СпециальностьRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Код_специальности" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnКод_специальности" msprop:Generator_ColumnPropNameInRow="Код_специальности" msprop:Generator_ColumnPropNameInTable="Код_специальностиColumn" msprop:Generator_UserColumnName="Код_специальности" type="xs:long" />
-              <xs:element name="Название" msprop:Generator_ColumnVarNameInTable="columnНазвание" msprop:Generator_ColumnPropNameInRow="Название" msprop:Generator_ColumnPropNameInTable="НазваниеColumn" msprop:Generator_UserColumnName="Название">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
+              <xs:element name="Специальность" msprop:Generator_TableClassName="СпециальностьDataTable" msprop:Generator_TableVarName="tableСпециальность" msprop:Generator_TablePropName="Специальность" msprop:Generator_RowDeletingName="СпециальностьRowDeleting" msprop:Generator_UserTableName="Специальность" msprop:Generator_RowChangingName="СпециальностьRowChanging" msprop:Generator_RowEvHandlerName="СпециальностьRowChangeEventHandler" msprop:Generator_RowDeletedName="СпециальностьRowDeleted" msprop:Generator_RowEvArgName="СпециальностьRowChangeEvent" msprop:Generator_RowChangedName="СпециальностьRowChanged" msprop:Generator_RowClassName="СпециальностьRow" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <msdata:Relationship name="Работник_Специальность" msdata:parent="Работник" msdata:child="Специальность" msdata:parentkey="Код_отдела" msdata:childkey="Код_специальности" msprop:Generator_UserChildTable="Специальность" msprop:Generator_ChildPropName="GetСпециальностьRows" msprop:Generator_ParentPropName="РаботникRow" msprop:Generator_UserRelationName="Работник_Специальность" msprop:Generator_RelationVarName="relationРаботник_Специальность" msprop:Generator_UserParentTable="Работник" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Код_специальности" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnКод_специальности" msprop:Generator_ColumnPropNameInRow="Код_специальности" msprop:Generator_ColumnPropNameInTable="Код_специальностиColumn" msprop:Generator_UserColumnName="Код_специальности" type="xs:long" />
+                    <xs:element name="Название" msprop:Generator_ColumnVarNameInTable="columnНазвание" msprop:Generator_ColumnPropNameInRow="Название" msprop:Generator_ColumnPropNameInTable="НазваниеColumn" msprop:Generator_UserColumnName="Название">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="50" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="Описание" msprop:Generator_ColumnVarNameInTable="columnОписание" msprop:Generator_ColumnPropNameInRow="Описание" msprop:Generator_ColumnPropNameInTable="ОписаниеColumn" msprop:Generator_UserColumnName="Описание" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
               </xs:element>
-              <xs:element name="Описание" msprop:Generator_ColumnVarNameInTable="columnОписание" msprop:Generator_ColumnPropNameInRow="Описание" msprop:Generator_ColumnPropNameInTable="ОписаниеColumn" msprop:Generator_UserColumnName="Описание" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
+              <xs:element name="Отдел" msprop:Generator_TableClassName="ОтделDataTable" msprop:Generator_TableVarName="tableОтдел" msprop:Generator_TablePropName="Отдел" msprop:Generator_RowDeletingName="ОтделRowDeleting" msprop:Generator_UserTableName="Отдел" msprop:Generator_RowChangingName="ОтделRowChanging" msprop:Generator_RowEvHandlerName="ОтделRowChangeEventHandler" msprop:Generator_RowDeletedName="ОтделRowDeleted" msprop:Generator_RowEvArgName="ОтделRowChangeEvent" msprop:Generator_RowChangedName="ОтделRowChanged" msprop:Generator_RowClassName="ОтделRow" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <msdata:Relationship name="Работник_Отдел" msdata:parent="Работник" msdata:child="Отдел" msdata:parentkey="Код_отдела" msdata:childkey="Код_отдела" msprop:Generator_UserChildTable="Отдел" msprop:Generator_ChildPropName="GetОтделRows" msprop:Generator_ParentPropName="РаботникRow" msprop:Generator_UserRelationName="Работник_Отдел" msprop:Generator_RelationVarName="relationРаботник_Отдел" msprop:Generator_UserParentTable="Работник" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Код_отдела" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnКод_отдела" msprop:Generator_ColumnPropNameInRow="Код_отдела" msprop:Generator_ColumnPropNameInTable="Код_отделаColumn" msprop:Generator_UserColumnName="Код_отдела" type="xs:long" />
+                    <xs:element name="Название" msprop:Generator_ColumnVarNameInTable="columnНазвание" msprop:Generator_ColumnPropNameInRow="Название" msprop:Generator_ColumnPropNameInTable="НазваниеColumn" msprop:Generator_UserColumnName="Название">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="50" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="Описание" msprop:Generator_ColumnVarNameInTable="columnОписание" msprop:Generator_ColumnPropNameInRow="Описание" msprop:Generator_ColumnPropNameInTable="ОписаниеColumn" msprop:Generator_UserColumnName="Описание" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="2147483647" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="Фонд_ЗП" msprop:Generator_ColumnVarNameInTable="columnФонд_ЗП" msprop:Generator_ColumnPropNameInRow="Фонд_ЗП" msprop:Generator_ColumnPropNameInTable="Фонд_ЗПColumn" msprop:Generator_UserColumnName="Фонд_ЗП" type="xs:decimal" />
+                  </xs:sequence>
+                </xs:complexType>
               </xs:element>
             </xs:sequence>
           </xs:complexType>
@@ -727,10 +737,6 @@ WHERE        (Работник.Дата_увольнения IS NULL)</CommandTe
       <xs:selector xpath=".//mstns:Зарплата" />
       <xs:field xpath="mstns:Код_зарплаты" />
     </xs:unique>
-    <xs:unique name="Отдел_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:Отдел" />
-      <xs:field xpath="mstns:Код_отдела" />
-    </xs:unique>
     <xs:unique name="Прибавка_ЗП_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Прибавка_ЗП" />
       <xs:field xpath="mstns:Код_прибавки" />
@@ -739,13 +745,17 @@ WHERE        (Работник.Дата_увольнения IS NULL)</CommandTe
       <xs:selector xpath=".//mstns:Пропуск" />
       <xs:field xpath="mstns:Код_пропуска" />
     </xs:unique>
-    <xs:unique name="Работник_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:Работник" />
-      <xs:field xpath="mstns:Код_работника" />
-    </xs:unique>
     <xs:unique name="Специальность_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Специальность" />
       <xs:field xpath="mstns:Код_специальности" />
+    </xs:unique>
+    <xs:unique name="Отдел_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Отдел" />
+      <xs:field xpath="mstns:Код_отдела" />
+    </xs:unique>
+    <xs:unique name="Работник_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Работник" />
+      <xs:field xpath="mstns:Код_работника" />
     </xs:unique>
     <xs:unique name="EmployersView_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:EmployersView" />
@@ -754,12 +764,12 @@ WHERE        (Работник.Дата_увольнения IS NULL)</CommandTe
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_Вычет_ЗП_Зарплата" msdata:parent="Зарплата" msdata:child="Вычет_ЗП" msdata:parentkey="Код_зарплаты" msdata:childkey="Код_зарплаты" msprop:Generator_UserChildTable="Вычет_ЗП" msprop:Generator_ChildPropName="GetВычет_ЗПRows" msprop:Generator_ParentPropName="ЗарплатаRow" msprop:Generator_UserRelationName="FK_Вычет_ЗП_Зарплата" msprop:Generator_RelationVarName="relationFK_Вычет_ЗП_Зарплата" msprop:Generator_UserParentTable="Зарплата" />
-      <msdata:Relationship name="FK_Зарплата_Работник" msdata:parent="Работник" msdata:child="Зарплата" msdata:parentkey="Код_работника" msdata:childkey="Код_работника" msprop:Generator_UserChildTable="Зарплата" msprop:Generator_ChildPropName="GetЗарплатаRows" msprop:Generator_ParentPropName="РаботникRow" msprop:Generator_UserRelationName="FK_Зарплата_Работник" msprop:Generator_RelationVarName="relationFK_Зарплата_Работник" msprop:Generator_UserParentTable="Работник" />
-      <msdata:Relationship name="FK_Прибавка_ЗП_Зарплата" msdata:parent="Зарплата" msdata:child="Прибавка_ЗП" msdata:parentkey="Код_зарплаты" msdata:childkey="Код_зарплаты" msprop:Generator_UserChildTable="Прибавка_ЗП" msprop:Generator_ChildPropName="GetПрибавка_ЗПRows" msprop:Generator_ParentPropName="ЗарплатаRow" msprop:Generator_UserRelationName="FK_Прибавка_ЗП_Зарплата" msprop:Generator_RelationVarName="relationFK_Прибавка_ЗП_Зарплата" msprop:Generator_UserParentTable="Зарплата" />
-      <msdata:Relationship name="FK_Пропуск_Работник" msdata:parent="Работник" msdata:child="Пропуск" msdata:parentkey="Код_работника" msdata:childkey="Код_работника" msprop:Generator_UserChildTable="Пропуск" msprop:Generator_ChildPropName="GetПропускRows" msprop:Generator_ParentPropName="РаботникRow" msprop:Generator_UserRelationName="FK_Пропуск_Работник" msprop:Generator_RelationVarName="relationFK_Пропуск_Работник" msprop:Generator_UserParentTable="Работник" />
-      <msdata:Relationship name="FK_Работник_Отдел" msdata:parent="Отдел" msdata:child="Работник" msdata:parentkey="Код_отдела" msdata:childkey="Код_отдела" msprop:Generator_UserChildTable="Работник" msprop:Generator_ChildPropName="GetРаботникRows" msprop:Generator_ParentPropName="ОтделRow" msprop:Generator_UserRelationName="FK_Работник_Отдел" msprop:Generator_RelationVarName="relationFK_Работник_Отдел" msprop:Generator_UserParentTable="Отдел" />
-      <msdata:Relationship name="FK_Работник_Специальность" msdata:parent="Специальность" msdata:child="Работник" msdata:parentkey="Код_специальности" msdata:childkey="Код_специальности" msprop:Generator_UserChildTable="Работник" msprop:Generator_ChildPropName="GetРаботникRows" msprop:Generator_ParentPropName="СпециальностьRow" msprop:Generator_UserRelationName="FK_Работник_Специальность" msprop:Generator_RelationVarName="relationFK_Работник_Специальность" msprop:Generator_UserParentTable="Специальность" />
+      <msdata:Relationship name="FK_Вычет_ЗП_Зарплата" msdata:parent="Зарплата" msdata:child="Вычет_ЗП" msdata:parentkey="Код_зарплаты" msdata:childkey="Код_зарплаты" msprop:Generator_UserChildTable="Вычет_ЗП" msprop:Generator_ChildPropName="GetВычет_ЗПRows" msprop:Generator_UserParentTable="Зарплата" msprop:Generator_UserRelationName="FK_Вычет_ЗП_Зарплата" msprop:Generator_RelationVarName="relationFK_Вычет_ЗП_Зарплата" msprop:Generator_ParentPropName="ЗарплатаRow" />
+      <msdata:Relationship name="FK_Зарплата_Работник" msdata:parent="Работник" msdata:child="Зарплата" msdata:parentkey="Код_работника" msdata:childkey="Код_работника" msprop:Generator_UserChildTable="Зарплата" msprop:Generator_ChildPropName="GetЗарплатаRows" msprop:Generator_UserParentTable="Работник" msprop:Generator_UserRelationName="FK_Зарплата_Работник" msprop:Generator_RelationVarName="relationFK_Зарплата_Работник" msprop:Generator_ParentPropName="РаботникRow" />
+      <msdata:Relationship name="FK_Прибавка_ЗП_Зарплата" msdata:parent="Зарплата" msdata:child="Прибавка_ЗП" msdata:parentkey="Код_зарплаты" msdata:childkey="Код_зарплаты" msprop:Generator_UserChildTable="Прибавка_ЗП" msprop:Generator_ChildPropName="GetПрибавка_ЗПRows" msprop:Generator_UserParentTable="Зарплата" msprop:Generator_UserRelationName="FK_Прибавка_ЗП_Зарплата" msprop:Generator_RelationVarName="relationFK_Прибавка_ЗП_Зарплата" msprop:Generator_ParentPropName="ЗарплатаRow" />
+      <msdata:Relationship name="FK_Пропуск_Работник" msdata:parent="Работник" msdata:child="Пропуск" msdata:parentkey="Код_работника" msdata:childkey="Код_работника" msprop:Generator_UserChildTable="Пропуск" msprop:Generator_ChildPropName="GetПропускRows" msprop:Generator_UserParentTable="Работник" msprop:Generator_UserRelationName="FK_Пропуск_Работник" msprop:Generator_RelationVarName="relationFK_Пропуск_Работник" msprop:Generator_ParentPropName="РаботникRow" />
+      <msdata:Relationship name="FK_Работник_Отдел" msdata:parent="Отдел" msdata:child="Работник" msdata:parentkey="Код_отдела" msdata:childkey="Код_отдела" msprop:Generator_UserChildTable="Работник" msprop:Generator_ChildPropName="GetРаботникRows" msprop:Generator_UserParentTable="Отдел" msprop:Generator_UserRelationName="FK_Работник_Отдел" msprop:Generator_RelationVarName="relationFK_Работник_Отдел" msprop:Generator_ParentPropName="ОтделRow" />
+      <msdata:Relationship name="FK_Работник_Специальность" msdata:parent="Специальность" msdata:child="Работник" msdata:parentkey="Код_специальности" msdata:childkey="Код_специальности" msprop:Generator_UserChildTable="Работник" msprop:Generator_ChildPropName="GetРаботникRows" msprop:Generator_UserParentTable="Специальность" msprop:Generator_UserRelationName="FK_Работник_Специальность" msprop:Generator_RelationVarName="relationFK_Работник_Специальность" msprop:Generator_ParentPropName="СпециальностьRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
