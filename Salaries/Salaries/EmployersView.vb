@@ -3,9 +3,8 @@
         ' Set default values
         EVSortCritetia.SelectedIndex = 0
         EVOrderCriteria.SelectedIndex = 0
-        ' Hide cols
-        EmployersViewDataGridView.Columns(6).Visible = False
-        EmployersViewDataGridView.Columns(7).Visible = False
+        ' Hide empl id col
+        EmployersViewDataGridView.Columns(10).Visible = False
     End Sub
 
     Private Sub EmployersViewSort()
@@ -38,21 +37,17 @@
     Private Function EmployersViewFilterCriterion() As String
         Dim departament As String = ОтделComboBox.Text
         Dim sp As String = СпециальностьComboBox.Text
-        Dim filter As String = ""
+        Dim filters = New List(Of String)
 
         If (Not [String].IsNullOrEmpty(sp)) Then
-            filter += "Специальность='" & sp & "'"
-        End If
-
-        If (Not [String].IsNullOrEmpty(sp) And Not [String].IsNullOrEmpty(departament)) Then
-            filter += " AND "
+            filters.Add("Специальность='" & sp & "'")
         End If
 
         If (Not [String].IsNullOrEmpty(departament)) Then
-            filter += "Отдел='" & departament & "'"
+            filters.Add("Отдел='" & departament & "'")
         End If
 
-        Return (filter)
+        Return ([String].Join(" AND ", filters))
     End Function
 
     Private Sub EmployersView_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -82,7 +77,7 @@
     Private Sub EmployersViewDataGridView_CellDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles EmployersViewDataGridView.CellContentClick
         If e.RowIndex >= 0 AndAlso e.ColumnIndex >= 0 Then
             Dim selectedRow = EmployersViewDataGridView.Rows(e.RowIndex)
-            Dim employerId As Integer = selectedRow.Cells(6).Value
+            Dim employerId As Integer = selectedRow.Cells(10).Value
             EmployerView.ShowById(employerId)
         End If
     End Sub

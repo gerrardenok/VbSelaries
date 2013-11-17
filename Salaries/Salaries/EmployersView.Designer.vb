@@ -55,12 +55,11 @@ Partial Class EmployersView
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Код_работника = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.SalariesDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmployersViewBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmployersViewBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -97,6 +96,7 @@ Partial Class EmployersView
         Me.TableAdapterManager.ПропускTableAdapter = Nothing
         Me.TableAdapterManager.РаботникTableAdapter = Nothing
         Me.TableAdapterManager.СпециальностьTableAdapter = Nothing
+        Me.TableAdapterManager.СтавкаTableAdapter = Nothing
         '
         'BindingNavigatorCountItem
         '
@@ -272,7 +272,7 @@ Partial Class EmployersView
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.EmployersViewDataGridView.AutoGenerateColumns = False
         Me.EmployersViewDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.EmployersViewDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn13, Me.DataGridViewTextBoxColumn14, Me.DataGridViewTextBoxColumn15, Me.DataGridViewTextBoxColumn16})
+        Me.EmployersViewDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn13, Me.DataGridViewTextBoxColumn14, Me.DataGridViewTextBoxColumn15, Me.DataGridViewTextBoxColumn16, Me.Код_работника})
         Me.EmployersViewDataGridView.DataSource = Me.EmployersViewBindingSource
         Me.EmployersViewDataGridView.Location = New System.Drawing.Point(0, 28)
         Me.EmployersViewDataGridView.MultiSelect = False
@@ -323,38 +323,24 @@ Partial Class EmployersView
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         Me.DataGridViewTextBoxColumn8.ReadOnly = True
         '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.DataPropertyName = "Код_работника"
-        Me.DataGridViewTextBoxColumn10.HeaderText = "Код_работника"
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        Me.DataGridViewTextBoxColumn10.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "Ставка"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "Ставка"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        Me.DataGridViewTextBoxColumn11.ReadOnly = True
-        '
         'DataGridViewTextBoxColumn13
         '
         Me.DataGridViewTextBoxColumn13.DataPropertyName = "Вид_ставки"
-        Me.DataGridViewTextBoxColumn13.HeaderText = "Вид_ставки"
+        Me.DataGridViewTextBoxColumn13.HeaderText = "Вид ставки"
         Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
         Me.DataGridViewTextBoxColumn13.ReadOnly = True
         '
         'DataGridViewTextBoxColumn14
         '
         Me.DataGridViewTextBoxColumn14.DataPropertyName = "Дата_приёма"
-        Me.DataGridViewTextBoxColumn14.HeaderText = "Дата_приёма"
+        Me.DataGridViewTextBoxColumn14.HeaderText = "Дата приёма"
         Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
         Me.DataGridViewTextBoxColumn14.ReadOnly = True
         '
         'DataGridViewTextBoxColumn15
         '
         Me.DataGridViewTextBoxColumn15.DataPropertyName = "Номер_пасспорта"
-        Me.DataGridViewTextBoxColumn15.HeaderText = "Номер_пасспорта"
+        Me.DataGridViewTextBoxColumn15.HeaderText = "Номер пасспорта"
         Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
         Me.DataGridViewTextBoxColumn15.ReadOnly = True
         '
@@ -364,6 +350,13 @@ Partial Class EmployersView
         Me.DataGridViewTextBoxColumn16.HeaderText = "Стаж"
         Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
         Me.DataGridViewTextBoxColumn16.ReadOnly = True
+        '
+        'Код_работника
+        '
+        Me.Код_работника.DataPropertyName = "Код_работника"
+        Me.Код_работника.HeaderText = "Код работника"
+        Me.Код_работника.Name = "Код_работника"
+        Me.Код_работника.ReadOnly = True
         '
         'EmployersView
         '
@@ -418,16 +411,16 @@ Partial Class EmployersView
     Friend WithEvents DataGridViewTextBoxColumn12 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents EmployersViewDataGridView As System.Windows.Forms.DataGridView
+    Friend WithEvents DataGridViewTextBoxColumn11 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn8 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn10 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn11 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn13 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn14 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn15 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn16 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Код_работника As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

@@ -30,10 +30,10 @@ Partial Class EmployerView
         Dim ТелефонLabel As System.Windows.Forms.Label
         Dim Номер_пасспортаLabel As System.Windows.Forms.Label
         Dim СтажLabel As System.Windows.Forms.Label
-        Dim СтавкаLabel As System.Windows.Forms.Label
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EmployerView))
         Dim НазваниеLabel As System.Windows.Forms.Label
         Dim НазваниеLabel1 As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EmployerView))
+        Dim НазваниеLabel2 As System.Windows.Forms.Label
         Me.SalariesDataSet = New Salaries.SalariesDataSet()
         Me.РаботникBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.РаботникTableAdapter = New Salaries.SalariesDataSetTableAdapters.РаботникTableAdapter()
@@ -48,6 +48,11 @@ Partial Class EmployerView
         Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
         Me.ИмяTextBox = New System.Windows.Forms.TextBox()
         Me.ФамилияTextBox = New System.Windows.Forms.TextBox()
         Me.ОтчествоTextBox = New System.Windows.Forms.TextBox()
@@ -55,7 +60,6 @@ Partial Class EmployerView
         Me.ТелефонTextBox = New System.Windows.Forms.TextBox()
         Me.Номер_пасспортаTextBox = New System.Windows.Forms.TextBox()
         Me.СтажTextBox = New System.Windows.Forms.TextBox()
-        Me.СтавкаTextBox = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ЗарплатаBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -83,11 +87,9 @@ Partial Class EmployerView
         Me.СпециальностьBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.СпециальностьTableAdapter = New Salaries.SalariesDataSetTableAdapters.СпециальностьTableAdapter()
         Me.НазваниеTextBox1 = New System.Windows.Forms.TextBox()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
+        Me.СтавкаBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.СтавкаTableAdapter = New Salaries.SalariesDataSetTableAdapters.СтавкаTableAdapter()
+        Me.НазваниеTextBox2 = New System.Windows.Forms.TextBox()
         ИмяLabel = New System.Windows.Forms.Label()
         ФамилияLabel = New System.Windows.Forms.Label()
         ОтчествоLabel = New System.Windows.Forms.Label()
@@ -95,9 +97,9 @@ Partial Class EmployerView
         ТелефонLabel = New System.Windows.Forms.Label()
         Номер_пасспортаLabel = New System.Windows.Forms.Label()
         СтажLabel = New System.Windows.Forms.Label()
-        СтавкаLabel = New System.Windows.Forms.Label()
         НазваниеLabel = New System.Windows.Forms.Label()
         НазваниеLabel1 = New System.Windows.Forms.Label()
+        НазваниеLabel2 = New System.Windows.Forms.Label()
         CType(Me.SalariesDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.РаботникBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.РаботникBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -108,6 +110,7 @@ Partial Class EmployerView
         CType(Me.ПропускDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ОтделBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.СпециальностьBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.СтавкаBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ИмяLabel
@@ -173,14 +176,23 @@ Partial Class EmployerView
         СтажLabel.TabIndex = 15
         СтажLabel.Text = "Стаж:"
         '
-        'СтавкаLabel
+        'НазваниеLabel
         '
-        СтавкаLabel.AutoSize = True
-        СтавкаLabel.Location = New System.Drawing.Point(12, 216)
-        СтавкаLabel.Name = "СтавкаLabel"
-        СтавкаLabel.Size = New System.Drawing.Size(46, 13)
-        СтавкаLabel.TabIndex = 17
-        СтавкаLabel.Text = "Ставка:"
+        НазваниеLabel.AutoSize = True
+        НазваниеLabel.Location = New System.Drawing.Point(13, 242)
+        НазваниеLabel.Name = "НазваниеLabel"
+        НазваниеLabel.Size = New System.Drawing.Size(41, 13)
+        НазваниеLabel.TabIndex = 24
+        НазваниеLabel.Text = "Отдел:"
+        '
+        'НазваниеLabel1
+        '
+        НазваниеLabel1.AutoSize = True
+        НазваниеLabel1.Location = New System.Drawing.Point(12, 272)
+        НазваниеLabel1.Name = "НазваниеLabel1"
+        НазваниеLabel1.Size = New System.Drawing.Size(88, 13)
+        НазваниеLabel1.TabIndex = 25
+        НазваниеLabel1.Text = "Специальность:"
         '
         'SalariesDataSet
         '
@@ -207,6 +219,7 @@ Partial Class EmployerView
         Me.TableAdapterManager.ПропускTableAdapter = Nothing
         Me.TableAdapterManager.РаботникTableAdapter = Me.РаботникTableAdapter
         Me.TableAdapterManager.СпециальностьTableAdapter = Nothing
+        Me.TableAdapterManager.СтавкаTableAdapter = Nothing
         '
         'РаботникBindingNavigator
         '
@@ -222,7 +235,7 @@ Partial Class EmployerView
         Me.РаботникBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.РаботникBindingNavigator.Name = "РаботникBindingNavigator"
         Me.РаботникBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.РаботникBindingNavigator.Size = New System.Drawing.Size(776, 25)
+        Me.РаботникBindingNavigator.Size = New System.Drawing.Size(784, 25)
         Me.РаботникBindingNavigator.TabIndex = 0
         Me.РаботникBindingNavigator.Text = "BindingNavigator1"
         '
@@ -293,6 +306,47 @@ Partial Class EmployerView
         Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
         Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
         '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(63, 22)
+        Me.ToolStripButton1.Text = "Добавить"
+        '
+        'ToolStripButton2
+        '
+        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.ToolStripButton2.Image = CType(resources.GetObject("ToolStripButton2.Image"), System.Drawing.Image)
+        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton2.Name = "ToolStripButton2"
+        Me.ToolStripButton2.Size = New System.Drawing.Size(91, 22)
+        Me.ToolStripButton2.Text = "Редактировать"
+        '
+        'ToolStripButton3
+        '
+        Me.ToolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.ToolStripButton3.Image = CType(resources.GetObject("ToolStripButton3.Image"), System.Drawing.Image)
+        Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton3.Name = "ToolStripButton3"
+        Me.ToolStripButton3.Size = New System.Drawing.Size(43, 22)
+        Me.ToolStripButton3.Text = "Отчёт"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripButton4
+        '
+        Me.ToolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.ToolStripButton4.Image = CType(resources.GetObject("ToolStripButton4.Image"), System.Drawing.Image)
+        Me.ToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton4.Name = "ToolStripButton4"
+        Me.ToolStripButton4.Size = New System.Drawing.Size(56, 22)
+        Me.ToolStripButton4.Text = "Уволить"
+        '
         'ИмяTextBox
         '
         Me.ИмяTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.РаботникBindingSource, "Имя", True))
@@ -323,6 +377,7 @@ Partial Class EmployerView
         'Дата_приёмаDateTimePicker
         '
         Me.Дата_приёмаDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.РаботникBindingSource, "Дата_приёма", True))
+        Me.Дата_приёмаDateTimePicker.Enabled = False
         Me.Дата_приёмаDateTimePicker.Location = New System.Drawing.Point(127, 109)
         Me.Дата_приёмаDateTimePicker.Name = "Дата_приёмаDateTimePicker"
         Me.Дата_приёмаDateTimePicker.Size = New System.Drawing.Size(200, 20)
@@ -333,6 +388,7 @@ Partial Class EmployerView
         Me.ТелефонTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.РаботникBindingSource, "Телефон", True))
         Me.ТелефонTextBox.Location = New System.Drawing.Point(127, 135)
         Me.ТелефонTextBox.Name = "ТелефонTextBox"
+        Me.ТелефонTextBox.ReadOnly = True
         Me.ТелефонTextBox.Size = New System.Drawing.Size(200, 20)
         Me.ТелефонTextBox.TabIndex = 12
         '
@@ -341,6 +397,7 @@ Partial Class EmployerView
         Me.Номер_пасспортаTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.РаботникBindingSource, "Номер_пасспорта", True))
         Me.Номер_пасспортаTextBox.Location = New System.Drawing.Point(127, 161)
         Me.Номер_пасспортаTextBox.Name = "Номер_пасспортаTextBox"
+        Me.Номер_пасспортаTextBox.ReadOnly = True
         Me.Номер_пасспортаTextBox.Size = New System.Drawing.Size(200, 20)
         Me.Номер_пасспортаTextBox.TabIndex = 14
         '
@@ -349,16 +406,9 @@ Partial Class EmployerView
         Me.СтажTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.РаботникBindingSource, "Стаж", True))
         Me.СтажTextBox.Location = New System.Drawing.Point(127, 187)
         Me.СтажTextBox.Name = "СтажTextBox"
+        Me.СтажTextBox.ReadOnly = True
         Me.СтажTextBox.Size = New System.Drawing.Size(200, 20)
         Me.СтажTextBox.TabIndex = 16
-        '
-        'СтавкаTextBox
-        '
-        Me.СтавкаTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.РаботникBindingSource, "Ставка", True))
-        Me.СтавкаTextBox.Location = New System.Drawing.Point(127, 213)
-        Me.СтавкаTextBox.Name = "СтавкаTextBox"
-        Me.СтавкаTextBox.Size = New System.Drawing.Size(200, 20)
-        Me.СтавкаTextBox.TabIndex = 18
         '
         'Label1
         '
@@ -401,7 +451,7 @@ Partial Class EmployerView
         Me.ЗарплатаDataGridView.Location = New System.Drawing.Point(12, 319)
         Me.ЗарплатаDataGridView.Name = "ЗарплатаDataGridView"
         Me.ЗарплатаDataGridView.ReadOnly = True
-        Me.ЗарплатаDataGridView.Size = New System.Drawing.Size(752, 265)
+        Me.ЗарплатаDataGridView.Size = New System.Drawing.Size(760, 273)
         Me.ЗарплатаDataGridView.TabIndex = 24
         '
         'DataGridViewTextBoxColumn1
@@ -473,7 +523,7 @@ Partial Class EmployerView
         Me.ПропускDataGridView.Location = New System.Drawing.Point(345, 57)
         Me.ПропускDataGridView.Name = "ПропускDataGridView"
         Me.ПропускDataGridView.ReadOnly = True
-        Me.ПропускDataGridView.Size = New System.Drawing.Size(419, 228)
+        Me.ПропускDataGridView.Size = New System.Drawing.Size(427, 228)
         Me.ПропускDataGridView.TabIndex = 24
         '
         'DataGridViewTextBoxColumn8
@@ -527,20 +577,12 @@ Partial Class EmployerView
         '
         Me.ОтделTableAdapter.ClearBeforeFill = True
         '
-        'НазваниеLabel
-        '
-        НазваниеLabel.AutoSize = True
-        НазваниеLabel.Location = New System.Drawing.Point(13, 242)
-        НазваниеLabel.Name = "НазваниеLabel"
-        НазваниеLabel.Size = New System.Drawing.Size(41, 13)
-        НазваниеLabel.TabIndex = 24
-        НазваниеLabel.Text = "Отдел:"
-        '
         'НазваниеTextBox
         '
         Me.НазваниеTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ОтделBindingSource, "Название", True))
         Me.НазваниеTextBox.Location = New System.Drawing.Point(127, 239)
         Me.НазваниеTextBox.Name = "НазваниеTextBox"
+        Me.НазваниеTextBox.ReadOnly = True
         Me.НазваниеTextBox.Size = New System.Drawing.Size(200, 20)
         Me.НазваниеTextBox.TabIndex = 25
         '
@@ -553,69 +595,49 @@ Partial Class EmployerView
         '
         Me.СпециальностьTableAdapter.ClearBeforeFill = True
         '
-        'НазваниеLabel1
-        '
-        НазваниеLabel1.AutoSize = True
-        НазваниеLabel1.Location = New System.Drawing.Point(12, 272)
-        НазваниеLabel1.Name = "НазваниеLabel1"
-        НазваниеLabel1.Size = New System.Drawing.Size(88, 13)
-        НазваниеLabel1.TabIndex = 25
-        НазваниеLabel1.Text = "Специальность:"
-        '
         'НазваниеTextBox1
         '
         Me.НазваниеTextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.СпециальностьBindingSource, "Название", True))
         Me.НазваниеTextBox1.Location = New System.Drawing.Point(127, 267)
         Me.НазваниеTextBox1.Name = "НазваниеTextBox1"
+        Me.НазваниеTextBox1.ReadOnly = True
         Me.НазваниеTextBox1.Size = New System.Drawing.Size(200, 20)
         Me.НазваниеTextBox1.TabIndex = 26
         '
-        'ToolStripButton1
+        'СтавкаBindingSource
         '
-        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(63, 22)
-        Me.ToolStripButton1.Text = "Добавить"
+        Me.СтавкаBindingSource.DataMember = "Работник_Ставка"
+        Me.СтавкаBindingSource.DataSource = Me.РаботникBindingSource
         '
-        'ToolStripButton2
+        'СтавкаTableAdapter
         '
-        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripButton2.Image = CType(resources.GetObject("ToolStripButton2.Image"), System.Drawing.Image)
-        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(91, 22)
-        Me.ToolStripButton2.Text = "Редактировать"
+        Me.СтавкаTableAdapter.ClearBeforeFill = True
         '
-        'ToolStripButton3
+        'НазваниеLabel2
         '
-        Me.ToolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripButton3.Image = CType(resources.GetObject("ToolStripButton3.Image"), System.Drawing.Image)
-        Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton3.Name = "ToolStripButton3"
-        Me.ToolStripButton3.Size = New System.Drawing.Size(43, 22)
-        Me.ToolStripButton3.Text = "Отчёт"
+        НазваниеLabel2.AutoSize = True
+        НазваниеLabel2.Location = New System.Drawing.Point(12, 215)
+        НазваниеLabel2.Name = "НазваниеLabel2"
+        НазваниеLabel2.Size = New System.Drawing.Size(46, 13)
+        НазваниеLabel2.TabIndex = 26
+        НазваниеLabel2.Text = "Ставка:"
         '
-        'ToolStripSeparator1
+        'НазваниеTextBox2
         '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripButton4
-        '
-        Me.ToolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripButton4.Image = CType(resources.GetObject("ToolStripButton4.Image"), System.Drawing.Image)
-        Me.ToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton4.Name = "ToolStripButton4"
-        Me.ToolStripButton4.Size = New System.Drawing.Size(56, 22)
-        Me.ToolStripButton4.Text = "Уволить"
+        Me.НазваниеTextBox2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.СтавкаBindingSource, "Название", True))
+        Me.НазваниеTextBox2.Location = New System.Drawing.Point(127, 212)
+        Me.НазваниеTextBox2.Name = "НазваниеTextBox2"
+        Me.НазваниеTextBox2.ReadOnly = True
+        Me.НазваниеTextBox2.Size = New System.Drawing.Size(200, 20)
+        Me.НазваниеTextBox2.TabIndex = 27
         '
         'EmployerView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(776, 596)
+        Me.ClientSize = New System.Drawing.Size(784, 604)
+        Me.Controls.Add(НазваниеLabel2)
+        Me.Controls.Add(Me.НазваниеTextBox2)
         Me.Controls.Add(НазваниеLabel1)
         Me.Controls.Add(Me.НазваниеTextBox1)
         Me.Controls.Add(НазваниеLabel)
@@ -638,8 +660,6 @@ Partial Class EmployerView
         Me.Controls.Add(Me.Номер_пасспортаTextBox)
         Me.Controls.Add(СтажLabel)
         Me.Controls.Add(Me.СтажTextBox)
-        Me.Controls.Add(СтавкаLabel)
-        Me.Controls.Add(Me.СтавкаTextBox)
         Me.Controls.Add(Me.РаботникBindingNavigator)
         Me.Name = "EmployerView"
         Me.Text = "Работники"
@@ -654,6 +674,7 @@ Partial Class EmployerView
         CType(Me.ПропускDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ОтделBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.СпециальностьBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.СтавкаBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -679,7 +700,6 @@ Partial Class EmployerView
     Friend WithEvents ТелефонTextBox As System.Windows.Forms.TextBox
     Friend WithEvents Номер_пасспортаTextBox As System.Windows.Forms.TextBox
     Friend WithEvents СтажTextBox As System.Windows.Forms.TextBox
-    Friend WithEvents СтавкаTextBox As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents ЗарплатаBindingSource As System.Windows.Forms.BindingSource
@@ -712,4 +732,7 @@ Partial Class EmployerView
     Friend WithEvents ToolStripButton3 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripButton4 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents СтавкаBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents СтавкаTableAdapter As Salaries.SalariesDataSetTableAdapters.СтавкаTableAdapter
+    Friend WithEvents НазваниеTextBox2 As System.Windows.Forms.TextBox
 End Class

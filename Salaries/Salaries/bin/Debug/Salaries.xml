@@ -26,15 +26,19 @@ Represents the strongly named DataTable class.
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
-</member><member name="T:Salaries.SalariesDataSet.РаботникDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
 </member><member name="T:Salaries.SalariesDataSet.СпециальностьDataTable">
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
 </member><member name="T:Salaries.SalariesDataSet.EmployersViewDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.СтавкаDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.РаботникDataTable">
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
@@ -58,15 +62,19 @@ Represents strongly named DataRow class.
 	<summary>
 Represents strongly named DataRow class.
 </summary>
-</member><member name="T:Salaries.SalariesDataSet.РаботникRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
 </member><member name="T:Salaries.SalariesDataSet.СпециальностьRow">
 	<summary>
 Represents strongly named DataRow class.
 </summary>
 </member><member name="T:Salaries.SalariesDataSet.EmployersViewRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.СтавкаRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.РаботникRow">
 	<summary>
 Represents strongly named DataRow class.
 </summary>
@@ -90,15 +98,19 @@ Row event argument class
 	<summary>
 Row event argument class
 </summary>
-</member><member name="T:Salaries.SalariesDataSet.РаботникRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
 </member><member name="T:Salaries.SalariesDataSet.СпециальностьRowChangeEvent">
 	<summary>
 Row event argument class
 </summary>
 </member><member name="T:Salaries.SalariesDataSet.EmployersViewRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.СтавкаRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.РаботникRowChangeEvent">
 	<summary>
 Row event argument class
 </summary>
@@ -126,15 +138,19 @@ Represents the connection and commands used to retrieve and save data.
 	<summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
-</member><member name="T:Salaries.SalariesDataSetTableAdapters.РаботникTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
 </member><member name="T:Salaries.SalariesDataSetTableAdapters.СпециальностьTableAdapter">
 	<summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member><member name="T:Salaries.SalariesDataSetTableAdapters.EmployersViewTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Salaries.SalariesDataSetTableAdapters.СтавкаTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Salaries.SalariesDataSetTableAdapters.РаботникTableAdapter">
 	<summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -182,6 +198,170 @@ TableAdapterManager is used to coordinate TableAdapters in the dataset to enable
 </member><member name="T:Salaries.My.Resources.Resources">
 	<summary>
   A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.Вычет_ЗПDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.ЗарплатаDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.ОтделDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.Прибавка_ЗПDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.ПропускDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.РаботникDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.СпециальностьDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.СтавкаDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.Вычет_ЗПRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.ЗарплатаRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.ОтделRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.Прибавка_ЗПRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.ПропускRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.РаботникRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.СпециальностьRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.СтавкаRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.Вычет_ЗПRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.ЗарплатаRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.ОтделRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.Прибавка_ЗПRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.ПропускRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.РаботникRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.СпециальностьRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet.СтавкаRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSet">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSetTableAdapters.Вычет_ЗПTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSetTableAdapters.ЗарплатаTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSetTableAdapters.ОтделTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSetTableAdapters.Прибавка_ЗПTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSetTableAdapters.ПропускTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSetTableAdapters.РаботникTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSetTableAdapters.СпециальностьTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSetTableAdapters.СтавкаTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:Salaries.ЗарплатыDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(Salaries.ЗарплатыDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Update rows in top-down order.
+</summary>
+</member><member name="M:Salaries.ЗарплатыDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(Salaries.ЗарплатыDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Insert rows in top-down order.
+</summary>
+</member><member name="M:Salaries.ЗарплатыDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(Salaries.ЗарплатыDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Delete rows in bottom-up order.
+</summary>
+</member><member name="M:Salaries.ЗарплатыDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member><member name="M:Salaries.ЗарплатыDataSetTableAdapters.TableAdapterManager.UpdateAll(Salaries.ЗарплатыDataSet)">
+	<summary>
+Update all changes to the dataset.
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+	<summary>
+Update Order Option
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+	<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member><member name="T:Salaries.ЗарплатыDataSetTableAdapters.TableAdapterManager">
+	<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
 </summary>
 </member>
 </members>

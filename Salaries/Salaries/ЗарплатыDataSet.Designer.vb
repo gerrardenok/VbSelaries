@@ -20,9 +20,9 @@ Option Explicit On
  Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
  Global.System.ComponentModel.ToolboxItem(true),  _
  Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema"),  _
- Global.System.Xml.Serialization.XmlRootAttribute("SalariesDataSet"),  _
+ Global.System.Xml.Serialization.XmlRootAttribute("ЗарплатыDataSet"),  _
  Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")>  _
-Partial Public Class SalariesDataSet
+Partial Public Class ЗарплатыDataSet
     Inherits Global.System.Data.DataSet
     
     Private tableВычет_ЗП As Вычет_ЗПDataTable
@@ -35,25 +35,17 @@ Partial Public Class SalariesDataSet
     
     Private tableПропуск As ПропускDataTable
     
-    Private tableСпециальность As СпециальностьDataTable
+    Private tableРаботник As РаботникDataTable
     
-    Private tableEmployersView As EmployersViewDataTable
+    Private tableСпециальность As СпециальностьDataTable
     
     Private tableСтавка As СтавкаDataTable
     
-    Private tableРаботник As РаботникDataTable
-    
-    Private relationРаботник_Специальность As Global.System.Data.DataRelation
-    
-    Private relationРаботник_Отдел As Global.System.Data.DataRelation
-    
-    Private relationРаботник_Ставка As Global.System.Data.DataRelation
-    
     Private relationFK_Вычет_ЗП_Зарплата As Global.System.Data.DataRelation
     
-    Private relationFK_Прибавка_ЗП_Зарплата As Global.System.Data.DataRelation
-    
     Private relationFK_Зарплата_Работник As Global.System.Data.DataRelation
+    
+    Private relationFK_Прибавка_ЗП_Зарплата As Global.System.Data.DataRelation
     
     Private relationFK_Пропуск_Работник As Global.System.Data.DataRelation
     
@@ -107,17 +99,14 @@ Partial Public Class SalariesDataSet
             If (Not (ds.Tables("Пропуск")) Is Nothing) Then
                 MyBase.Tables.Add(New ПропускDataTable(ds.Tables("Пропуск")))
             End If
+            If (Not (ds.Tables("Работник")) Is Nothing) Then
+                MyBase.Tables.Add(New РаботникDataTable(ds.Tables("Работник")))
+            End If
             If (Not (ds.Tables("Специальность")) Is Nothing) Then
                 MyBase.Tables.Add(New СпециальностьDataTable(ds.Tables("Специальность")))
             End If
-            If (Not (ds.Tables("EmployersView")) Is Nothing) Then
-                MyBase.Tables.Add(New EmployersViewDataTable(ds.Tables("EmployersView")))
-            End If
             If (Not (ds.Tables("Ставка")) Is Nothing) Then
                 MyBase.Tables.Add(New СтавкаDataTable(ds.Tables("Ставка")))
-            End If
-            If (Not (ds.Tables("Работник")) Is Nothing) Then
-                MyBase.Tables.Add(New РаботникDataTable(ds.Tables("Работник")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -190,6 +179,16 @@ Partial Public Class SalariesDataSet
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property Работник() As РаботникDataTable
+        Get
+            Return Me.tableРаботник
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
     Public ReadOnly Property Специальность() As СпециальностьDataTable
         Get
             Return Me.tableСпециальность
@@ -200,29 +199,9 @@ Partial Public Class SalariesDataSet
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property EmployersView() As EmployersViewDataTable
-        Get
-            Return Me.tableEmployersView
-        End Get
-    End Property
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-     Global.System.ComponentModel.Browsable(false),  _
-     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
     Public ReadOnly Property Ставка() As СтавкаDataTable
         Get
             Return Me.tableСтавка
-        End Get
-    End Property
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-     Global.System.ComponentModel.Browsable(false),  _
-     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property Работник() As РаботникDataTable
-        Get
-            Return Me.tableРаботник
         End Get
     End Property
     
@@ -268,7 +247,7 @@ Partial Public Class SalariesDataSet
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Overrides Function Clone() As Global.System.Data.DataSet
-        Dim cln As SalariesDataSet = CType(MyBase.Clone,SalariesDataSet)
+        Dim cln As ЗарплатыDataSet = CType(MyBase.Clone,ЗарплатыDataSet)
         cln.InitVars
         cln.SchemaSerializationMode = Me.SchemaSerializationMode
         Return cln
@@ -308,17 +287,14 @@ Partial Public Class SalariesDataSet
             If (Not (ds.Tables("Пропуск")) Is Nothing) Then
                 MyBase.Tables.Add(New ПропускDataTable(ds.Tables("Пропуск")))
             End If
+            If (Not (ds.Tables("Работник")) Is Nothing) Then
+                MyBase.Tables.Add(New РаботникDataTable(ds.Tables("Работник")))
+            End If
             If (Not (ds.Tables("Специальность")) Is Nothing) Then
                 MyBase.Tables.Add(New СпециальностьDataTable(ds.Tables("Специальность")))
             End If
-            If (Not (ds.Tables("EmployersView")) Is Nothing) Then
-                MyBase.Tables.Add(New EmployersViewDataTable(ds.Tables("EmployersView")))
-            End If
             If (Not (ds.Tables("Ставка")) Is Nothing) Then
                 MyBase.Tables.Add(New СтавкаDataTable(ds.Tables("Ставка")))
-            End If
-            If (Not (ds.Tables("Работник")) Is Nothing) Then
-                MyBase.Tables.Add(New РаботникDataTable(ds.Tables("Работник")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -382,16 +358,16 @@ Partial Public Class SalariesDataSet
                 Me.tableПропуск.InitVars
             End If
         End If
+        Me.tableРаботник = CType(MyBase.Tables("Работник"),РаботникDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableРаботник) Is Nothing) Then
+                Me.tableРаботник.InitVars
+            End If
+        End If
         Me.tableСпециальность = CType(MyBase.Tables("Специальность"),СпециальностьDataTable)
         If (initTable = true) Then
             If (Not (Me.tableСпециальность) Is Nothing) Then
                 Me.tableСпециальность.InitVars
-            End If
-        End If
-        Me.tableEmployersView = CType(MyBase.Tables("EmployersView"),EmployersViewDataTable)
-        If (initTable = true) Then
-            If (Not (Me.tableEmployersView) Is Nothing) Then
-                Me.tableEmployersView.InitVars
             End If
         End If
         Me.tableСтавка = CType(MyBase.Tables("Ставка"),СтавкаDataTable)
@@ -400,18 +376,9 @@ Partial Public Class SalariesDataSet
                 Me.tableСтавка.InitVars
             End If
         End If
-        Me.tableРаботник = CType(MyBase.Tables("Работник"),РаботникDataTable)
-        If (initTable = true) Then
-            If (Not (Me.tableРаботник) Is Nothing) Then
-                Me.tableРаботник.InitVars
-            End If
-        End If
-        Me.relationРаботник_Специальность = Me.Relations("Работник_Специальность")
-        Me.relationРаботник_Отдел = Me.Relations("Работник_Отдел")
-        Me.relationРаботник_Ставка = Me.Relations("Работник_Ставка")
         Me.relationFK_Вычет_ЗП_Зарплата = Me.Relations("FK_Вычет_ЗП_Зарплата")
-        Me.relationFK_Прибавка_ЗП_Зарплата = Me.Relations("FK_Прибавка_ЗП_Зарплата")
         Me.relationFK_Зарплата_Работник = Me.Relations("FK_Зарплата_Работник")
+        Me.relationFK_Прибавка_ЗП_Зарплата = Me.Relations("FK_Прибавка_ЗП_Зарплата")
         Me.relationFK_Пропуск_Работник = Me.Relations("FK_Пропуск_Работник")
         Me.relationFK_Работник_Отдел = Me.Relations("FK_Работник_Отдел")
         Me.relationFK_Работник_Специальность = Me.Relations("FK_Работник_Специальность")
@@ -421,9 +388,9 @@ Partial Public Class SalariesDataSet
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Private Sub InitClass()
-        Me.DataSetName = "SalariesDataSet"
+        Me.DataSetName = "ЗарплатыDataSet"
         Me.Prefix = ""
-        Me.Namespace = "http://tempuri.org/SalariesDataSet.xsd"
+        Me.Namespace = "http://tempuri.org/ЗарплатыDataSet.xsd"
         Me.EnforceConstraints = true
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
         Me.tableВычет_ЗП = New Вычет_ЗПDataTable()
@@ -436,36 +403,25 @@ Partial Public Class SalariesDataSet
         MyBase.Tables.Add(Me.tableПрибавка_ЗП)
         Me.tableПропуск = New ПропускDataTable()
         MyBase.Tables.Add(Me.tableПропуск)
-        Me.tableСпециальность = New СпециальностьDataTable()
-        MyBase.Tables.Add(Me.tableСпециальность)
-        Me.tableEmployersView = New EmployersViewDataTable()
-        MyBase.Tables.Add(Me.tableEmployersView)
-        Me.tableСтавка = New СтавкаDataTable()
-        MyBase.Tables.Add(Me.tableСтавка)
         Me.tableРаботник = New РаботникDataTable()
         MyBase.Tables.Add(Me.tableРаботник)
-        Me.relationРаботник_Специальность = New Global.System.Data.DataRelation("Работник_Специальность", New Global.System.Data.DataColumn() {Me.tableРаботник.Код_специальностиColumn}, New Global.System.Data.DataColumn() {Me.tableСпециальность.Код_специальностиColumn}, false)
-        Me.relationРаботник_Специальность.Nested = true
-        Me.Relations.Add(Me.relationРаботник_Специальность)
-        Me.relationРаботник_Отдел = New Global.System.Data.DataRelation("Работник_Отдел", New Global.System.Data.DataColumn() {Me.tableРаботник.Код_отделаColumn}, New Global.System.Data.DataColumn() {Me.tableОтдел.Код_отделаColumn}, false)
-        Me.relationРаботник_Отдел.Nested = true
-        Me.Relations.Add(Me.relationРаботник_Отдел)
-        Me.relationРаботник_Ставка = New Global.System.Data.DataRelation("Работник_Ставка", New Global.System.Data.DataColumn() {Me.tableРаботник.Код_ставкиColumn}, New Global.System.Data.DataColumn() {Me.tableСтавка.Код_ставкиColumn}, false)
-        Me.relationРаботник_Ставка.Nested = true
-        Me.Relations.Add(Me.relationРаботник_Ставка)
+        Me.tableСпециальность = New СпециальностьDataTable()
+        MyBase.Tables.Add(Me.tableСпециальность)
+        Me.tableСтавка = New СтавкаDataTable()
+        MyBase.Tables.Add(Me.tableСтавка)
         Me.relationFK_Вычет_ЗП_Зарплата = New Global.System.Data.DataRelation("FK_Вычет_ЗП_Зарплата", New Global.System.Data.DataColumn() {Me.tableЗарплата.Код_зарплатыColumn}, New Global.System.Data.DataColumn() {Me.tableВычет_ЗП.Код_зарплатыColumn}, false)
         Me.Relations.Add(Me.relationFK_Вычет_ЗП_Зарплата)
-        Me.relationFK_Прибавка_ЗП_Зарплата = New Global.System.Data.DataRelation("FK_Прибавка_ЗП_Зарплата", New Global.System.Data.DataColumn() {Me.tableЗарплата.Код_зарплатыColumn}, New Global.System.Data.DataColumn() {Me.tableПрибавка_ЗП.Код_зарплатыColumn}, false)
-        Me.Relations.Add(Me.relationFK_Прибавка_ЗП_Зарплата)
         Me.relationFK_Зарплата_Работник = New Global.System.Data.DataRelation("FK_Зарплата_Работник", New Global.System.Data.DataColumn() {Me.tableРаботник.Код_работникаColumn}, New Global.System.Data.DataColumn() {Me.tableЗарплата.Код_работникаColumn}, false)
         Me.Relations.Add(Me.relationFK_Зарплата_Работник)
+        Me.relationFK_Прибавка_ЗП_Зарплата = New Global.System.Data.DataRelation("FK_Прибавка_ЗП_Зарплата", New Global.System.Data.DataColumn() {Me.tableЗарплата.Код_зарплатыColumn}, New Global.System.Data.DataColumn() {Me.tableПрибавка_ЗП.Код_зарплатыColumn}, false)
+        Me.Relations.Add(Me.relationFK_Прибавка_ЗП_Зарплата)
         Me.relationFK_Пропуск_Работник = New Global.System.Data.DataRelation("FK_Пропуск_Работник", New Global.System.Data.DataColumn() {Me.tableРаботник.Код_работникаColumn}, New Global.System.Data.DataColumn() {Me.tableПропуск.Код_работникаColumn}, false)
         Me.Relations.Add(Me.relationFK_Пропуск_Работник)
         Me.relationFK_Работник_Отдел = New Global.System.Data.DataRelation("FK_Работник_Отдел", New Global.System.Data.DataColumn() {Me.tableОтдел.Код_отделаColumn}, New Global.System.Data.DataColumn() {Me.tableРаботник.Код_отделаColumn}, false)
         Me.Relations.Add(Me.relationFK_Работник_Отдел)
         Me.relationFK_Работник_Специальность = New Global.System.Data.DataRelation("FK_Работник_Специальность", New Global.System.Data.DataColumn() {Me.tableСпециальность.Код_специальностиColumn}, New Global.System.Data.DataColumn() {Me.tableРаботник.Код_специальностиColumn}, false)
         Me.Relations.Add(Me.relationFK_Работник_Специальность)
-        Me.relationFK_Работник_Ставка = New Global.System.Data.DataRelation("FK_Работник_Ставка", New Global.System.Data.DataColumn() {Me.tableСтавка.Код_ставкиColumn}, New Global.System.Data.DataColumn() {Me.tableРаботник.Код_ставкиColumn}, false)
+        Me.relationFK_Работник_Ставка = New Global.System.Data.DataRelation("FK_Работник_Ставка", New Global.System.Data.DataColumn() {Me.tableСтавка.Код_ставкиColumn}, New Global.System.Data.DataColumn() {Me.tableРаботник.СтавкаColumn}, false)
         Me.Relations.Add(Me.relationFK_Работник_Ставка)
     End Sub
     
@@ -501,25 +457,19 @@ Partial Public Class SalariesDataSet
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Private Function ShouldSerializeРаботник() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Private Function ShouldSerializeСпециальность() As Boolean
         Return false
     End Function
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Private Function ShouldSerializeEmployersView() As Boolean
-        Return false
-    End Function
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Private Function ShouldSerializeСтавка() As Boolean
-        Return false
-    End Function
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Private Function ShouldSerializeРаботник() As Boolean
         Return false
     End Function
     
@@ -534,7 +484,7 @@ Partial Public Class SalariesDataSet
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Shared Function GetTypedDataSetSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-        Dim ds As SalariesDataSet = New SalariesDataSet()
+        Dim ds As ЗарплатыDataSet = New ЗарплатыDataSet()
         Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
         Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
         Dim any As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
@@ -597,16 +547,13 @@ Partial Public Class SalariesDataSet
     Public Delegate Sub ПропускRowChangeEventHandler(ByVal sender As Object, ByVal e As ПропускRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Delegate Sub РаботникRowChangeEventHandler(ByVal sender As Object, ByVal e As РаботникRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Delegate Sub СпециальностьRowChangeEventHandler(ByVal sender As Object, ByVal e As СпециальностьRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Delegate Sub EmployersViewRowChangeEventHandler(ByVal sender As Object, ByVal e As EmployersViewRowChangeEvent)
-    
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Delegate Sub СтавкаRowChangeEventHandler(ByVal sender As Object, ByVal e As СтавкаRowChangeEvent)
-    
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Delegate Sub РаботникRowChangeEventHandler(ByVal sender As Object, ByVal e As РаботникRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -857,7 +804,7 @@ Partial Public Class SalariesDataSet
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As SalariesDataSet = New SalariesDataSet()
+            Dim ds As ЗарплатыDataSet = New ЗарплатыDataSet()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -1208,7 +1155,7 @@ Partial Public Class SalariesDataSet
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As SalariesDataSet = New SalariesDataSet()
+            Dim ds As ЗарплатыDataSet = New ЗарплатыDataSet()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -1516,7 +1463,7 @@ Partial Public Class SalariesDataSet
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As SalariesDataSet = New SalariesDataSet()
+            Dim ds As ЗарплатыDataSet = New ЗарплатыDataSet()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -1827,7 +1774,7 @@ Partial Public Class SalariesDataSet
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As SalariesDataSet = New SalariesDataSet()
+            Dim ds As ЗарплатыDataSet = New ЗарплатыDataSet()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -2166,7 +2113,7 @@ Partial Public Class SalariesDataSet
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As SalariesDataSet = New SalariesDataSet()
+            Dim ds As ЗарплатыDataSet = New ЗарплатыDataSet()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -2185,6 +2132,438 @@ Partial Public Class SalariesDataSet
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "ПропускDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class РаботникDataTable
+        Inherits Global.System.Data.TypedTableBase(Of РаботникRow)
+        
+        Private columnКод_работника As Global.System.Data.DataColumn
+        
+        Private columnИмя As Global.System.Data.DataColumn
+        
+        Private columnФамилия As Global.System.Data.DataColumn
+        
+        Private columnОтчество As Global.System.Data.DataColumn
+        
+        Private columnДата_приёма As Global.System.Data.DataColumn
+        
+        Private columnТелефон As Global.System.Data.DataColumn
+        
+        Private columnНомер_пасспорта As Global.System.Data.DataColumn
+        
+        Private columnСтаж As Global.System.Data.DataColumn
+        
+        Private columnСтавка As Global.System.Data.DataColumn
+        
+        Private columnКод_отдела As Global.System.Data.DataColumn
+        
+        Private columnКод_специальности As Global.System.Data.DataColumn
+        
+        Private columnДата_увольнения As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "Работник"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Код_работникаColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnКод_работника
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ИмяColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnИмя
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ФамилияColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnФамилия
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ОтчествоColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnОтчество
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Дата_приёмаColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnДата_приёма
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ТелефонColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnТелефон
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Номер_пасспортаColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnНомер_пасспорта
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property СтажColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnСтаж
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property СтавкаColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnСтавка
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Код_отделаColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnКод_отдела
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Код_специальностиColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnКод_специальности
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Дата_увольненияColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnДата_увольнения
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As РаботникRow
+            Get
+                Return CType(Me.Rows(index),РаботникRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event РаботникRowChanging As РаботникRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event РаботникRowChanged As РаботникRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event РаботникRowDeleting As РаботникRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event РаботникRowDeleted As РаботникRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Sub AddРаботникRow(ByVal row As РаботникRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Function AddРаботникRow(ByVal Имя As String, ByVal Фамилия As String, ByVal Отчество As String, ByVal Дата_приёма As Date, ByVal Телефон As String, ByVal Номер_пасспорта As String, ByVal Стаж As Integer, ByVal parentСтавкаRowByFK_Работник_Ставка As СтавкаRow, ByVal parentОтделRowByFK_Работник_Отдел As ОтделRow, ByVal parentСпециальностьRowByFK_Работник_Специальность As СпециальностьRow, ByVal Дата_увольнения As Date) As РаботникRow
+            Dim rowРаботникRow As РаботникRow = CType(Me.NewRow,РаботникRow)
+            Dim columnValuesArray() As Object = New Object() {Nothing, Имя, Фамилия, Отчество, Дата_приёма, Телефон, Номер_пасспорта, Стаж, Nothing, Nothing, Nothing, Дата_увольнения}
+            If (Not (parentСтавкаRowByFK_Работник_Ставка) Is Nothing) Then
+                columnValuesArray(8) = parentСтавкаRowByFK_Работник_Ставка(0)
+            End If
+            If (Not (parentОтделRowByFK_Работник_Отдел) Is Nothing) Then
+                columnValuesArray(9) = parentОтделRowByFK_Работник_Отдел(0)
+            End If
+            If (Not (parentСпециальностьRowByFK_Работник_Специальность) Is Nothing) Then
+                columnValuesArray(10) = parentСпециальностьRowByFK_Работник_Специальность(0)
+            End If
+            rowРаботникRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowРаботникRow)
+            Return rowРаботникRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function FindByКод_работника(ByVal Код_работника As Long) As РаботникRow
+            Return CType(Me.Rows.Find(New Object() {Код_работника}),РаботникRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As РаботникDataTable = CType(MyBase.Clone,РаботникDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New РаботникDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnКод_работника = MyBase.Columns("Код_работника")
+            Me.columnИмя = MyBase.Columns("Имя")
+            Me.columnФамилия = MyBase.Columns("Фамилия")
+            Me.columnОтчество = MyBase.Columns("Отчество")
+            Me.columnДата_приёма = MyBase.Columns("Дата_приёма")
+            Me.columnТелефон = MyBase.Columns("Телефон")
+            Me.columnНомер_пасспорта = MyBase.Columns("Номер_пасспорта")
+            Me.columnСтаж = MyBase.Columns("Стаж")
+            Me.columnСтавка = MyBase.Columns("Ставка")
+            Me.columnКод_отдела = MyBase.Columns("Код_отдела")
+            Me.columnКод_специальности = MyBase.Columns("Код_специальности")
+            Me.columnДата_увольнения = MyBase.Columns("Дата_увольнения")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnКод_работника = New Global.System.Data.DataColumn("Код_работника", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnКод_работника)
+            Me.columnИмя = New Global.System.Data.DataColumn("Имя", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnИмя)
+            Me.columnФамилия = New Global.System.Data.DataColumn("Фамилия", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnФамилия)
+            Me.columnОтчество = New Global.System.Data.DataColumn("Отчество", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnОтчество)
+            Me.columnДата_приёма = New Global.System.Data.DataColumn("Дата_приёма", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnДата_приёма)
+            Me.columnТелефон = New Global.System.Data.DataColumn("Телефон", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnТелефон)
+            Me.columnНомер_пасспорта = New Global.System.Data.DataColumn("Номер_пасспорта", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnНомер_пасспорта)
+            Me.columnСтаж = New Global.System.Data.DataColumn("Стаж", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnСтаж)
+            Me.columnСтавка = New Global.System.Data.DataColumn("Ставка", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnСтавка)
+            Me.columnКод_отдела = New Global.System.Data.DataColumn("Код_отдела", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnКод_отдела)
+            Me.columnКод_специальности = New Global.System.Data.DataColumn("Код_специальности", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnКод_специальности)
+            Me.columnДата_увольнения = New Global.System.Data.DataColumn("Дата_увольнения", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnДата_увольнения)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnКод_работника}, true))
+            Me.columnКод_работника.AutoIncrement = true
+            Me.columnКод_работника.AutoIncrementSeed = -1
+            Me.columnКод_работника.AutoIncrementStep = -1
+            Me.columnКод_работника.AllowDBNull = false
+            Me.columnКод_работника.ReadOnly = true
+            Me.columnКод_работника.Unique = true
+            Me.columnИмя.AllowDBNull = false
+            Me.columnИмя.MaxLength = 50
+            Me.columnФамилия.AllowDBNull = false
+            Me.columnФамилия.MaxLength = 50
+            Me.columnОтчество.AllowDBNull = false
+            Me.columnОтчество.MaxLength = 50
+            Me.columnДата_приёма.AllowDBNull = false
+            Me.columnТелефон.AllowDBNull = false
+            Me.columnТелефон.MaxLength = 50
+            Me.columnНомер_пасспорта.AllowDBNull = false
+            Me.columnНомер_пасспорта.MaxLength = 50
+            Me.columnСтаж.ReadOnly = true
+            Me.columnСтавка.AllowDBNull = false
+            Me.columnКод_отдела.AllowDBNull = false
+            Me.columnКод_специальности.AllowDBNull = false
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function NewРаботникRow() As РаботникRow
+            Return CType(Me.NewRow,РаботникRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New РаботникRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(РаботникRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.РаботникRowChangedEvent) Is Nothing) Then
+                RaiseEvent РаботникRowChanged(Me, New РаботникRowChangeEvent(CType(e.Row,РаботникRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.РаботникRowChangingEvent) Is Nothing) Then
+                RaiseEvent РаботникRowChanging(Me, New РаботникRowChangeEvent(CType(e.Row,РаботникRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.РаботникRowDeletedEvent) Is Nothing) Then
+                RaiseEvent РаботникRowDeleted(Me, New РаботникRowChangeEvent(CType(e.Row,РаботникRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.РаботникRowDeletingEvent) Is Nothing) Then
+                RaiseEvent РаботникRowDeleting(Me, New РаботникRowChangeEvent(CType(e.Row,РаботникRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub RemoveРаботникRow(ByVal row As РаботникRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As ЗарплатыDataSet = New ЗарплатыDataSet()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "РаботникDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -2460,7 +2839,7 @@ Partial Public Class SalariesDataSet
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As SalariesDataSet = New SalariesDataSet()
+            Dim ds As ЗарплатыDataSet = New ЗарплатыDataSet()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -2479,420 +2858,6 @@ Partial Public Class SalariesDataSet
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "СпециальностьDataTable"
-            type.Attributes.Add(attribute2)
-            type.Particle = sequence
-            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
-            If xs.Contains(dsSchema.TargetNamespace) Then
-                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Try 
-                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
-                    dsSchema.Write(s1)
-                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
-                    Do While schemas.MoveNext
-                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
-                        s2.SetLength(0)
-                        schema.Write(s2)
-                        If (s1.Length = s2.Length) Then
-                            s1.Position = 0
-                            s2.Position = 0
-                            
-                            Do While ((s1.Position <> s1.Length)  _
-                                        AndAlso (s1.ReadByte = s2.ReadByte))
-                                
-                                
-                            Loop
-                            If (s1.Position = s1.Length) Then
-                                Return type
-                            End If
-                        End If
-                        
-                    Loop
-                Finally
-                    If (Not (s1) Is Nothing) Then
-                        s1.Close
-                    End If
-                    If (Not (s2) Is Nothing) Then
-                        s2.Close
-                    End If
-                End Try
-            End If
-            xs.Add(dsSchema)
-            Return type
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the strongly named DataTable class.
-    '''</summary>
-    <Global.System.Serializable(),  _
-     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class EmployersViewDataTable
-        Inherits Global.System.Data.TypedTableBase(Of EmployersViewRow)
-        
-        Private columnИмя As Global.System.Data.DataColumn
-        
-        Private columnФамилия As Global.System.Data.DataColumn
-        
-        Private columnОтчество As Global.System.Data.DataColumn
-        
-        Private columnТелефон As Global.System.Data.DataColumn
-        
-        Private columnСпециальность As Global.System.Data.DataColumn
-        
-        Private columnОтдел As Global.System.Data.DataColumn
-        
-        Private columnКод_работника As Global.System.Data.DataColumn
-        
-        Private columnДата_приёма As Global.System.Data.DataColumn
-        
-        Private columnНомер_пасспорта As Global.System.Data.DataColumn
-        
-        Private columnСтаж As Global.System.Data.DataColumn
-        
-        Private columnВид_ставки As Global.System.Data.DataColumn
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.TableName = "EmployersView"
-            Me.BeginInit
-            Me.InitClass
-            Me.EndInit
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Sub New(ByVal table As Global.System.Data.DataTable)
-            MyBase.New
-            Me.TableName = table.TableName
-            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
-                Me.CaseSensitive = table.CaseSensitive
-            End If
-            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
-                Me.Locale = table.Locale
-            End If
-            If (table.Namespace <> table.DataSet.Namespace) Then
-                Me.Namespace = table.Namespace
-            End If
-            Me.Prefix = table.Prefix
-            Me.MinimumCapacity = table.MinimumCapacity
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
-            MyBase.New(info, context)
-            Me.InitVars
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property ИмяColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnИмя
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property ФамилияColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnФамилия
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property ОтчествоColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnОтчество
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property ТелефонColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnТелефон
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property СпециальностьColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnСпециальность
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property ОтделColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnОтдел
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Код_работникаColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnКод_работника
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Дата_приёмаColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnДата_приёма
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Номер_пасспортаColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnНомер_пасспорта
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property СтажColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnСтаж
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Вид_ставкиColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnВид_ставки
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Browsable(false)>  _
-        Public ReadOnly Property Count() As Integer
-            Get
-                Return Me.Rows.Count
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As EmployersViewRow
-            Get
-                Return CType(Me.Rows(index),EmployersViewRow)
-            End Get
-        End Property
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event EmployersViewRowChanging As EmployersViewRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event EmployersViewRowChanged As EmployersViewRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event EmployersViewRowDeleting As EmployersViewRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event EmployersViewRowDeleted As EmployersViewRowChangeEventHandler
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Sub AddEmployersViewRow(ByVal row As EmployersViewRow)
-            Me.Rows.Add(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddEmployersViewRow(ByVal Имя As String, ByVal Фамилия As String, ByVal Отчество As String, ByVal Телефон As String, ByVal Специальность As String, ByVal Отдел As String, ByVal Дата_приёма As Date, ByVal Номер_пасспорта As String, ByVal Стаж As Integer, ByVal Вид_ставки As String) As EmployersViewRow
-            Dim rowEmployersViewRow As EmployersViewRow = CType(Me.NewRow,EmployersViewRow)
-            Dim columnValuesArray() As Object = New Object() {Имя, Фамилия, Отчество, Телефон, Специальность, Отдел, Nothing, Дата_приёма, Номер_пасспорта, Стаж, Вид_ставки}
-            rowEmployersViewRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowEmployersViewRow)
-            Return rowEmployersViewRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function FindByКод_работника(ByVal Код_работника As Long) As EmployersViewRow
-            Return CType(Me.Rows.Find(New Object() {Код_работника}),EmployersViewRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As EmployersViewDataTable = CType(MyBase.Clone,EmployersViewDataTable)
-            cln.InitVars
-            Return cln
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New EmployersViewDataTable()
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Sub InitVars()
-            Me.columnИмя = MyBase.Columns("Имя")
-            Me.columnФамилия = MyBase.Columns("Фамилия")
-            Me.columnОтчество = MyBase.Columns("Отчество")
-            Me.columnТелефон = MyBase.Columns("Телефон")
-            Me.columnСпециальность = MyBase.Columns("Специальность")
-            Me.columnОтдел = MyBase.Columns("Отдел")
-            Me.columnКод_работника = MyBase.Columns("Код_работника")
-            Me.columnДата_приёма = MyBase.Columns("Дата_приёма")
-            Me.columnНомер_пасспорта = MyBase.Columns("Номер_пасспорта")
-            Me.columnСтаж = MyBase.Columns("Стаж")
-            Me.columnВид_ставки = MyBase.Columns("Вид_ставки")
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Sub InitClass()
-            Me.columnИмя = New Global.System.Data.DataColumn("Имя", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnИмя)
-            Me.columnФамилия = New Global.System.Data.DataColumn("Фамилия", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnФамилия)
-            Me.columnОтчество = New Global.System.Data.DataColumn("Отчество", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnОтчество)
-            Me.columnТелефон = New Global.System.Data.DataColumn("Телефон", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnТелефон)
-            Me.columnСпециальность = New Global.System.Data.DataColumn("Специальность", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnСпециальность)
-            Me.columnОтдел = New Global.System.Data.DataColumn("Отдел", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnОтдел)
-            Me.columnКод_работника = New Global.System.Data.DataColumn("Код_работника", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnКод_работника)
-            Me.columnДата_приёма = New Global.System.Data.DataColumn("Дата_приёма", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnДата_приёма)
-            Me.columnНомер_пасспорта = New Global.System.Data.DataColumn("Номер_пасспорта", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnНомер_пасспорта)
-            Me.columnСтаж = New Global.System.Data.DataColumn("Стаж", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnСтаж)
-            Me.columnВид_ставки = New Global.System.Data.DataColumn("Вид_ставки", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnВид_ставки)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnКод_работника}, true))
-            Me.columnИмя.AllowDBNull = false
-            Me.columnИмя.MaxLength = 50
-            Me.columnФамилия.AllowDBNull = false
-            Me.columnФамилия.MaxLength = 50
-            Me.columnОтчество.AllowDBNull = false
-            Me.columnОтчество.MaxLength = 50
-            Me.columnТелефон.AllowDBNull = false
-            Me.columnТелефон.MaxLength = 50
-            Me.columnСпециальность.AllowDBNull = false
-            Me.columnСпециальность.MaxLength = 50
-            Me.columnОтдел.AllowDBNull = false
-            Me.columnОтдел.MaxLength = 50
-            Me.columnКод_работника.AutoIncrement = true
-            Me.columnКод_работника.AutoIncrementSeed = -1
-            Me.columnКод_работника.AutoIncrementStep = -1
-            Me.columnКод_работника.AllowDBNull = false
-            Me.columnКод_работника.ReadOnly = true
-            Me.columnКод_работника.Unique = true
-            Me.columnДата_приёма.AllowDBNull = false
-            Me.columnДата_приёма.Caption = "Дата приёма"
-            Me.columnНомер_пасспорта.AllowDBNull = false
-            Me.columnНомер_пасспорта.Caption = "Номер пасспорта"
-            Me.columnНомер_пасспорта.MaxLength = 50
-            Me.columnСтаж.ReadOnly = true
-            Me.columnВид_ставки.AllowDBNull = false
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function NewEmployersViewRow() As EmployersViewRow
-            Return CType(Me.NewRow,EmployersViewRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New EmployersViewRow(builder)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(EmployersViewRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanged(e)
-            If (Not (Me.EmployersViewRowChangedEvent) Is Nothing) Then
-                RaiseEvent EmployersViewRowChanged(Me, New EmployersViewRowChangeEvent(CType(e.Row,EmployersViewRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanging(e)
-            If (Not (Me.EmployersViewRowChangingEvent) Is Nothing) Then
-                RaiseEvent EmployersViewRowChanging(Me, New EmployersViewRowChangeEvent(CType(e.Row,EmployersViewRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleted(e)
-            If (Not (Me.EmployersViewRowDeletedEvent) Is Nothing) Then
-                RaiseEvent EmployersViewRowDeleted(Me, New EmployersViewRowChangeEvent(CType(e.Row,EmployersViewRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleting(e)
-            If (Not (Me.EmployersViewRowDeletingEvent) Is Nothing) Then
-                RaiseEvent EmployersViewRowDeleting(Me, New EmployersViewRowChangeEvent(CType(e.Row,EmployersViewRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub RemoveEmployersViewRow(ByVal row As EmployersViewRow)
-            Me.Rows.Remove(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
-            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As SalariesDataSet = New SalariesDataSet()
-            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
-            any1.MinOccurs = New Decimal(0)
-            any1.MaxOccurs = Decimal.MaxValue
-            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any1)
-            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
-            any2.MinOccurs = New Decimal(1)
-            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any2)
-            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute1.Name = "namespace"
-            attribute1.FixedValue = ds.Namespace
-            type.Attributes.Add(attribute1)
-            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "EmployersViewDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -3154,7 +3119,7 @@ Partial Public Class SalariesDataSet
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As SalariesDataSet = New SalariesDataSet()
+            Dim ds As ЗарплатыDataSet = New ЗарплатыDataSet()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -3173,438 +3138,6 @@ Partial Public Class SalariesDataSet
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "СтавкаDataTable"
-            type.Attributes.Add(attribute2)
-            type.Particle = sequence
-            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
-            If xs.Contains(dsSchema.TargetNamespace) Then
-                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Try 
-                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
-                    dsSchema.Write(s1)
-                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
-                    Do While schemas.MoveNext
-                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
-                        s2.SetLength(0)
-                        schema.Write(s2)
-                        If (s1.Length = s2.Length) Then
-                            s1.Position = 0
-                            s2.Position = 0
-                            
-                            Do While ((s1.Position <> s1.Length)  _
-                                        AndAlso (s1.ReadByte = s2.ReadByte))
-                                
-                                
-                            Loop
-                            If (s1.Position = s1.Length) Then
-                                Return type
-                            End If
-                        End If
-                        
-                    Loop
-                Finally
-                    If (Not (s1) Is Nothing) Then
-                        s1.Close
-                    End If
-                    If (Not (s2) Is Nothing) Then
-                        s2.Close
-                    End If
-                End Try
-            End If
-            xs.Add(dsSchema)
-            Return type
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the strongly named DataTable class.
-    '''</summary>
-    <Global.System.Serializable(),  _
-     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class РаботникDataTable
-        Inherits Global.System.Data.TypedTableBase(Of РаботникRow)
-        
-        Private columnКод_работника As Global.System.Data.DataColumn
-        
-        Private columnИмя As Global.System.Data.DataColumn
-        
-        Private columnФамилия As Global.System.Data.DataColumn
-        
-        Private columnОтчество As Global.System.Data.DataColumn
-        
-        Private columnДата_приёма As Global.System.Data.DataColumn
-        
-        Private columnТелефон As Global.System.Data.DataColumn
-        
-        Private columnНомер_пасспорта As Global.System.Data.DataColumn
-        
-        Private columnСтаж As Global.System.Data.DataColumn
-        
-        Private columnКод_ставки As Global.System.Data.DataColumn
-        
-        Private columnКод_отдела As Global.System.Data.DataColumn
-        
-        Private columnКод_специальности As Global.System.Data.DataColumn
-        
-        Private columnДата_увольнения As Global.System.Data.DataColumn
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.TableName = "Работник"
-            Me.BeginInit
-            Me.InitClass
-            Me.EndInit
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Sub New(ByVal table As Global.System.Data.DataTable)
-            MyBase.New
-            Me.TableName = table.TableName
-            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
-                Me.CaseSensitive = table.CaseSensitive
-            End If
-            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
-                Me.Locale = table.Locale
-            End If
-            If (table.Namespace <> table.DataSet.Namespace) Then
-                Me.Namespace = table.Namespace
-            End If
-            Me.Prefix = table.Prefix
-            Me.MinimumCapacity = table.MinimumCapacity
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
-            MyBase.New(info, context)
-            Me.InitVars
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Код_работникаColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnКод_работника
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property ИмяColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnИмя
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property ФамилияColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnФамилия
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property ОтчествоColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnОтчество
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Дата_приёмаColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnДата_приёма
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property ТелефонColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnТелефон
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Номер_пасспортаColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnНомер_пасспорта
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property СтажColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnСтаж
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Код_ставкиColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnКод_ставки
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Код_отделаColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnКод_отдела
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Код_специальностиColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnКод_специальности
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Дата_увольненияColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnДата_увольнения
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Browsable(false)>  _
-        Public ReadOnly Property Count() As Integer
-            Get
-                Return Me.Rows.Count
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As РаботникRow
-            Get
-                Return CType(Me.Rows(index),РаботникRow)
-            End Get
-        End Property
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event РаботникRowChanging As РаботникRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event РаботникRowChanged As РаботникRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event РаботникRowDeleting As РаботникRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event РаботникRowDeleted As РаботникRowChangeEventHandler
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Sub AddРаботникRow(ByVal row As РаботникRow)
-            Me.Rows.Add(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddРаботникRow(ByVal Имя As String, ByVal Фамилия As String, ByVal Отчество As String, ByVal Дата_приёма As Date, ByVal Телефон As String, ByVal Номер_пасспорта As String, ByVal Стаж As Integer, ByVal parentСтавкаRowByFK_Работник_Ставка As СтавкаRow, ByVal parentОтделRowByFK_Работник_Отдел As ОтделRow, ByVal parentСпециальностьRowByFK_Работник_Специальность As СпециальностьRow, ByVal Дата_увольнения As Date) As РаботникRow
-            Dim rowРаботникRow As РаботникRow = CType(Me.NewRow,РаботникRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Имя, Фамилия, Отчество, Дата_приёма, Телефон, Номер_пасспорта, Стаж, Nothing, Nothing, Nothing, Дата_увольнения}
-            If (Not (parentСтавкаRowByFK_Работник_Ставка) Is Nothing) Then
-                columnValuesArray(8) = parentСтавкаRowByFK_Работник_Ставка(0)
-            End If
-            If (Not (parentОтделRowByFK_Работник_Отдел) Is Nothing) Then
-                columnValuesArray(9) = parentОтделRowByFK_Работник_Отдел(0)
-            End If
-            If (Not (parentСпециальностьRowByFK_Работник_Специальность) Is Nothing) Then
-                columnValuesArray(10) = parentСпециальностьRowByFK_Работник_Специальность(0)
-            End If
-            rowРаботникRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowРаботникRow)
-            Return rowРаботникRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function FindByКод_работника(ByVal Код_работника As Long) As РаботникRow
-            Return CType(Me.Rows.Find(New Object() {Код_работника}),РаботникRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As РаботникDataTable = CType(MyBase.Clone,РаботникDataTable)
-            cln.InitVars
-            Return cln
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New РаботникDataTable()
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Sub InitVars()
-            Me.columnКод_работника = MyBase.Columns("Код_работника")
-            Me.columnИмя = MyBase.Columns("Имя")
-            Me.columnФамилия = MyBase.Columns("Фамилия")
-            Me.columnОтчество = MyBase.Columns("Отчество")
-            Me.columnДата_приёма = MyBase.Columns("Дата_приёма")
-            Me.columnТелефон = MyBase.Columns("Телефон")
-            Me.columnНомер_пасспорта = MyBase.Columns("Номер_пасспорта")
-            Me.columnСтаж = MyBase.Columns("Стаж")
-            Me.columnКод_ставки = MyBase.Columns("Код_ставки")
-            Me.columnКод_отдела = MyBase.Columns("Код_отдела")
-            Me.columnКод_специальности = MyBase.Columns("Код_специальности")
-            Me.columnДата_увольнения = MyBase.Columns("Дата_увольнения")
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Sub InitClass()
-            Me.columnКод_работника = New Global.System.Data.DataColumn("Код_работника", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnКод_работника)
-            Me.columnИмя = New Global.System.Data.DataColumn("Имя", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnИмя)
-            Me.columnФамилия = New Global.System.Data.DataColumn("Фамилия", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnФамилия)
-            Me.columnОтчество = New Global.System.Data.DataColumn("Отчество", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnОтчество)
-            Me.columnДата_приёма = New Global.System.Data.DataColumn("Дата_приёма", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnДата_приёма)
-            Me.columnТелефон = New Global.System.Data.DataColumn("Телефон", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnТелефон)
-            Me.columnНомер_пасспорта = New Global.System.Data.DataColumn("Номер_пасспорта", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnНомер_пасспорта)
-            Me.columnСтаж = New Global.System.Data.DataColumn("Стаж", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnСтаж)
-            Me.columnКод_ставки = New Global.System.Data.DataColumn("Код_ставки", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnКод_ставки)
-            Me.columnКод_отдела = New Global.System.Data.DataColumn("Код_отдела", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnКод_отдела)
-            Me.columnКод_специальности = New Global.System.Data.DataColumn("Код_специальности", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnКод_специальности)
-            Me.columnДата_увольнения = New Global.System.Data.DataColumn("Дата_увольнения", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnДата_увольнения)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnКод_работника}, true))
-            Me.columnКод_работника.AutoIncrement = true
-            Me.columnКод_работника.AutoIncrementSeed = -1
-            Me.columnКод_работника.AutoIncrementStep = -1
-            Me.columnКод_работника.AllowDBNull = false
-            Me.columnКод_работника.ReadOnly = true
-            Me.columnКод_работника.Unique = true
-            Me.columnИмя.AllowDBNull = false
-            Me.columnИмя.MaxLength = 50
-            Me.columnФамилия.AllowDBNull = false
-            Me.columnФамилия.MaxLength = 50
-            Me.columnОтчество.AllowDBNull = false
-            Me.columnОтчество.MaxLength = 50
-            Me.columnДата_приёма.AllowDBNull = false
-            Me.columnТелефон.AllowDBNull = false
-            Me.columnТелефон.MaxLength = 50
-            Me.columnНомер_пасспорта.AllowDBNull = false
-            Me.columnНомер_пасспорта.MaxLength = 50
-            Me.columnСтаж.ReadOnly = true
-            Me.columnКод_ставки.AllowDBNull = false
-            Me.columnКод_отдела.AllowDBNull = false
-            Me.columnКод_специальности.AllowDBNull = false
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function NewРаботникRow() As РаботникRow
-            Return CType(Me.NewRow,РаботникRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New РаботникRow(builder)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(РаботникRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanged(e)
-            If (Not (Me.РаботникRowChangedEvent) Is Nothing) Then
-                RaiseEvent РаботникRowChanged(Me, New РаботникRowChangeEvent(CType(e.Row,РаботникRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanging(e)
-            If (Not (Me.РаботникRowChangingEvent) Is Nothing) Then
-                RaiseEvent РаботникRowChanging(Me, New РаботникRowChangeEvent(CType(e.Row,РаботникRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleted(e)
-            If (Not (Me.РаботникRowDeletedEvent) Is Nothing) Then
-                RaiseEvent РаботникRowDeleted(Me, New РаботникRowChangeEvent(CType(e.Row,РаботникRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleting(e)
-            If (Not (Me.РаботникRowDeletingEvent) Is Nothing) Then
-                RaiseEvent РаботникRowDeleting(Me, New РаботникRowChangeEvent(CType(e.Row,РаботникRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub RemoveРаботникRow(ByVal row As РаботникRow)
-            Me.Rows.Remove(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
-            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As SalariesDataSet = New SalariesDataSet()
-            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
-            any1.MinOccurs = New Decimal(0)
-            any1.MaxOccurs = Decimal.MaxValue
-            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any1)
-            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
-            any2.MinOccurs = New Decimal(1)
-            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any2)
-            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute1.Name = "namespace"
-            attribute1.FixedValue = ds.Namespace
-            type.Attributes.Add(attribute1)
-            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "РаботникDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -3924,17 +3457,6 @@ Partial Public Class SalariesDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property РаботникRow() As РаботникRow
-            Get
-                Return CType(Me.GetParentRow(Me.Table.ParentRelations("Работник_Отдел")),РаботникRow)
-            End Get
-            Set
-                Me.SetParentRow(value, Me.Table.ParentRelations("Работник_Отдел"))
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsОписаниеNull() As Boolean
             Return Me.IsNull(Me.tableОтдел.ОписаниеColumn)
         End Function
@@ -4123,304 +3645,6 @@ Partial Public Class SalariesDataSet
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class СпециальностьRow
-        Inherits Global.System.Data.DataRow
-        
-        Private tableСпециальность As СпециальностьDataTable
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
-            MyBase.New(rb)
-            Me.tableСпециальность = CType(Me.Table,СпециальностьDataTable)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Код_специальности() As Long
-            Get
-                Return CType(Me(Me.tableСпециальность.Код_специальностиColumn),Long)
-            End Get
-            Set
-                Me(Me.tableСпециальность.Код_специальностиColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Название() As String
-            Get
-                Return CType(Me(Me.tableСпециальность.НазваниеColumn),String)
-            End Get
-            Set
-                Me(Me.tableСпециальность.НазваниеColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Описание() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableСпециальность.ОписаниеColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Описание' in table 'Специальность' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableСпециальность.ОписаниеColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property РаботникRow() As РаботникRow
-            Get
-                Return CType(Me.GetParentRow(Me.Table.ParentRelations("Работник_Специальность")),РаботникRow)
-            End Get
-            Set
-                Me.SetParentRow(value, Me.Table.ParentRelations("Работник_Специальность"))
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsОписаниеNull() As Boolean
-            Return Me.IsNull(Me.tableСпециальность.ОписаниеColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetОписаниеNull()
-            Me(Me.tableСпециальность.ОписаниеColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function GetРаботникRows() As РаботникRow()
-            If (Me.Table.ChildRelations("FK_Работник_Специальность") Is Nothing) Then
-                Return New РаботникRow(-1) {}
-            Else
-                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK_Работник_Специальность")),РаботникRow())
-            End If
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents strongly named DataRow class.
-    '''</summary>
-    Partial Public Class EmployersViewRow
-        Inherits Global.System.Data.DataRow
-        
-        Private tableEmployersView As EmployersViewDataTable
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
-            MyBase.New(rb)
-            Me.tableEmployersView = CType(Me.Table,EmployersViewDataTable)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Имя() As String
-            Get
-                Return CType(Me(Me.tableEmployersView.ИмяColumn),String)
-            End Get
-            Set
-                Me(Me.tableEmployersView.ИмяColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Фамилия() As String
-            Get
-                Return CType(Me(Me.tableEmployersView.ФамилияColumn),String)
-            End Get
-            Set
-                Me(Me.tableEmployersView.ФамилияColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Отчество() As String
-            Get
-                Return CType(Me(Me.tableEmployersView.ОтчествоColumn),String)
-            End Get
-            Set
-                Me(Me.tableEmployersView.ОтчествоColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Телефон() As String
-            Get
-                Return CType(Me(Me.tableEmployersView.ТелефонColumn),String)
-            End Get
-            Set
-                Me(Me.tableEmployersView.ТелефонColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Специальность() As String
-            Get
-                Return CType(Me(Me.tableEmployersView.СпециальностьColumn),String)
-            End Get
-            Set
-                Me(Me.tableEmployersView.СпециальностьColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Отдел() As String
-            Get
-                Return CType(Me(Me.tableEmployersView.ОтделColumn),String)
-            End Get
-            Set
-                Me(Me.tableEmployersView.ОтделColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Код_работника() As Long
-            Get
-                Return CType(Me(Me.tableEmployersView.Код_работникаColumn),Long)
-            End Get
-            Set
-                Me(Me.tableEmployersView.Код_работникаColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Дата_приёма() As Date
-            Get
-                Return CType(Me(Me.tableEmployersView.Дата_приёмаColumn),Date)
-            End Get
-            Set
-                Me(Me.tableEmployersView.Дата_приёмаColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Номер_пасспорта() As String
-            Get
-                Return CType(Me(Me.tableEmployersView.Номер_пасспортаColumn),String)
-            End Get
-            Set
-                Me(Me.tableEmployersView.Номер_пасспортаColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Стаж() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmployersView.СтажColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Стаж' in table 'EmployersView' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmployersView.СтажColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Вид_ставки() As String
-            Get
-                Return CType(Me(Me.tableEmployersView.Вид_ставкиColumn),String)
-            End Get
-            Set
-                Me(Me.tableEmployersView.Вид_ставкиColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsСтажNull() As Boolean
-            Return Me.IsNull(Me.tableEmployersView.СтажColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetСтажNull()
-            Me(Me.tableEmployersView.СтажColumn) = Global.System.Convert.DBNull
-        End Sub
-    End Class
-    
-    '''<summary>
-    '''Represents strongly named DataRow class.
-    '''</summary>
-    Partial Public Class СтавкаRow
-        Inherits Global.System.Data.DataRow
-        
-        Private tableСтавка As СтавкаDataTable
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
-            MyBase.New(rb)
-            Me.tableСтавка = CType(Me.Table,СтавкаDataTable)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Код_ставки() As Long
-            Get
-                Return CType(Me(Me.tableСтавка.Код_ставкиColumn),Long)
-            End Get
-            Set
-                Me(Me.tableСтавка.Код_ставкиColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Название() As String
-            Get
-                Return CType(Me(Me.tableСтавка.НазваниеColumn),String)
-            End Get
-            Set
-                Me(Me.tableСтавка.НазваниеColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property РаботникRow() As РаботникRow
-            Get
-                Return CType(Me.GetParentRow(Me.Table.ParentRelations("Работник_Ставка")),РаботникRow)
-            End Get
-            Set
-                Me.SetParentRow(value, Me.Table.ParentRelations("Работник_Ставка"))
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function GetРаботникRows() As РаботникRow()
-            If (Me.Table.ChildRelations("FK_Работник_Ставка") Is Nothing) Then
-                Return New РаботникRow(-1) {}
-            Else
-                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK_Работник_Ставка")),РаботникRow())
-            End If
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents strongly named DataRow class.
-    '''</summary>
     Partial Public Class РаботникRow
         Inherits Global.System.Data.DataRow
         
@@ -4527,12 +3751,12 @@ Partial Public Class SalariesDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Код_ставки() As Long
+        Public Property Ставка() As Long
             Get
-                Return CType(Me(Me.tableРаботник.Код_ставкиColumn),Long)
+                Return CType(Me(Me.tableРаботник.СтавкаColumn),Long)
             End Get
             Set
-                Me(Me.tableРаботник.Код_ставкиColumn) = value
+                Me(Me.tableРаботник.СтавкаColumn) = value
             End Set
         End Property
         
@@ -4632,36 +3856,6 @@ Partial Public Class SalariesDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function GetСпециальностьRows() As СпециальностьRow()
-            If (Me.Table.ChildRelations("Работник_Специальность") Is Nothing) Then
-                Return New СпециальностьRow(-1) {}
-            Else
-                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("Работник_Специальность")),СпециальностьRow())
-            End If
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function GetОтделRows() As ОтделRow()
-            If (Me.Table.ChildRelations("Работник_Отдел") Is Nothing) Then
-                Return New ОтделRow(-1) {}
-            Else
-                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("Работник_Отдел")),ОтделRow())
-            End If
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function GetСтавкаRows() As СтавкаRow()
-            If (Me.Table.ChildRelations("Работник_Ставка") Is Nothing) Then
-                Return New СтавкаRow(-1) {}
-            Else
-                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("Работник_Ставка")),СтавкаRow())
-            End If
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function GetЗарплатаRows() As ЗарплатаRow()
             If (Me.Table.ChildRelations("FK_Зарплата_Работник") Is Nothing) Then
                 Return New ЗарплатаRow(-1) {}
@@ -4677,6 +3871,129 @@ Partial Public Class SalariesDataSet
                 Return New ПропускRow(-1) {}
             Else
                 Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK_Пропуск_Работник")),ПропускRow())
+            End If
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class СпециальностьRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableСпециальность As СпециальностьDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableСпециальность = CType(Me.Table,СпециальностьDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Код_специальности() As Long
+            Get
+                Return CType(Me(Me.tableСпециальность.Код_специальностиColumn),Long)
+            End Get
+            Set
+                Me(Me.tableСпециальность.Код_специальностиColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Название() As String
+            Get
+                Return CType(Me(Me.tableСпециальность.НазваниеColumn),String)
+            End Get
+            Set
+                Me(Me.tableСпециальность.НазваниеColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Описание() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableСпециальность.ОписаниеColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Описание' in table 'Специальность' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableСпециальность.ОписаниеColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsОписаниеNull() As Boolean
+            Return Me.IsNull(Me.tableСпециальность.ОписаниеColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetОписаниеNull()
+            Me(Me.tableСпециальность.ОписаниеColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function GetРаботникRows() As РаботникRow()
+            If (Me.Table.ChildRelations("FK_Работник_Специальность") Is Nothing) Then
+                Return New РаботникRow(-1) {}
+            Else
+                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK_Работник_Специальность")),РаботникRow())
+            End If
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class СтавкаRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableСтавка As СтавкаDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableСтавка = CType(Me.Table,СтавкаDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Код_ставки() As Long
+            Get
+                Return CType(Me(Me.tableСтавка.Код_ставкиColumn),Long)
+            End Get
+            Set
+                Me(Me.tableСтавка.Код_ставкиColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Название() As String
+            Get
+                Return CType(Me(Me.tableСтавка.НазваниеColumn),String)
+            End Get
+            Set
+                Me(Me.tableСтавка.НазваниеColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function GetРаботникRows() As РаботникRow()
+            If (Me.Table.ChildRelations("FK_Работник_Ставка") Is Nothing) Then
+                Return New РаботникRow(-1) {}
+            Else
+                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK_Работник_Ставка")),РаботникRow())
             End If
         End Function
     End Class
@@ -4865,16 +4182,16 @@ Partial Public Class SalariesDataSet
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Class СпециальностьRowChangeEvent
+    Public Class РаботникRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As СпециальностьRow
+        Private eventRow As РаботникRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub New(ByVal row As СпециальностьRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As РаботникRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -4882,7 +4199,7 @@ Partial Public Class SalariesDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Row() As СпециальностьRow
+        Public ReadOnly Property Row() As РаботникRow
             Get
                 Return Me.eventRow
             End Get
@@ -4901,16 +4218,16 @@ Partial Public Class SalariesDataSet
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Class EmployersViewRowChangeEvent
+    Public Class СпециальностьRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As EmployersViewRow
+        Private eventRow As СпециальностьRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub New(ByVal row As EmployersViewRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As СпециальностьRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -4918,7 +4235,7 @@ Partial Public Class SalariesDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Row() As EmployersViewRow
+        Public ReadOnly Property Row() As СпециальностьRow
             Get
                 Return Me.eventRow
             End Get
@@ -4968,45 +4285,9 @@ Partial Public Class SalariesDataSet
             End Get
         End Property
     End Class
-    
-    '''<summary>
-    '''Row event argument class
-    '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Class РаботникRowChangeEvent
-        Inherits Global.System.EventArgs
-        
-        Private eventRow As РаботникRow
-        
-        Private eventAction As Global.System.Data.DataRowAction
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub New(ByVal row As РаботникRow, ByVal action As Global.System.Data.DataRowAction)
-            MyBase.New
-            Me.eventRow = row
-            Me.eventAction = action
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Row() As РаботникRow
-            Get
-                Return Me.eventRow
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
-            Get
-                Return Me.eventAction
-            End Get
-        End Property
-    End Class
 End Class
 
-Namespace SalariesDataSetTableAdapters
+Namespace ЗарплатыDataSetTableAdapters
     
     '''<summary>
     '''Represents the connection and commands used to retrieve and save data.
@@ -5198,7 +4479,7 @@ Namespace SalariesDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As SalariesDataSet.Вычет_ЗПDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As ЗарплатыDataSet.Вычет_ЗПDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -5211,9 +4492,9 @@ Namespace SalariesDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As SalariesDataSet.Вычет_ЗПDataTable
+        Public Overloads Overridable Function GetData() As ЗарплатыDataSet.Вычет_ЗПDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As SalariesDataSet.Вычет_ЗПDataTable = New SalariesDataSet.Вычет_ЗПDataTable()
+            Dim dataTable As ЗарплатыDataSet.Вычет_ЗПDataTable = New ЗарплатыDataSet.Вычет_ЗПDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -5221,14 +4502,14 @@ Namespace SalariesDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As SalariesDataSet.Вычет_ЗПDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As ЗарплатыDataSet.Вычет_ЗПDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As SalariesDataSet) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As ЗарплатыDataSet) As Integer
             Return Me.Adapter.Update(dataSet, "Вычет_ЗП")
         End Function
         
@@ -5560,7 +4841,7 @@ Namespace SalariesDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As SalariesDataSet.ЗарплатаDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As ЗарплатыDataSet.ЗарплатаDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -5573,9 +4854,9 @@ Namespace SalariesDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As SalariesDataSet.ЗарплатаDataTable
+        Public Overloads Overridable Function GetData() As ЗарплатыDataSet.ЗарплатаDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As SalariesDataSet.ЗарплатаDataTable = New SalariesDataSet.ЗарплатаDataTable()
+            Dim dataTable As ЗарплатыDataSet.ЗарплатаDataTable = New ЗарплатыDataSet.ЗарплатаDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -5583,14 +4864,14 @@ Namespace SalariesDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As SalariesDataSet.ЗарплатаDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As ЗарплатыDataSet.ЗарплатаDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As SalariesDataSet) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As ЗарплатыDataSet) As Integer
             Return Me.Adapter.Update(dataSet, "Зарплата")
         End Function
         
@@ -5910,7 +5191,7 @@ Namespace SalariesDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As SalariesDataSet.ОтделDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As ЗарплатыDataSet.ОтделDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -5923,9 +5204,9 @@ Namespace SalariesDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As SalariesDataSet.ОтделDataTable
+        Public Overloads Overridable Function GetData() As ЗарплатыDataSet.ОтделDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As SalariesDataSet.ОтделDataTable = New SalariesDataSet.ОтделDataTable()
+            Dim dataTable As ЗарплатыDataSet.ОтделDataTable = New ЗарплатыDataSet.ОтделDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -5933,14 +5214,14 @@ Namespace SalariesDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As SalariesDataSet.ОтделDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As ЗарплатыDataSet.ОтделDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As SalariesDataSet) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As ЗарплатыDataSet) As Integer
             Return Me.Adapter.Update(dataSet, "Отдел")
         End Function
         
@@ -6256,7 +5537,7 @@ Namespace SalariesDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As SalariesDataSet.Прибавка_ЗПDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As ЗарплатыDataSet.Прибавка_ЗПDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -6269,9 +5550,9 @@ Namespace SalariesDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As SalariesDataSet.Прибавка_ЗПDataTable
+        Public Overloads Overridable Function GetData() As ЗарплатыDataSet.Прибавка_ЗПDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As SalariesDataSet.Прибавка_ЗПDataTable = New SalariesDataSet.Прибавка_ЗПDataTable()
+            Dim dataTable As ЗарплатыDataSet.Прибавка_ЗПDataTable = New ЗарплатыDataSet.Прибавка_ЗПDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -6279,14 +5560,14 @@ Namespace SalariesDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As SalariesDataSet.Прибавка_ЗПDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As ЗарплатыDataSet.Прибавка_ЗПDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As SalariesDataSet) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As ЗарплатыDataSet) As Integer
             Return Me.Adapter.Update(dataSet, "Прибавка_ЗП")
         End Function
         
@@ -6604,7 +5885,7 @@ Namespace SalariesDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As SalariesDataSet.ПропускDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As ЗарплатыDataSet.ПропускDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -6617,9 +5898,9 @@ Namespace SalariesDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As SalariesDataSet.ПропускDataTable
+        Public Overloads Overridable Function GetData() As ЗарплатыDataSet.ПропускDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As SalariesDataSet.ПропускDataTable = New SalariesDataSet.ПропускDataTable()
+            Dim dataTable As ЗарплатыDataSet.ПропускDataTable = New ЗарплатыDataSet.ПропускDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -6627,14 +5908,14 @@ Namespace SalariesDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As SalariesDataSet.ПропускDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As ЗарплатыDataSet.ПропускDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As SalariesDataSet) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As ЗарплатыDataSet) As Integer
             Return Me.Adapter.Update(dataSet, "Пропуск")
         End Function
         
@@ -6747,6 +6028,577 @@ Namespace SalariesDataSetTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
         Public Overloads Overridable Function Update(ByVal Причина As String, ByVal Оплата As Byte, ByVal Код_работника As Long, ByVal Месяц As Byte, ByVal Год As Integer, ByVal Original_Код_пропуска As Long, ByVal Original_Оплата As Byte, ByVal Original_Код_работника As Long, ByVal Original_Месяц As Byte, ByVal Original_Год As Integer) As Integer
             Return Me.Update(Причина, Оплата, Код_работника, Месяц, Год, Original_Код_пропуска, Original_Оплата, Original_Код_работника, Original_Месяц, Original_Год, Original_Код_пропуска)
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class РаботникTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "Работник"
+            tableMapping.ColumnMappings.Add("Код_работника", "Код_работника")
+            tableMapping.ColumnMappings.Add("Имя", "Имя")
+            tableMapping.ColumnMappings.Add("Фамилия", "Фамилия")
+            tableMapping.ColumnMappings.Add("Отчество", "Отчество")
+            tableMapping.ColumnMappings.Add("Дата_приёма", "Дата_приёма")
+            tableMapping.ColumnMappings.Add("Телефон", "Телефон")
+            tableMapping.ColumnMappings.Add("Номер_пасспорта", "Номер_пасспорта")
+            tableMapping.ColumnMappings.Add("Стаж", "Стаж")
+            tableMapping.ColumnMappings.Add("Ставка", "Ставка")
+            tableMapping.ColumnMappings.Add("Код_отдела", "Код_отдела")
+            tableMapping.ColumnMappings.Add("Код_специальности", "Код_специальности")
+            tableMapping.ColumnMappings.Add("Дата_увольнения", "Дата_увольнения")
+            Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Работник] WHERE (([Код_работника] = @Original_Код_работника) A"& _ 
+                "ND ([Имя] = @Original_Имя) AND ([Фамилия] = @Original_Фамилия) AND ([Отчество] ="& _ 
+                " @Original_Отчество) AND ([Дата_приёма] = @Original_Дата_приёма) AND ([Телефон] "& _ 
+                "= @Original_Телефон) AND ([Номер_пасспорта] = @Original_Номер_пасспорта) AND ((@"& _ 
+                "IsNull_Стаж = 1 AND [Стаж] IS NULL) OR ([Стаж] = @Original_Стаж)) AND ([Ставка] "& _ 
+                "= @Original_Ставка) AND ([Код_отдела] = @Original_Код_отдела) AND ([Код_специаль"& _ 
+                "ности] = @Original_Код_специальности) AND ((@IsNull_Дата_увольнения = 1 AND [Дат"& _ 
+                "а_увольнения] IS NULL) OR ([Дата_увольнения] = @Original_Дата_увольнения)))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Код_работника", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_работника", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Имя", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Имя", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Фамилия", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Фамилия", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Отчество", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Отчество", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Дата_приёма", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Дата_приёма", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Телефон", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Телефон", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Номер_пасспорта", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Номер_пасспорта", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Стаж", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Стаж", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Стаж", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Стаж", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ставка", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ставка", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Код_отдела", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_отдела", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Код_специальности", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_специальности", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Дата_увольнения", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Дата_увольнения", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Дата_увольнения", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Дата_увольнения", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.InsertCommand.Connection = Me.Connection
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Работник] ([Имя], [Фамилия], [Отчество], [Дата_приёма], [Телеф"& _ 
+                "он], [Номер_пасспорта], [Ставка], [Код_отдела], [Код_специальности], [Дата_уволь"& _ 
+                "нения]) VALUES (@Имя, @Фамилия, @Отчество, @Дата_приёма, @Телефон, @Номер_пасспо"& _ 
+                "рта, @Ставка, @Код_отдела, @Код_специальности, @Дата_увольнения);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Код_ра"& _ 
+                "ботника, Имя, Фамилия, Отчество, Дата_приёма, Телефон, Номер_пасспорта, Стаж, Ст"& _ 
+                "авка, Код_отдела, Код_специальности, Дата_увольнения FROM Работник WHERE (Код_ра"& _ 
+                "ботника = SCOPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Имя", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Имя", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Фамилия", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Фамилия", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Отчество", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Отчество", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Дата_приёма", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Дата_приёма", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Телефон", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Телефон", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Номер_пасспорта", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Номер_пасспорта", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ставка", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ставка", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Код_отдела", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_отдела", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Код_специальности", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_специальности", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Дата_увольнения", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Дата_увольнения", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Работник] SET [Имя] = @Имя, [Фамилия] = @Фамилия, [Отчество] = @Отч"& _ 
+                "ество, [Дата_приёма] = @Дата_приёма, [Телефон] = @Телефон, [Номер_пасспорта] = @"& _ 
+                "Номер_пасспорта, [Ставка] = @Ставка, [Код_отдела] = @Код_отдела, [Код_специально"& _ 
+                "сти] = @Код_специальности, [Дата_увольнения] = @Дата_увольнения WHERE (([Код_раб"& _ 
+                "отника] = @Original_Код_работника) AND ([Имя] = @Original_Имя) AND ([Фамилия] = "& _ 
+                "@Original_Фамилия) AND ([Отчество] = @Original_Отчество) AND ([Дата_приёма] = @O"& _ 
+                "riginal_Дата_приёма) AND ([Телефон] = @Original_Телефон) AND ([Номер_пасспорта] "& _ 
+                "= @Original_Номер_пасспорта) AND ((@IsNull_Стаж = 1 AND [Стаж] IS NULL) OR ([Ста"& _ 
+                "ж] = @Original_Стаж)) AND ([Ставка] = @Original_Ставка) AND ([Код_отдела] = @Ori"& _ 
+                "ginal_Код_отдела) AND ([Код_специальности] = @Original_Код_специальности) AND (("& _ 
+                "@IsNull_Дата_увольнения = 1 AND [Дата_увольнения] IS NULL) OR ([Дата_увольнения]"& _ 
+                " = @Original_Дата_увольнения)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Код_работника, Имя, Фамилия, Отчество, "& _ 
+                "Дата_приёма, Телефон, Номер_пасспорта, Стаж, Ставка, Код_отдела, Код_специальнос"& _ 
+                "ти, Дата_увольнения FROM Работник WHERE (Код_работника = @Код_работника)"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Имя", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Имя", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Фамилия", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Фамилия", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Отчество", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Отчество", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Дата_приёма", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Дата_приёма", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Телефон", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Телефон", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Номер_пасспорта", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Номер_пасспорта", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ставка", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ставка", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Код_отдела", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_отдела", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Код_специальности", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_специальности", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Дата_увольнения", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Дата_увольнения", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Код_работника", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_работника", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Имя", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Имя", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Фамилия", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Фамилия", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Отчество", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Отчество", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Дата_приёма", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Дата_приёма", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Телефон", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Телефон", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Номер_пасспорта", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Номер_пасспорта", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Стаж", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Стаж", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Стаж", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Стаж", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ставка", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ставка", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Код_отдела", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_отдела", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Код_специальности", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_специальности", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Дата_увольнения", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Дата_увольнения", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Дата_увольнения", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Дата_увольнения", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Код_работника", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_работника", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.Salaries.My.MySettings.Default.ЗарплатыConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT Код_работника, Имя, Фамилия, Отчество, Дата_приёма, Телефон, Номер_пасспор"& _ 
+                "та, Стаж, Ставка, Код_отдела, Код_специальности, Дата_увольнения FROM dbo.Работн"& _ 
+                "ик"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As ЗарплатыDataSet.РаботникDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As ЗарплатыDataSet.РаботникDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As ЗарплатыDataSet.РаботникDataTable = New ЗарплатыDataSet.РаботникDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As ЗарплатыDataSet.РаботникDataTable) As Integer
+            Return Me.Adapter.Update(dataTable)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As ЗарплатыDataSet) As Integer
+            Return Me.Adapter.Update(dataSet, "Работник")
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(dataRows)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete(ByVal Original_Код_работника As Long, ByVal Original_Имя As String, ByVal Original_Фамилия As String, ByVal Original_Отчество As String, ByVal Original_Дата_приёма As Date, ByVal Original_Телефон As String, ByVal Original_Номер_пасспорта As String, ByVal Original_Стаж As Global.System.Nullable(Of Integer), ByVal Original_Ставка As Long, ByVal Original_Код_отдела As Long, ByVal Original_Код_специальности As Long, ByVal Original_Дата_увольнения As Global.System.Nullable(Of Date)) As Integer
+            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Код_работника,Long)
+            If (Original_Имя Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Имя")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_Имя,String)
+            End If
+            If (Original_Фамилия Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Фамилия")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_Фамилия,String)
+            End If
+            If (Original_Отчество Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Отчество")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_Отчество,String)
+            End If
+            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_Дата_приёма,Date)
+            If (Original_Телефон Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Телефон")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_Телефон,String)
+            End If
+            If (Original_Номер_пасспорта Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Номер_пасспорта")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_Номер_пасспорта,String)
+            End If
+            If (Original_Стаж.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_Стаж.Value,Integer)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.DeleteCommand.Parameters(9).Value = CType(Original_Ставка,Long)
+            Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_Код_отдела,Long)
+            Me.Adapter.DeleteCommand.Parameters(11).Value = CType(Original_Код_специальности,Long)
+            If (Original_Дата_увольнения.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(Original_Дата_увольнения.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(13).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
+        Public Overloads Overridable Function Insert(ByVal Имя As String, ByVal Фамилия As String, ByVal Отчество As String, ByVal Дата_приёма As Date, ByVal Телефон As String, ByVal Номер_пасспорта As String, ByVal Ставка As Long, ByVal Код_отдела As Long, ByVal Код_специальности As Long, ByVal Дата_увольнения As Global.System.Nullable(Of Date)) As Integer
+            If (Имя Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Имя")
+            Else
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(Имя,String)
+            End If
+            If (Фамилия Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Фамилия")
+            Else
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(Фамилия,String)
+            End If
+            If (Отчество Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Отчество")
+            Else
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(Отчество,String)
+            End If
+            Me.Adapter.InsertCommand.Parameters(3).Value = CType(Дата_приёма,Date)
+            If (Телефон Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Телефон")
+            Else
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(Телефон,String)
+            End If
+            If (Номер_пасспорта Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Номер_пасспорта")
+            Else
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(Номер_пасспорта,String)
+            End If
+            Me.Adapter.InsertCommand.Parameters(6).Value = CType(Ставка,Long)
+            Me.Adapter.InsertCommand.Parameters(7).Value = CType(Код_отдела,Long)
+            Me.Adapter.InsertCommand.Parameters(8).Value = CType(Код_специальности,Long)
+            If (Дата_увольнения.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(Дата_увольнения.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
+            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.InsertCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.InsertCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update( _
+                    ByVal Имя As String,  _
+                    ByVal Фамилия As String,  _
+                    ByVal Отчество As String,  _
+                    ByVal Дата_приёма As Date,  _
+                    ByVal Телефон As String,  _
+                    ByVal Номер_пасспорта As String,  _
+                    ByVal Ставка As Long,  _
+                    ByVal Код_отдела As Long,  _
+                    ByVal Код_специальности As Long,  _
+                    ByVal Дата_увольнения As Global.System.Nullable(Of Date),  _
+                    ByVal Original_Код_работника As Long,  _
+                    ByVal Original_Имя As String,  _
+                    ByVal Original_Фамилия As String,  _
+                    ByVal Original_Отчество As String,  _
+                    ByVal Original_Дата_приёма As Date,  _
+                    ByVal Original_Телефон As String,  _
+                    ByVal Original_Номер_пасспорта As String,  _
+                    ByVal Original_Стаж As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_Ставка As Long,  _
+                    ByVal Original_Код_отдела As Long,  _
+                    ByVal Original_Код_специальности As Long,  _
+                    ByVal Original_Дата_увольнения As Global.System.Nullable(Of Date),  _
+                    ByVal Код_работника As Long) As Integer
+            If (Имя Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Имя")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Имя,String)
+            End If
+            If (Фамилия Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Фамилия")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Фамилия,String)
+            End If
+            If (Отчество Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Отчество")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Отчество,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Дата_приёма,Date)
+            If (Телефон Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Телефон")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Телефон,String)
+            End If
+            If (Номер_пасспорта Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Номер_пасспорта")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Номер_пасспорта,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Ставка,Long)
+            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Код_отдела,Long)
+            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Код_специальности,Long)
+            If (Дата_увольнения.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Дата_увольнения.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_Код_работника,Long)
+            If (Original_Имя Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Имя")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_Имя,String)
+            End If
+            If (Original_Фамилия Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Фамилия")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Фамилия,String)
+            End If
+            If (Original_Отчество Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Отчество")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Отчество,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Дата_приёма,Date)
+            If (Original_Телефон Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Телефон")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_Телефон,String)
+            End If
+            If (Original_Номер_пасспорта Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Номер_пасспорта")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Номер_пасспорта,String)
+            End If
+            If (Original_Стаж.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_Стаж.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_Ставка,Long)
+            Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_Код_отдела,Long)
+            Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_Код_специальности,Long)
+            If (Original_Дата_увольнения.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_Дата_увольнения.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Код_работника,Long)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.UpdateCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.UpdateCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update( _
+                    ByVal Имя As String,  _
+                    ByVal Фамилия As String,  _
+                    ByVal Отчество As String,  _
+                    ByVal Дата_приёма As Date,  _
+                    ByVal Телефон As String,  _
+                    ByVal Номер_пасспорта As String,  _
+                    ByVal Ставка As Long,  _
+                    ByVal Код_отдела As Long,  _
+                    ByVal Код_специальности As Long,  _
+                    ByVal Дата_увольнения As Global.System.Nullable(Of Date),  _
+                    ByVal Original_Код_работника As Long,  _
+                    ByVal Original_Имя As String,  _
+                    ByVal Original_Фамилия As String,  _
+                    ByVal Original_Отчество As String,  _
+                    ByVal Original_Дата_приёма As Date,  _
+                    ByVal Original_Телефон As String,  _
+                    ByVal Original_Номер_пасспорта As String,  _
+                    ByVal Original_Стаж As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_Ставка As Long,  _
+                    ByVal Original_Код_отдела As Long,  _
+                    ByVal Original_Код_специальности As Long,  _
+                    ByVal Original_Дата_увольнения As Global.System.Nullable(Of Date)) As Integer
+            Return Me.Update(Имя, Фамилия, Отчество, Дата_приёма, Телефон, Номер_пасспорта, Ставка, Код_отдела, Код_специальности, Дата_увольнения, Original_Код_работника, Original_Имя, Original_Фамилия, Original_Отчество, Original_Дата_приёма, Original_Телефон, Original_Номер_пасспорта, Original_Стаж, Original_Ставка, Original_Код_отдела, Original_Код_специальности, Original_Дата_увольнения, Original_Код_работника)
         End Function
     End Class
     
@@ -6931,7 +6783,7 @@ Namespace SalariesDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As SalariesDataSet.СпециальностьDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As ЗарплатыDataSet.СпециальностьDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -6944,9 +6796,9 @@ Namespace SalariesDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As SalariesDataSet.СпециальностьDataTable
+        Public Overloads Overridable Function GetData() As ЗарплатыDataSet.СпециальностьDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As SalariesDataSet.СпециальностьDataTable = New SalariesDataSet.СпециальностьDataTable()
+            Dim dataTable As ЗарплатыDataSet.СпециальностьDataTable = New ЗарплатыDataSet.СпециальностьDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -6954,14 +6806,14 @@ Namespace SalariesDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As SalariesDataSet.СпециальностьDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As ЗарплатыDataSet.СпециальностьDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As SalariesDataSet) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As ЗарплатыDataSet) As Integer
             Return Me.Adapter.Update(dataSet, "Специальность")
         End Function
         
@@ -7078,197 +6930,6 @@ Namespace SalariesDataSetTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
         Public Overloads Overridable Function Update(ByVal Название As String, ByVal Описание As String, ByVal Original_Код_специальности As Long, ByVal Original_Название As String) As Integer
             Return Me.Update(Название, Описание, Original_Код_специальности, Original_Название, Original_Код_специальности)
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the connection and commands used to retrieve and save data.
-    '''</summary>
-    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     Global.System.ComponentModel.ToolboxItem(true),  _
-     Global.System.ComponentModel.DataObjectAttribute(true),  _
-     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
-     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class EmployersViewTableAdapter
-        Inherits Global.System.ComponentModel.Component
-        
-        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
-        
-        Private _connection As Global.System.Data.SqlClient.SqlConnection
-        
-        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
-        
-        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
-        
-        Private _clearBeforeFill As Boolean
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.ClearBeforeFill = true
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
-            Get
-                If (Me._adapter Is Nothing) Then
-                    Me.InitAdapter
-                End If
-                Return Me._adapter
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
-            Get
-                If (Me._connection Is Nothing) Then
-                    Me.InitConnection
-                End If
-                Return Me._connection
-            End Get
-            Set
-                Me._connection = value
-                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
-                    Me.Adapter.InsertCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
-                    Me.Adapter.DeleteCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
-                    Me.Adapter.UpdateCommand.Connection = value
-                End If
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
-                    End If
-                    i = (i + 1)
-                Loop
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
-            Get
-                Return Me._transaction
-            End Get
-            Set
-                Me._transaction = value
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    Me.CommandCollection(i).Transaction = Me._transaction
-                    i = (i + 1)
-                Loop
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
-                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
-                End If
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
-                    Me.Adapter.InsertCommand.Transaction = Me._transaction
-                End If
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
-                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
-                End If
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
-            Get
-                If (Me._commandCollection Is Nothing) Then
-                    Me.InitCommandCollection
-                End If
-                Return Me._commandCollection
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property ClearBeforeFill() As Boolean
-            Get
-                Return Me._clearBeforeFill
-            End Get
-            Set
-                Me._clearBeforeFill = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Sub InitAdapter()
-            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
-            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
-            tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "EmployersView"
-            tableMapping.ColumnMappings.Add("Имя", "Имя")
-            tableMapping.ColumnMappings.Add("Фамилия", "Фамилия")
-            tableMapping.ColumnMappings.Add("Отчество", "Отчество")
-            tableMapping.ColumnMappings.Add("Телефон", "Телефон")
-            tableMapping.ColumnMappings.Add("Специальность", "Специальность")
-            tableMapping.ColumnMappings.Add("Отдел", "Отдел")
-            tableMapping.ColumnMappings.Add("Код_работника", "Код_работника")
-            tableMapping.ColumnMappings.Add("Дата_приёма", "Дата_приёма")
-            tableMapping.ColumnMappings.Add("Номер_пасспорта", "Номер_пасспорта")
-            tableMapping.ColumnMappings.Add("Стаж", "Стаж")
-            tableMapping.ColumnMappings.Add("Вид_ставки", "Вид_ставки")
-            Me._adapter.TableMappings.Add(tableMapping)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Sub InitConnection()
-            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.Salaries.My.MySettings.Default.ЗарплатыConnectionString
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
-            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        Работник.Имя, Работник.Фамилия, Работник.Отчество, Работник.Дата_пр"& _ 
-                "иёма, Работник.Телефон, Работник.Номер_пасспорта, Работник.Стаж, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             "& _ 
-                "            Специальность.Название AS 'Специальность', Отдел.Название AS Отдел, "& _ 
-                "Работник.Код_работника, Ставка.Название AS 'Вид_ставки'"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Работни"& _ 
-                "к INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Специальность ON Работник.Код_специальнос"& _ 
-                "ти = Специальность.Код_специальности INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Отдел "& _ 
-                "ON Работник.Код_отдела = Отдел.Код_отдела INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         С"& _ 
-                "тавка ON Работник.Код_ставки = Ставка.Код_ставки"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Работник.Дата_ув"& _ 
-                "ольнения IS NULL)"
-            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As SalariesDataSet.EmployersViewDataTable) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Me.ClearBeforeFill = true) Then
-                dataTable.Clear
-            End If
-            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As SalariesDataSet.EmployersViewDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As SalariesDataSet.EmployersViewDataTable = New SalariesDataSet.EmployersViewDataTable()
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
         End Function
     End Class
     
@@ -7448,7 +7109,7 @@ Namespace SalariesDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As SalariesDataSet.СтавкаDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As ЗарплатыDataSet.СтавкаDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -7461,9 +7122,9 @@ Namespace SalariesDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As SalariesDataSet.СтавкаDataTable
+        Public Overloads Overridable Function GetData() As ЗарплатыDataSet.СтавкаDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As SalariesDataSet.СтавкаDataTable = New SalariesDataSet.СтавкаDataTable()
+            Dim dataTable As ЗарплатыDataSet.СтавкаDataTable = New ЗарплатыDataSet.СтавкаDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -7471,14 +7132,14 @@ Namespace SalariesDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As SalariesDataSet.СтавкаDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As ЗарплатыDataSet.СтавкаDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As SalariesDataSet) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As ЗарплатыDataSet) As Integer
             Return Me.Adapter.Update(dataSet, "Ставка")
         End Function
         
@@ -7589,579 +7250,6 @@ Namespace SalariesDataSetTableAdapters
     End Class
     
     '''<summary>
-    '''Represents the connection and commands used to retrieve and save data.
-    '''</summary>
-    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     Global.System.ComponentModel.ToolboxItem(true),  _
-     Global.System.ComponentModel.DataObjectAttribute(true),  _
-     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
-     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class РаботникTableAdapter
-        Inherits Global.System.ComponentModel.Component
-        
-        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
-        
-        Private _connection As Global.System.Data.SqlClient.SqlConnection
-        
-        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
-        
-        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
-        
-        Private _clearBeforeFill As Boolean
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.ClearBeforeFill = true
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
-            Get
-                If (Me._adapter Is Nothing) Then
-                    Me.InitAdapter
-                End If
-                Return Me._adapter
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
-            Get
-                If (Me._connection Is Nothing) Then
-                    Me.InitConnection
-                End If
-                Return Me._connection
-            End Get
-            Set
-                Me._connection = value
-                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
-                    Me.Adapter.InsertCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
-                    Me.Adapter.DeleteCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
-                    Me.Adapter.UpdateCommand.Connection = value
-                End If
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
-                    End If
-                    i = (i + 1)
-                Loop
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
-            Get
-                Return Me._transaction
-            End Get
-            Set
-                Me._transaction = value
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    Me.CommandCollection(i).Transaction = Me._transaction
-                    i = (i + 1)
-                Loop
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
-                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
-                End If
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
-                    Me.Adapter.InsertCommand.Transaction = Me._transaction
-                End If
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
-                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
-                End If
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
-            Get
-                If (Me._commandCollection Is Nothing) Then
-                    Me.InitCommandCollection
-                End If
-                Return Me._commandCollection
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property ClearBeforeFill() As Boolean
-            Get
-                Return Me._clearBeforeFill
-            End Get
-            Set
-                Me._clearBeforeFill = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Sub InitAdapter()
-            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
-            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
-            tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "Работник"
-            tableMapping.ColumnMappings.Add("Код_работника", "Код_работника")
-            tableMapping.ColumnMappings.Add("Имя", "Имя")
-            tableMapping.ColumnMappings.Add("Фамилия", "Фамилия")
-            tableMapping.ColumnMappings.Add("Отчество", "Отчество")
-            tableMapping.ColumnMappings.Add("Дата_приёма", "Дата_приёма")
-            tableMapping.ColumnMappings.Add("Телефон", "Телефон")
-            tableMapping.ColumnMappings.Add("Номер_пасспорта", "Номер_пасспорта")
-            tableMapping.ColumnMappings.Add("Стаж", "Стаж")
-            tableMapping.ColumnMappings.Add("Код_ставки", "Код_ставки")
-            tableMapping.ColumnMappings.Add("Код_отдела", "Код_отдела")
-            tableMapping.ColumnMappings.Add("Код_специальности", "Код_специальности")
-            tableMapping.ColumnMappings.Add("Дата_увольнения", "Дата_увольнения")
-            Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Работник] WHERE (([Код_работника] = @Original_Код_работника) A"& _ 
-                "ND ([Имя] = @Original_Имя) AND ([Фамилия] = @Original_Фамилия) AND ([Отчество] ="& _ 
-                " @Original_Отчество) AND ([Дата_приёма] = @Original_Дата_приёма) AND ([Телефон] "& _ 
-                "= @Original_Телефон) AND ([Номер_пасспорта] = @Original_Номер_пасспорта) AND ((@"& _ 
-                "IsNull_Стаж = 1 AND [Стаж] IS NULL) OR ([Стаж] = @Original_Стаж)) AND ([Код_став"& _ 
-                "ки] = @Original_Код_ставки) AND ([Код_отдела] = @Original_Код_отдела) AND ([Код_"& _ 
-                "специальности] = @Original_Код_специальности) AND ((@IsNull_Дата_увольнения = 1 "& _ 
-                "AND [Дата_увольнения] IS NULL) OR ([Дата_увольнения] = @Original_Дата_увольнения"& _ 
-                ")))"
-            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Код_работника", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_работника", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Имя", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Имя", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Фамилия", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Фамилия", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Отчество", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Отчество", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Дата_приёма", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Дата_приёма", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Телефон", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Телефон", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Номер_пасспорта", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Номер_пасспорта", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Стаж", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Стаж", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Стаж", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Стаж", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Код_ставки", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_ставки", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Код_отдела", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_отдела", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Код_специальности", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_специальности", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Дата_увольнения", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Дата_увольнения", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Дата_увольнения", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Дата_увольнения", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Работник] ([Имя], [Фамилия], [Отчество], [Дата_приёма], [Телеф"& _ 
-                "он], [Номер_пасспорта], [Код_ставки], [Код_отдела], [Код_специальности], [Дата_у"& _ 
-                "вольнения]) VALUES (@Имя, @Фамилия, @Отчество, @Дата_приёма, @Телефон, @Номер_па"& _ 
-                "сспорта, @Код_ставки, @Код_отдела, @Код_специальности, @Дата_увольнения);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELEC"& _ 
-                "T Код_работника, Имя, Фамилия, Отчество, Дата_приёма, Телефон, Номер_пасспорта, "& _ 
-                "Стаж, Код_ставки, Код_отдела, Код_специальности, Дата_увольнения FROM Работник W"& _ 
-                "HERE (Код_работника = SCOPE_IDENTITY())"
-            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Имя", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Имя", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Фамилия", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Фамилия", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Отчество", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Отчество", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Дата_приёма", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Дата_приёма", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Телефон", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Телефон", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Номер_пасспорта", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Номер_пасспорта", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Код_ставки", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_ставки", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Код_отдела", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_отдела", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Код_специальности", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_специальности", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Дата_увольнения", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Дата_увольнения", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Работник] SET [Имя] = @Имя, [Фамилия] = @Фамилия, [Отчество] = @Отч"& _ 
-                "ество, [Дата_приёма] = @Дата_приёма, [Телефон] = @Телефон, [Номер_пасспорта] = @"& _ 
-                "Номер_пасспорта, [Код_ставки] = @Код_ставки, [Код_отдела] = @Код_отдела, [Код_сп"& _ 
-                "ециальности] = @Код_специальности, [Дата_увольнения] = @Дата_увольнения WHERE (("& _ 
-                "[Код_работника] = @Original_Код_работника) AND ([Имя] = @Original_Имя) AND ([Фам"& _ 
-                "илия] = @Original_Фамилия) AND ([Отчество] = @Original_Отчество) AND ([Дата_приё"& _ 
-                "ма] = @Original_Дата_приёма) AND ([Телефон] = @Original_Телефон) AND ([Номер_пас"& _ 
-                "спорта] = @Original_Номер_пасспорта) AND ((@IsNull_Стаж = 1 AND [Стаж] IS NULL) "& _ 
-                "OR ([Стаж] = @Original_Стаж)) AND ([Код_ставки] = @Original_Код_ставки) AND ([Ко"& _ 
-                "д_отдела] = @Original_Код_отдела) AND ([Код_специальности] = @Original_Код_специ"& _ 
-                "альности) AND ((@IsNull_Дата_увольнения = 1 AND [Дата_увольнения] IS NULL) OR (["& _ 
-                "Дата_увольнения] = @Original_Дата_увольнения)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Код_работника, Имя, Фам"& _ 
-                "илия, Отчество, Дата_приёма, Телефон, Номер_пасспорта, Стаж, Код_ставки, Код_отд"& _ 
-                "ела, Код_специальности, Дата_увольнения FROM Работник WHERE (Код_работника = @Ко"& _ 
-                "д_работника)"
-            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Имя", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Имя", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Фамилия", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Фамилия", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Отчество", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Отчество", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Дата_приёма", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Дата_приёма", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Телефон", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Телефон", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Номер_пасспорта", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Номер_пасспорта", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Код_ставки", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_ставки", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Код_отдела", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_отдела", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Код_специальности", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_специальности", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Дата_увольнения", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Дата_увольнения", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Код_работника", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_работника", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Имя", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Имя", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Фамилия", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Фамилия", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Отчество", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Отчество", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Дата_приёма", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Дата_приёма", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Телефон", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Телефон", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Номер_пасспорта", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Номер_пасспорта", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Стаж", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Стаж", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Стаж", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Стаж", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Код_ставки", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_ставки", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Код_отдела", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_отдела", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Код_специальности", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_специальности", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Дата_увольнения", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Дата_увольнения", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Дата_увольнения", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Дата_увольнения", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Код_работника", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Код_работника", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Sub InitConnection()
-            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.Salaries.My.MySettings.Default.ЗарплатыConnectionString
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
-            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT Код_работника, Имя, Фамилия, Отчество, Дата_приёма, Телефон, Номер_пасспор"& _ 
-                "та, Стаж, Код_ставки, Код_отдела, Код_специальности, Дата_увольнения FROM dbo.Ра"& _ 
-                "ботник"
-            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As SalariesDataSet.РаботникDataTable) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Me.ClearBeforeFill = true) Then
-                dataTable.Clear
-            End If
-            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As SalariesDataSet.РаботникDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As SalariesDataSet.РаботникDataTable = New SalariesDataSet.РаботникDataTable()
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As SalariesDataSet.РаботникDataTable) As Integer
-            Return Me.Adapter.Update(dataTable)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As SalariesDataSet) As Integer
-            Return Me.Adapter.Update(dataSet, "Работник")
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(dataRows)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Код_работника As Long, ByVal Original_Имя As String, ByVal Original_Фамилия As String, ByVal Original_Отчество As String, ByVal Original_Дата_приёма As Date, ByVal Original_Телефон As String, ByVal Original_Номер_пасспорта As String, ByVal Original_Стаж As Global.System.Nullable(Of Integer), ByVal Original_Код_ставки As Long, ByVal Original_Код_отдела As Long, ByVal Original_Код_специальности As Long, ByVal Original_Дата_увольнения As Global.System.Nullable(Of Date)) As Integer
-            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Код_работника,Long)
-            If (Original_Имя Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Имя")
-            Else
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_Имя,String)
-            End If
-            If (Original_Фамилия Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Фамилия")
-            Else
-                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_Фамилия,String)
-            End If
-            If (Original_Отчество Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Отчество")
-            Else
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_Отчество,String)
-            End If
-            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_Дата_приёма,Date)
-            If (Original_Телефон Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Телефон")
-            Else
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_Телефон,String)
-            End If
-            If (Original_Номер_пасспорта Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Номер_пасспорта")
-            Else
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_Номер_пасспорта,String)
-            End If
-            If (Original_Стаж.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_Стаж.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.DeleteCommand.Parameters(9).Value = CType(Original_Код_ставки,Long)
-            Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_Код_отдела,Long)
-            Me.Adapter.DeleteCommand.Parameters(11).Value = CType(Original_Код_специальности,Long)
-            If (Original_Дата_увольнения.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(Original_Дата_увольнения.Value,Date)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(13).Value = Global.System.DBNull.Value
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
-            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.DeleteCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.DeleteCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Имя As String, ByVal Фамилия As String, ByVal Отчество As String, ByVal Дата_приёма As Date, ByVal Телефон As String, ByVal Номер_пасспорта As String, ByVal Код_ставки As Long, ByVal Код_отдела As Long, ByVal Код_специальности As Long, ByVal Дата_увольнения As Global.System.Nullable(Of Date)) As Integer
-            If (Имя Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Имя")
-            Else
-                Me.Adapter.InsertCommand.Parameters(0).Value = CType(Имя,String)
-            End If
-            If (Фамилия Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Фамилия")
-            Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(Фамилия,String)
-            End If
-            If (Отчество Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Отчество")
-            Else
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(Отчество,String)
-            End If
-            Me.Adapter.InsertCommand.Parameters(3).Value = CType(Дата_приёма,Date)
-            If (Телефон Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Телефон")
-            Else
-                Me.Adapter.InsertCommand.Parameters(4).Value = CType(Телефон,String)
-            End If
-            If (Номер_пасспорта Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Номер_пасспорта")
-            Else
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(Номер_пасспорта,String)
-            End If
-            Me.Adapter.InsertCommand.Parameters(6).Value = CType(Код_ставки,Long)
-            Me.Adapter.InsertCommand.Parameters(7).Value = CType(Код_отдела,Long)
-            Me.Adapter.InsertCommand.Parameters(8).Value = CType(Код_специальности,Long)
-            If (Дата_увольнения.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(Дата_увольнения.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
-            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.InsertCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.InsertCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal Имя As String,  _
-                    ByVal Фамилия As String,  _
-                    ByVal Отчество As String,  _
-                    ByVal Дата_приёма As Date,  _
-                    ByVal Телефон As String,  _
-                    ByVal Номер_пасспорта As String,  _
-                    ByVal Код_ставки As Long,  _
-                    ByVal Код_отдела As Long,  _
-                    ByVal Код_специальности As Long,  _
-                    ByVal Дата_увольнения As Global.System.Nullable(Of Date),  _
-                    ByVal Original_Код_работника As Long,  _
-                    ByVal Original_Имя As String,  _
-                    ByVal Original_Фамилия As String,  _
-                    ByVal Original_Отчество As String,  _
-                    ByVal Original_Дата_приёма As Date,  _
-                    ByVal Original_Телефон As String,  _
-                    ByVal Original_Номер_пасспорта As String,  _
-                    ByVal Original_Стаж As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_Код_ставки As Long,  _
-                    ByVal Original_Код_отдела As Long,  _
-                    ByVal Original_Код_специальности As Long,  _
-                    ByVal Original_Дата_увольнения As Global.System.Nullable(Of Date),  _
-                    ByVal Код_работника As Long) As Integer
-            If (Имя Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Имя")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Имя,String)
-            End If
-            If (Фамилия Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Фамилия")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Фамилия,String)
-            End If
-            If (Отчество Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Отчество")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Отчество,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Дата_приёма,Date)
-            If (Телефон Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Телефон")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Телефон,String)
-            End If
-            If (Номер_пасспорта Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Номер_пасспорта")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Номер_пасспорта,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Код_ставки,Long)
-            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Код_отдела,Long)
-            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Код_специальности,Long)
-            If (Дата_увольнения.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Дата_увольнения.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_Код_работника,Long)
-            If (Original_Имя Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Имя")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_Имя,String)
-            End If
-            If (Original_Фамилия Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Фамилия")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Фамилия,String)
-            End If
-            If (Original_Отчество Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Отчество")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Отчество,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Дата_приёма,Date)
-            If (Original_Телефон Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Телефон")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_Телефон,String)
-            End If
-            If (Original_Номер_пасспорта Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Номер_пасспорта")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Номер_пасспорта,String)
-            End If
-            If (Original_Стаж.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_Стаж.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_Код_ставки,Long)
-            Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_Код_отдела,Long)
-            Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_Код_специальности,Long)
-            If (Original_Дата_увольнения.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_Дата_увольнения.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Код_работника,Long)
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
-            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.UpdateCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.UpdateCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal Имя As String,  _
-                    ByVal Фамилия As String,  _
-                    ByVal Отчество As String,  _
-                    ByVal Дата_приёма As Date,  _
-                    ByVal Телефон As String,  _
-                    ByVal Номер_пасспорта As String,  _
-                    ByVal Код_ставки As Long,  _
-                    ByVal Код_отдела As Long,  _
-                    ByVal Код_специальности As Long,  _
-                    ByVal Дата_увольнения As Global.System.Nullable(Of Date),  _
-                    ByVal Original_Код_работника As Long,  _
-                    ByVal Original_Имя As String,  _
-                    ByVal Original_Фамилия As String,  _
-                    ByVal Original_Отчество As String,  _
-                    ByVal Original_Дата_приёма As Date,  _
-                    ByVal Original_Телефон As String,  _
-                    ByVal Original_Номер_пасспорта As String,  _
-                    ByVal Original_Стаж As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_Код_ставки As Long,  _
-                    ByVal Original_Код_отдела As Long,  _
-                    ByVal Original_Код_специальности As Long,  _
-                    ByVal Original_Дата_увольнения As Global.System.Nullable(Of Date)) As Integer
-            Return Me.Update(Имя, Фамилия, Отчество, Дата_приёма, Телефон, Номер_пасспорта, Код_ставки, Код_отдела, Код_специальности, Дата_увольнения, Original_Код_работника, Original_Имя, Original_Фамилия, Original_Отчество, Original_Дата_приёма, Original_Телефон, Original_Номер_пасспорта, Original_Стаж, Original_Код_ставки, Original_Код_отдела, Original_Код_специальности, Original_Дата_увольнения, Original_Код_работника)
-        End Function
-    End Class
-    
-    '''<summary>
     '''TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     '''</summary>
     <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -8184,11 +7272,11 @@ Namespace SalariesDataSetTableAdapters
         
         Private _пропускTableAdapter As ПропускTableAdapter
         
+        Private _работникTableAdapter As РаботникTableAdapter
+        
         Private _специальностьTableAdapter As СпециальностьTableAdapter
         
         Private _ставкаTableAdapter As СтавкаTableAdapter
-        
-        Private _работникTableAdapter As РаботникTableAdapter
         
         Private _backupDataSetBeforeUpdate As Boolean
         
@@ -8280,6 +7368,20 @@ Namespace SalariesDataSetTableAdapters
          Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
             "a", "System.Drawing.Design.UITypeEditor")>  _
+        Public Property РаботникTableAdapter() As РаботникTableAdapter
+            Get
+                Return Me._работникTableAdapter
+            End Get
+            Set
+                Me._работникTableAdapter = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
+            "a", "System.Drawing.Design.UITypeEditor")>  _
         Public Property СпециальностьTableAdapter() As СпециальностьTableAdapter
             Get
                 Return Me._специальностьTableAdapter
@@ -8300,20 +7402,6 @@ Namespace SalariesDataSetTableAdapters
             End Get
             Set
                 Me._ставкаTableAdapter = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
-            "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property РаботникTableAdapter() As РаботникTableAdapter
-            Get
-                Return Me._работникTableAdapter
-            End Get
-            Set
-                Me._работникTableAdapter = value
             End Set
         End Property
         
@@ -8356,6 +7444,10 @@ Namespace SalariesDataSetTableAdapters
                             AndAlso (Not (Me._пропускTableAdapter.Connection) Is Nothing)) Then
                     Return Me._пропускTableAdapter.Connection
                 End If
+                If ((Not (Me._работникTableAdapter) Is Nothing)  _
+                            AndAlso (Not (Me._работникTableAdapter.Connection) Is Nothing)) Then
+                    Return Me._работникTableAdapter.Connection
+                End If
                 If ((Not (Me._специальностьTableAdapter) Is Nothing)  _
                             AndAlso (Not (Me._специальностьTableAdapter.Connection) Is Nothing)) Then
                     Return Me._специальностьTableAdapter.Connection
@@ -8363,10 +7455,6 @@ Namespace SalariesDataSetTableAdapters
                 If ((Not (Me._ставкаTableAdapter) Is Nothing)  _
                             AndAlso (Not (Me._ставкаTableAdapter.Connection) Is Nothing)) Then
                     Return Me._ставкаTableAdapter.Connection
-                End If
-                If ((Not (Me._работникTableAdapter) Is Nothing)  _
-                            AndAlso (Not (Me._работникTableAdapter.Connection) Is Nothing)) Then
-                    Return Me._работникTableAdapter.Connection
                 End If
                 Return Nothing
             End Get
@@ -8396,13 +7484,13 @@ Namespace SalariesDataSetTableAdapters
                 If (Not (Me._пропускTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
+                If (Not (Me._работникTableAdapter) Is Nothing) Then
+                    count = (count + 1)
+                End If
                 If (Not (Me._специальностьTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
                 If (Not (Me._ставкаTableAdapter) Is Nothing) Then
-                    count = (count + 1)
-                End If
-                If (Not (Me._работникTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
                 Return count
@@ -8414,26 +7502,8 @@ Namespace SalariesDataSetTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Function UpdateUpdatedRows(ByVal dataSet As SalariesDataSet, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateUpdatedRows(ByVal dataSet As ЗарплатыDataSet, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._работникTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.Работник.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._работникTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
-            If (Not (Me._зарплатаTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.Зарплата.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._зарплатаTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
             If (Not (Me._отделTableAdapter) Is Nothing) Then
                 Dim updatedRows() As Global.System.Data.DataRow = dataSet.Отдел.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
@@ -8461,12 +7531,30 @@ Namespace SalariesDataSetTableAdapters
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
+            If (Not (Me._зарплатаTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.Зарплата.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._зарплатаTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
             If (Not (Me._вычет_ЗПTableAdapter) Is Nothing) Then
                 Dim updatedRows() As Global.System.Data.DataRow = dataSet.Вычет_ЗП.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
                     result = (result + Me._вычет_ЗПTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
+            If (Not (Me._работникTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.Работник.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._работникTableAdapter.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
@@ -8496,24 +7584,8 @@ Namespace SalariesDataSetTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Function UpdateInsertedRows(ByVal dataSet As SalariesDataSet, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateInsertedRows(ByVal dataSet As ЗарплатыDataSet, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._работникTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.Работник.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._работникTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
-            If (Not (Me._зарплатаTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.Зарплата.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._зарплатаTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
             If (Not (Me._отделTableAdapter) Is Nothing) Then
                 Dim addedRows() As Global.System.Data.DataRow = dataSet.Отдел.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
@@ -8538,11 +7610,27 @@ Namespace SalariesDataSetTableAdapters
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
+            If (Not (Me._зарплатаTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.Зарплата.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._зарплатаTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
             If (Not (Me._вычет_ЗПTableAdapter) Is Nothing) Then
                 Dim addedRows() As Global.System.Data.DataRow = dataSet.Вычет_ЗП.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
                     result = (result + Me._вычет_ЗПTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
+            If (Not (Me._работникTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.Работник.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._работникTableAdapter.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
@@ -8570,7 +7658,7 @@ Namespace SalariesDataSetTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Function UpdateDeletedRows(ByVal dataSet As SalariesDataSet, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateDeletedRows(ByVal dataSet As ЗарплатыDataSet, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
             If (Not (Me._пропускTableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.Пропуск.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
@@ -8588,11 +7676,27 @@ Namespace SalariesDataSetTableAdapters
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
+            If (Not (Me._работникTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.Работник.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._работникTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
             If (Not (Me._вычет_ЗПTableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.Вычет_ЗП.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
                     result = (result + Me._вычет_ЗПTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
+            If (Not (Me._зарплатаTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.Зарплата.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._зарплатаTableAdapter.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
@@ -8617,22 +7721,6 @@ Namespace SalariesDataSetTableAdapters
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
                     result = (result + Me._отделTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
-            If (Not (Me._зарплатаTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.Зарплата.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._зарплатаTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
-            If (Not (Me._работникTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.Работник.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._работникTableAdapter.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
@@ -8670,7 +7758,7 @@ Namespace SalariesDataSetTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overridable Function UpdateAll(ByVal dataSet As SalariesDataSet) As Integer
+        Public Overridable Function UpdateAll(ByVal dataSet As ЗарплатыDataSet) As Integer
             If (dataSet Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("dataSet")
             End If
@@ -8702,6 +7790,11 @@ Namespace SalariesDataSetTableAdapters
                 Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
                         "tring.")
             End If
+            If ((Not (Me._работникTableAdapter) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._работникTableAdapter.Connection) = false)) Then
+                Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
+                        "tring.")
+            End If
             If ((Not (Me._специальностьTableAdapter) Is Nothing)  _
                         AndAlso (Me.MatchTableAdapterConnection(Me._специальностьTableAdapter.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
@@ -8709,11 +7802,6 @@ Namespace SalariesDataSetTableAdapters
             End If
             If ((Not (Me._ставкаTableAdapter) Is Nothing)  _
                         AndAlso (Me.MatchTableAdapterConnection(Me._ставкаTableAdapter.Connection) = false)) Then
-                Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
-                        "tring.")
-            End If
-            If ((Not (Me._работникTableAdapter) Is Nothing)  _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._работникTableAdapter.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
                         "tring.")
             End If
@@ -8794,6 +7882,15 @@ Namespace SalariesDataSetTableAdapters
                         adaptersWithAcceptChangesDuringUpdate.Add(Me._пропускTableAdapter.Adapter)
                     End If
                 End If
+                If (Not (Me._работникTableAdapter) Is Nothing) Then
+                    revertConnections.Add(Me._работникTableAdapter, Me._работникTableAdapter.Connection)
+                    Me._работникTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
+                    Me._работникTableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
+                    If Me._работникTableAdapter.Adapter.AcceptChangesDuringUpdate Then
+                        Me._работникTableAdapter.Adapter.AcceptChangesDuringUpdate = false
+                        adaptersWithAcceptChangesDuringUpdate.Add(Me._работникTableAdapter.Adapter)
+                    End If
+                End If
                 If (Not (Me._специальностьTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._специальностьTableAdapter, Me._специальностьTableAdapter.Connection)
                     Me._специальностьTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
@@ -8810,15 +7907,6 @@ Namespace SalariesDataSetTableAdapters
                     If Me._ставкаTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._ставкаTableAdapter.Adapter.AcceptChangesDuringUpdate = false
                         adaptersWithAcceptChangesDuringUpdate.Add(Me._ставкаTableAdapter.Adapter)
-                    End If
-                End If
-                If (Not (Me._работникTableAdapter) Is Nothing) Then
-                    revertConnections.Add(Me._работникTableAdapter, Me._работникTableAdapter.Connection)
-                    Me._работникTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
-                    Me._работникTableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
-                    If Me._работникTableAdapter.Adapter.AcceptChangesDuringUpdate Then
-                        Me._работникTableAdapter.Adapter.AcceptChangesDuringUpdate = false
-                        adaptersWithAcceptChangesDuringUpdate.Add(Me._работникTableAdapter.Adapter)
                     End If
                 End If
                 '
@@ -8901,6 +7989,10 @@ Namespace SalariesDataSetTableAdapters
                     Me._пропускTableAdapter.Connection = CType(revertConnections(Me._пропускTableAdapter),Global.System.Data.SqlClient.SqlConnection)
                     Me._пропускTableAdapter.Transaction = Nothing
                 End If
+                If (Not (Me._работникTableAdapter) Is Nothing) Then
+                    Me._работникTableAdapter.Connection = CType(revertConnections(Me._работникTableAdapter),Global.System.Data.SqlClient.SqlConnection)
+                    Me._работникTableAdapter.Transaction = Nothing
+                End If
                 If (Not (Me._специальностьTableAdapter) Is Nothing) Then
                     Me._специальностьTableAdapter.Connection = CType(revertConnections(Me._специальностьTableAdapter),Global.System.Data.SqlClient.SqlConnection)
                     Me._специальностьTableAdapter.Transaction = Nothing
@@ -8908,10 +8000,6 @@ Namespace SalariesDataSetTableAdapters
                 If (Not (Me._ставкаTableAdapter) Is Nothing) Then
                     Me._ставкаTableAdapter.Connection = CType(revertConnections(Me._ставкаTableAdapter),Global.System.Data.SqlClient.SqlConnection)
                     Me._ставкаTableAdapter.Transaction = Nothing
-                End If
-                If (Not (Me._работникTableAdapter) Is Nothing) Then
-                    Me._работникTableAdapter.Connection = CType(revertConnections(Me._работникTableAdapter),Global.System.Data.SqlClient.SqlConnection)
-                    Me._работникTableAdapter.Transaction = Nothing
                 End If
                 If (0 < adaptersWithAcceptChangesDuringUpdate.Count) Then
                     Dim adapters((adaptersWithAcceptChangesDuringUpdate.Count) - 1) As Global.System.Data.Common.DataAdapter

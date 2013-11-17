@@ -25,6 +25,8 @@
 
 
     Private Sub EmployerView_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'SalariesDataSet.Ставка' table. You can move, or remove it, as needed.
+        Me.СтавкаTableAdapter.Fill(Me.SalariesDataSet.Ставка)
         'TODO: This line of code loads data into the 'SalariesDataSet.Специальность' table. You can move, or remove it, as needed.
         Me.СпециальностьTableAdapter.Fill(Me.SalariesDataSet.Специальность)
         'TODO: This line of code loads data into the 'SalariesDataSet.Отдел' table. You can move, or remove it, as needed.
@@ -60,7 +62,7 @@
     End Sub
 
     Private Sub ToolStripButton4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton4.Click
-        Dim confirmResult As DialogResult = MessageBox.Show("Are you sure to delete this item ??", "Confirm Delete!!", MessageBoxButtons.YesNo)
+        Dim confirmResult As DialogResult = MessageBox.Show("Вы уверены что хотите удалить работника?", "Подтверждение увольнения", MessageBoxButtons.YesNo)
         If (confirmResult = DialogResult.Yes) Then
             Me.Close()
         End If

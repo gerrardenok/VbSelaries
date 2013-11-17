@@ -124,6 +124,11 @@
     <Compile Include="SalariesDataSet.vb">
       <DependentUpon>SalariesDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ЗарплатыDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ЗарплатыDataSet.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="EmployersReport.rdlc" />
@@ -167,6 +172,17 @@
     </None>
     <None Include="SalariesDataSet.xss">
       <DependentUpon>SalariesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ЗарплатыDataSet.xsc">
+      <DependentUpon>ЗарплатыDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ЗарплатыDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ЗарплатыDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ЗарплатыDataSet.xss">
+      <DependentUpon>ЗарплатыDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
