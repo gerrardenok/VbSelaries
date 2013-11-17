@@ -1,0 +1,188 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Salaries
+</name>
+</assembly>
+<members>
+<member name="T:Salaries.SalariesDataSet.Вычет_ЗПDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.ЗарплатаDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.ОтделDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.Прибавка_ЗПDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.ПропускDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.РаботникDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.СпециальностьDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.EmployersViewDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.Вычет_ЗПRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.ЗарплатаRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.ОтделRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.Прибавка_ЗПRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.ПропускRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.РаботникRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.СпециальностьRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.EmployersViewRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.Вычет_ЗПRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.ЗарплатаRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.ОтделRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.Прибавка_ЗПRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.ПропускRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.РаботникRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.СпециальностьRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.EmployersViewRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Salaries.SalariesDataSet">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:Salaries.SalariesDataSetTableAdapters.Вычет_ЗПTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Salaries.SalariesDataSetTableAdapters.ЗарплатаTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Salaries.SalariesDataSetTableAdapters.ОтделTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Salaries.SalariesDataSetTableAdapters.Прибавка_ЗПTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Salaries.SalariesDataSetTableAdapters.ПропускTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Salaries.SalariesDataSetTableAdapters.РаботникTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Salaries.SalariesDataSetTableAdapters.СпециальностьTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Salaries.SalariesDataSetTableAdapters.EmployersViewTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:Salaries.SalariesDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(Salaries.SalariesDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Update rows in top-down order.
+</summary>
+</member><member name="M:Salaries.SalariesDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(Salaries.SalariesDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Insert rows in top-down order.
+</summary>
+</member><member name="M:Salaries.SalariesDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(Salaries.SalariesDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Delete rows in bottom-up order.
+</summary>
+</member><member name="M:Salaries.SalariesDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member><member name="M:Salaries.SalariesDataSetTableAdapters.TableAdapterManager.UpdateAll(Salaries.SalariesDataSet)">
+	<summary>
+Update all changes to the dataset.
+</summary>
+</member><member name="T:Salaries.SalariesDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+	<summary>
+Update Order Option
+</summary>
+</member><member name="T:Salaries.SalariesDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+	<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member><member name="T:Salaries.SalariesDataSetTableAdapters.TableAdapterManager">
+	<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member><member name="P:Salaries.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Salaries.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:Salaries.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>
