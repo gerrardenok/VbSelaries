@@ -2,7 +2,7 @@
 
     Public Shared Sub ShowById(ByVal id As Integer)
         Dim form As New EmployerView
-        ' Load from and set binding source
+        ' LoadForm from and set binding source
         form.Show()
         ' Fill form
         form.FillById(id)
@@ -62,9 +62,27 @@
     End Sub
 
     Private Sub ToolStripButton4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton4.Click
-        Dim confirmResult As DialogResult = MessageBox.Show("Вы уверены что хотите удалить работника?", "Подтверждение увольнения", MessageBoxButtons.YesNo)
+        Dim confirmResult As DialogResult = MessageBox.Show("Вы уверены что хотите уволить работника?", "Подтверждение увольнения", MessageBoxButtons.YesNo)
         If (confirmResult = DialogResult.Yes) Then
+
+            Dim current As DataRowView = РаботникBindingSource.Current
+            current.Item("Дата_увольнения") = New DateTime()
+
+            Validate()
+            РаботникBindingSource.EndEdit()
+            TableAdapterManager.UpdateAll(Me.SalariesDataSet)
+
             Me.Close()
         End If
+    End Sub
+
+    Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton1.Click
+        EmployerCRUD.InitForm()
+    End Sub
+
+    Private Sub ToolStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton2.Click
+        Dim current As DataRowView = РаботникBindingSource.Current
+        Dim employerId As Integer = current.Item("Код_работника")
+        EmployerCRUD.LoadForm(employerId)
     End Sub
 End Class

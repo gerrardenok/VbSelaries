@@ -71,7 +71,7 @@
     End Sub
 
     Private Sub btnResetFilters_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnResetFilters.Click
-        EmployersViewBindingSource.Filter = ""
+        EmployersViewBindingSource.RemoveFilter()
     End Sub
 
     Private Sub EmployersViewDataGridView_CellDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles EmployersViewDataGridView.CellContentClick

@@ -50,7 +50,7 @@ Partial Class FormMain
         'ВыходToolStripMenuItem
         '
         Me.ВыходToolStripMenuItem.Name = "ВыходToolStripMenuItem"
-        Me.ВыходToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ВыходToolStripMenuItem.Size = New System.Drawing.Size(108, 22)
         Me.ВыходToolStripMenuItem.Text = "Выход"
         '
         'СотрудникиToolStripMenuItem

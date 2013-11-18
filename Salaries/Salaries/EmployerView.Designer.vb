@@ -32,8 +32,8 @@ Partial Class EmployerView
         Dim СтажLabel As System.Windows.Forms.Label
         Dim НазваниеLabel As System.Windows.Forms.Label
         Dim НазваниеLabel1 As System.Windows.Forms.Label
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EmployerView))
         Dim НазваниеLabel2 As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EmployerView))
         Me.SalariesDataSet = New Salaries.SalariesDataSet()
         Me.РаботникBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.РаботникTableAdapter = New Salaries.SalariesDataSetTableAdapters.РаботникTableAdapter()
@@ -193,6 +193,15 @@ Partial Class EmployerView
         НазваниеLabel1.Size = New System.Drawing.Size(88, 13)
         НазваниеLabel1.TabIndex = 25
         НазваниеLabel1.Text = "Специальность:"
+        '
+        'НазваниеLabel2
+        '
+        НазваниеLabel2.AutoSize = True
+        НазваниеLabel2.Location = New System.Drawing.Point(12, 215)
+        НазваниеLabel2.Name = "НазваниеLabel2"
+        НазваниеLabel2.Size = New System.Drawing.Size(46, 13)
+        НазваниеLabel2.TabIndex = 26
+        НазваниеLabel2.Text = "Ставка:"
         '
         'SalariesDataSet
         '
@@ -612,15 +621,6 @@ Partial Class EmployerView
         'СтавкаTableAdapter
         '
         Me.СтавкаTableAdapter.ClearBeforeFill = True
-        '
-        'НазваниеLabel2
-        '
-        НазваниеLabel2.AutoSize = True
-        НазваниеLabel2.Location = New System.Drawing.Point(12, 215)
-        НазваниеLabel2.Name = "НазваниеLabel2"
-        НазваниеLabel2.Size = New System.Drawing.Size(46, 13)
-        НазваниеLabel2.TabIndex = 26
-        НазваниеLabel2.Text = "Ставка:"
         '
         'НазваниеTextBox2
         '
