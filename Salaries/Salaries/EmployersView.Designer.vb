@@ -60,6 +60,9 @@ Partial Class EmployersView
         Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Код_работника = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.SearchButton = New System.Windows.Forms.Button()
+        Me.SearchTextBox = New System.Windows.Forms.TextBox()
         CType(Me.SalariesDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmployersViewBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmployersViewBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -68,6 +71,7 @@ Partial Class EmployersView
         Me.GroupBox1.SuspendLayout()
         CType(Me.СпециальностьBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmployersViewDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'SalariesDataSet
@@ -158,7 +162,7 @@ Partial Class EmployersView
         Me.EmployersViewBindingNavigator.MovePreviousItem = Nothing
         Me.EmployersViewBindingNavigator.Name = "EmployersViewBindingNavigator"
         Me.EmployersViewBindingNavigator.PositionItem = Nothing
-        Me.EmployersViewBindingNavigator.Size = New System.Drawing.Size(1045, 25)
+        Me.EmployersViewBindingNavigator.Size = New System.Drawing.Size(1062, 25)
         Me.EmployersViewBindingNavigator.TabIndex = 0
         Me.EmployersViewBindingNavigator.Text = "BindingNavigator1"
         '
@@ -178,9 +182,9 @@ Partial Class EmployersView
         Me.ОтделComboBox.DataSource = Me.ОтделBindingSource
         Me.ОтделComboBox.DisplayMember = "Название"
         Me.ОтделComboBox.FormattingEnabled = True
-        Me.ОтделComboBox.Location = New System.Drawing.Point(94, 19)
+        Me.ОтделComboBox.Location = New System.Drawing.Point(50, 19)
         Me.ОтделComboBox.Name = "ОтделComboBox"
-        Me.ОтделComboBox.Size = New System.Drawing.Size(300, 21)
+        Me.ОтделComboBox.Size = New System.Drawing.Size(317, 21)
         Me.ОтделComboBox.TabIndex = 2
         Me.ОтделComboBox.ValueMember = "Код_отдела"
         '
@@ -188,9 +192,9 @@ Partial Class EmployersView
         '
         Me.btnFilterByDepartment.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnFilterByDepartment.Location = New System.Drawing.Point(400, 17)
+        Me.btnFilterByDepartment.Location = New System.Drawing.Point(9, 51)
         Me.btnFilterByDepartment.Name = "btnFilterByDepartment"
-        Me.btnFilterByDepartment.Size = New System.Drawing.Size(95, 23)
+        Me.btnFilterByDepartment.Size = New System.Drawing.Size(112, 23)
         Me.btnFilterByDepartment.TabIndex = 3
         Me.btnFilterByDepartment.Text = "Фильровать"
         Me.btnFilterByDepartment.UseVisualStyleBackColor = True
@@ -208,8 +212,7 @@ Partial Class EmployersView
         '
         'GroupBox1
         '
-        Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Controls.Add(Me.btnResetFilters)
         Me.GroupBox1.Controls.Add(Me.Label2)
@@ -217,16 +220,16 @@ Partial Class EmployersView
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.btnFilterByDepartment)
         Me.GroupBox1.Controls.Add(Me.ОтделComboBox)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 356)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 306)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1021, 80)
+        Me.GroupBox1.Size = New System.Drawing.Size(1038, 80)
         Me.GroupBox1.TabIndex = 5
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Фильтры"
+        Me.GroupBox1.Text = "Фильтрация"
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(582, 17)
+        Me.Button1.Location = New System.Drawing.Point(225, 51)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 8
@@ -237,9 +240,9 @@ Partial Class EmployersView
         '
         Me.btnResetFilters.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnResetFilters.Location = New System.Drawing.Point(501, 17)
+        Me.btnResetFilters.Location = New System.Drawing.Point(127, 51)
         Me.btnResetFilters.Name = "btnResetFilters"
-        Me.btnResetFilters.Size = New System.Drawing.Size(75, 23)
+        Me.btnResetFilters.Size = New System.Drawing.Size(92, 23)
         Me.btnResetFilters.TabIndex = 7
         Me.btnResetFilters.Text = "Сброс"
         Me.btnResetFilters.UseVisualStyleBackColor = True
@@ -249,7 +252,7 @@ Partial Class EmployersView
         Me.Label2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 49)
+        Me.Label2.Location = New System.Drawing.Point(373, 22)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(85, 13)
         Me.Label2.TabIndex = 6
@@ -262,9 +265,9 @@ Partial Class EmployersView
         Me.СпециальностьComboBox.DataSource = Me.СпециальностьBindingSource
         Me.СпециальностьComboBox.DisplayMember = "Название"
         Me.СпециальностьComboBox.FormattingEnabled = True
-        Me.СпециальностьComboBox.Location = New System.Drawing.Point(94, 46)
+        Me.СпециальностьComboBox.Location = New System.Drawing.Point(464, 19)
         Me.СпециальностьComboBox.Name = "СпециальностьComboBox"
-        Me.СпециальностьComboBox.Size = New System.Drawing.Size(300, 21)
+        Me.СпециальностьComboBox.Size = New System.Drawing.Size(317, 21)
         Me.СпециальностьComboBox.TabIndex = 4
         Me.СпециальностьComboBox.ValueMember = "Код_специальности"
         '
@@ -279,8 +282,7 @@ Partial Class EmployersView
         '
         'EmployersViewDataGridView
         '
-        Me.EmployersViewDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.EmployersViewDataGridView.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.EmployersViewDataGridView.AutoGenerateColumns = False
         Me.EmployersViewDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -290,7 +292,7 @@ Partial Class EmployersView
         Me.EmployersViewDataGridView.MultiSelect = False
         Me.EmployersViewDataGridView.Name = "EmployersViewDataGridView"
         Me.EmployersViewDataGridView.ReadOnly = True
-        Me.EmployersViewDataGridView.Size = New System.Drawing.Size(1045, 314)
+        Me.EmployersViewDataGridView.Size = New System.Drawing.Size(1062, 272)
         Me.EmployersViewDataGridView.TabIndex = 5
         '
         'DataGridViewTextBoxColumn1
@@ -370,15 +372,45 @@ Partial Class EmployersView
         Me.Код_работника.Name = "Код_работника"
         Me.Код_работника.ReadOnly = True
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.SearchButton)
+        Me.GroupBox2.Controls.Add(Me.SearchTextBox)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 392)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(1030, 56)
+        Me.GroupBox2.TabIndex = 6
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Поиск по ФИО"
+        '
+        'SearchButton
+        '
+        Me.SearchButton.Location = New System.Drawing.Point(356, 14)
+        Me.SearchButton.Name = "SearchButton"
+        Me.SearchButton.Size = New System.Drawing.Size(82, 29)
+        Me.SearchButton.TabIndex = 1
+        Me.SearchButton.Text = "Поиск"
+        Me.SearchButton.UseVisualStyleBackColor = True
+        '
+        'SearchTextBox
+        '
+        Me.SearchTextBox.Location = New System.Drawing.Point(9, 19)
+        Me.SearchTextBox.Name = "SearchTextBox"
+        Me.SearchTextBox.Size = New System.Drawing.Size(341, 20)
+        Me.SearchTextBox.TabIndex = 0
+        '
         'EmployersView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1045, 448)
+        Me.ClientSize = New System.Drawing.Size(1062, 460)
+        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.EmployersViewDataGridView)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.EmployersViewBindingNavigator)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "EmployersView"
+        Me.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Text = "EmployersView"
         CType(Me.SalariesDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmployersViewBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -390,6 +422,8 @@ Partial Class EmployersView
         Me.GroupBox1.PerformLayout()
         CType(Me.СпециальностьBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmployersViewDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -435,4 +469,7 @@ Partial Class EmployersView
     Friend WithEvents DataGridViewTextBoxColumn15 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn16 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Код_работника As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents SearchButton As System.Windows.Forms.Button
+    Friend WithEvents SearchTextBox As System.Windows.Forms.TextBox
 End Class

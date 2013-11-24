@@ -75,13 +75,18 @@
 
     Private Sub SaveBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveBtn.Click
         Try
-            Me.Validate()
-            Me.РаботникBindingSource.EndEdit()
-            Me.TableAdapterManager.UpdateAll(Me.SalariesDataSet)
-            MsgBox("Изменения были сохранены.")
+            'UI validation 
+            If (Not ShowErrors()) Then
+                'DS validation 
+                Me.Validate()
 
-            ' reload ds
-            EmployersView.reloadDs()
+                Me.РаботникBindingSource.EndEdit()
+                Me.TableAdapterManager.UpdateAll(Me.SalariesDataSet)
+                MsgBox("Изменения были сохранены.")
+
+                ' reload ds
+                EmployersView.reloadDs()
+            End If
         Catch ex As Exception
             MsgBox("Ошибка при сохранении работника " & ex.Message)
         End Try
@@ -154,4 +159,36 @@
             Me.Close()
         End If
     End Sub
+
+    Private Function ShowErrors() As Boolean
+        FormErrorProvider.Dispose()
+        Dim result As Boolean = False
+
+        If ([String].IsNullOrEmpty(ИмяTextBox.Text.Trim())) Then
+            FormErrorProvider.SetError(ИмяTextBox, "Это поле не может быть пустым!")
+            result = True
+        End If
+
+        If ([String].IsNullOrEmpty(ФамилияTextBox.Text.Trim())) Then
+            FormErrorProvider.SetError(ФамилияTextBox, "Это поле не может быть пустым!")
+            result = True
+        End If
+
+        If ([String].IsNullOrEmpty(ОтчествоTextBox.Text.Trim())) Then
+            FormErrorProvider.SetError(ОтчествоTextBox, "Это поле не может быть пустым!")
+            result = True
+        End If
+
+        If (Not ТелефонMaskedTextBox.MaskFull) Then
+            FormErrorProvider.SetError(ТелефонMaskedTextBox, "Это поле не может быть пустым!")
+            result = True
+        End If
+
+        If (Not ТелефонMaskedTextBox.MaskFull) Then
+            FormErrorProvider.SetError(Номер_пасспортаMaskedTextBox, "Это поле не может быть пустым!")
+            result = True
+        End If
+
+        Return result
+    End Function
 End Class

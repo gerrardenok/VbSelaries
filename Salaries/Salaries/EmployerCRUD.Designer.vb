@@ -29,7 +29,6 @@ Partial Class EmployerCRUD
         Dim Дата_приёмаLabel As System.Windows.Forms.Label
         Dim ТелефонLabel As System.Windows.Forms.Label
         Dim Номер_пасспортаLabel As System.Windows.Forms.Label
-        Dim СтажLabel As System.Windows.Forms.Label
         Dim Код_ставкиLabel As System.Windows.Forms.Label
         Dim Код_отделаLabel As System.Windows.Forms.Label
         Dim Код_специальностиLabel As System.Windows.Forms.Label
@@ -44,9 +43,6 @@ Partial Class EmployerCRUD
         Me.ФамилияTextBox = New System.Windows.Forms.TextBox()
         Me.ОтчествоTextBox = New System.Windows.Forms.TextBox()
         Me.Дата_приёмаDateTimePicker = New System.Windows.Forms.DateTimePicker()
-        Me.ТелефонTextBox = New System.Windows.Forms.TextBox()
-        Me.Номер_пасспортаTextBox = New System.Windows.Forms.TextBox()
-        Me.СтажTextBox = New System.Windows.Forms.TextBox()
         Me.SaveBtn = New System.Windows.Forms.Button()
         Me.CancelBtn = New System.Windows.Forms.Button()
         Me.DeleteBtn = New System.Windows.Forms.Button()
@@ -57,13 +53,16 @@ Partial Class EmployerCRUD
         Me.СтавкаBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.СтавкаComboBox = New System.Windows.Forms.ComboBox()
         Me.RetairBtn = New System.Windows.Forms.Button()
+        Me.ТелефонMaskedTextBox = New System.Windows.Forms.MaskedTextBox()
+        Me.Номер_пасспортаMaskedTextBox = New System.Windows.Forms.MaskedTextBox()
+        Me.FormErrorProvider = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.РаботникСпециальностьBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         ИмяLabel = New System.Windows.Forms.Label()
         ФамилияLabel = New System.Windows.Forms.Label()
         ОтчествоLabel = New System.Windows.Forms.Label()
         Дата_приёмаLabel = New System.Windows.Forms.Label()
         ТелефонLabel = New System.Windows.Forms.Label()
         Номер_пасспортаLabel = New System.Windows.Forms.Label()
-        СтажLabel = New System.Windows.Forms.Label()
         Код_ставкиLabel = New System.Windows.Forms.Label()
         Код_отделаLabel = New System.Windows.Forms.Label()
         Код_специальностиLabel = New System.Windows.Forms.Label()
@@ -72,6 +71,8 @@ Partial Class EmployerCRUD
         CType(Me.ОтделBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.СпециальностьBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.СтавкаBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FormErrorProvider, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.РаботникСпециальностьBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ИмяLabel
@@ -128,19 +129,10 @@ Partial Class EmployerCRUD
         Номер_пасспортаLabel.TabIndex = 13
         Номер_пасспортаLabel.Text = "Номер пасспорта:"
         '
-        'СтажLabel
-        '
-        СтажLabel.AutoSize = True
-        СтажLabel.Location = New System.Drawing.Point(12, 165)
-        СтажLabel.Name = "СтажLabel"
-        СтажLabel.Size = New System.Drawing.Size(36, 13)
-        СтажLabel.TabIndex = 15
-        СтажLabel.Text = "Стаж:"
-        '
         'Код_ставкиLabel
         '
         Код_ставкиLabel.AutoSize = True
-        Код_ставкиLabel.Location = New System.Drawing.Point(12, 191)
+        Код_ставкиLabel.Location = New System.Drawing.Point(12, 167)
         Код_ставкиLabel.Name = "Код_ставкиLabel"
         Код_ставкиLabel.Size = New System.Drawing.Size(46, 13)
         Код_ставкиLabel.TabIndex = 17
@@ -149,7 +141,7 @@ Partial Class EmployerCRUD
         'Код_отделаLabel
         '
         Код_отделаLabel.AutoSize = True
-        Код_отделаLabel.Location = New System.Drawing.Point(12, 217)
+        Код_отделаLabel.Location = New System.Drawing.Point(12, 193)
         Код_отделаLabel.Name = "Код_отделаLabel"
         Код_отделаLabel.Size = New System.Drawing.Size(41, 13)
         Код_отделаLabel.TabIndex = 19
@@ -158,7 +150,7 @@ Partial Class EmployerCRUD
         'Код_специальностиLabel
         '
         Код_специальностиLabel.AutoSize = True
-        Код_специальностиLabel.Location = New System.Drawing.Point(12, 243)
+        Код_специальностиLabel.Location = New System.Drawing.Point(12, 219)
         Код_специальностиLabel.Name = "Код_специальностиLabel"
         Код_специальностиLabel.Size = New System.Drawing.Size(88, 13)
         Код_специальностиLabel.TabIndex = 21
@@ -235,33 +227,9 @@ Partial Class EmployerCRUD
         Me.Дата_приёмаDateTimePicker.Size = New System.Drawing.Size(321, 20)
         Me.Дата_приёмаDateTimePicker.TabIndex = 10
         '
-        'ТелефонTextBox
-        '
-        Me.ТелефонTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.РаботникBindingSource, "Телефон", True))
-        Me.ТелефонTextBox.Location = New System.Drawing.Point(127, 110)
-        Me.ТелефонTextBox.Name = "ТелефонTextBox"
-        Me.ТелефонTextBox.Size = New System.Drawing.Size(321, 20)
-        Me.ТелефонTextBox.TabIndex = 12
-        '
-        'Номер_пасспортаTextBox
-        '
-        Me.Номер_пасспортаTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.РаботникBindingSource, "Номер_пасспорта", True))
-        Me.Номер_пасспортаTextBox.Location = New System.Drawing.Point(127, 136)
-        Me.Номер_пасспортаTextBox.Name = "Номер_пасспортаTextBox"
-        Me.Номер_пасспортаTextBox.Size = New System.Drawing.Size(321, 20)
-        Me.Номер_пасспортаTextBox.TabIndex = 14
-        '
-        'СтажTextBox
-        '
-        Me.СтажTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.РаботникBindingSource, "Стаж", True))
-        Me.СтажTextBox.Location = New System.Drawing.Point(127, 162)
-        Me.СтажTextBox.Name = "СтажTextBox"
-        Me.СтажTextBox.Size = New System.Drawing.Size(321, 20)
-        Me.СтажTextBox.TabIndex = 16
-        '
         'SaveBtn
         '
-        Me.SaveBtn.Location = New System.Drawing.Point(15, 270)
+        Me.SaveBtn.Location = New System.Drawing.Point(15, 246)
         Me.SaveBtn.Name = "SaveBtn"
         Me.SaveBtn.Size = New System.Drawing.Size(97, 25)
         Me.SaveBtn.TabIndex = 23
@@ -270,7 +238,7 @@ Partial Class EmployerCRUD
         '
         'CancelBtn
         '
-        Me.CancelBtn.Location = New System.Drawing.Point(127, 270)
+        Me.CancelBtn.Location = New System.Drawing.Point(127, 246)
         Me.CancelBtn.Name = "CancelBtn"
         Me.CancelBtn.Size = New System.Drawing.Size(93, 25)
         Me.CancelBtn.TabIndex = 24
@@ -279,7 +247,7 @@ Partial Class EmployerCRUD
         '
         'DeleteBtn
         '
-        Me.DeleteBtn.Location = New System.Drawing.Point(235, 270)
+        Me.DeleteBtn.Location = New System.Drawing.Point(235, 246)
         Me.DeleteBtn.Name = "DeleteBtn"
         Me.DeleteBtn.Size = New System.Drawing.Size(94, 24)
         Me.DeleteBtn.TabIndex = 25
@@ -297,7 +265,7 @@ Partial Class EmployerCRUD
         Me.ОтделComboBox.DataSource = Me.ОтделBindingSource
         Me.ОтделComboBox.DisplayMember = "Название"
         Me.ОтделComboBox.FormattingEnabled = True
-        Me.ОтделComboBox.Location = New System.Drawing.Point(127, 215)
+        Me.ОтделComboBox.Location = New System.Drawing.Point(127, 191)
         Me.ОтделComboBox.Name = "ОтделComboBox"
         Me.ОтделComboBox.Size = New System.Drawing.Size(321, 21)
         Me.ОтделComboBox.TabIndex = 25
@@ -313,7 +281,7 @@ Partial Class EmployerCRUD
         Me.СпециальностьComboBox.DataSource = Me.СпециальностьBindingSource
         Me.СпециальностьComboBox.DisplayMember = "Название"
         Me.СпециальностьComboBox.FormattingEnabled = True
-        Me.СпециальностьComboBox.Location = New System.Drawing.Point(127, 240)
+        Me.СпециальностьComboBox.Location = New System.Drawing.Point(127, 216)
         Me.СпециальностьComboBox.Name = "СпециальностьComboBox"
         Me.СпециальностьComboBox.Size = New System.Drawing.Size(321, 21)
         Me.СпециальностьComboBox.TabIndex = 25
@@ -329,7 +297,7 @@ Partial Class EmployerCRUD
         Me.СтавкаComboBox.DataSource = Me.СтавкаBindingSource
         Me.СтавкаComboBox.DisplayMember = "Название"
         Me.СтавкаComboBox.FormattingEnabled = True
-        Me.СтавкаComboBox.Location = New System.Drawing.Point(127, 188)
+        Me.СтавкаComboBox.Location = New System.Drawing.Point(127, 164)
         Me.СтавкаComboBox.Name = "СтавкаComboBox"
         Me.СтавкаComboBox.Size = New System.Drawing.Size(321, 21)
         Me.СтавкаComboBox.TabIndex = 25
@@ -337,7 +305,7 @@ Partial Class EmployerCRUD
         '
         'RetairBtn
         '
-        Me.RetairBtn.Location = New System.Drawing.Point(345, 269)
+        Me.RetairBtn.Location = New System.Drawing.Point(345, 245)
         Me.RetairBtn.Name = "RetairBtn"
         Me.RetairBtn.Size = New System.Drawing.Size(93, 25)
         Me.RetairBtn.TabIndex = 26
@@ -345,11 +313,42 @@ Partial Class EmployerCRUD
         Me.RetairBtn.UseVisualStyleBackColor = True
         Me.RetairBtn.Visible = False
         '
+        'ТелефонMaskedTextBox
+        '
+        Me.ТелефонMaskedTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.РаботникBindingSource, "Телефон", True))
+        Me.ТелефонMaskedTextBox.Location = New System.Drawing.Point(127, 110)
+        Me.ТелефонMaskedTextBox.Mask = "(+999) (99) 000-00-00"
+        Me.ТелефонMaskedTextBox.Name = "ТелефонMaskedTextBox"
+        Me.ТелефонMaskedTextBox.Size = New System.Drawing.Size(321, 20)
+        Me.ТелефонMaskedTextBox.TabIndex = 27
+        '
+        'Номер_пасспортаMaskedTextBox
+        '
+        Me.Номер_пасспортаMaskedTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.РаботникBindingSource, "Номер_пасспорта", True))
+        Me.Номер_пасспортаMaskedTextBox.Location = New System.Drawing.Point(127, 136)
+        Me.Номер_пасспортаMaskedTextBox.Mask = "LL 00000000"
+        Me.Номер_пасспортаMaskedTextBox.Name = "Номер_пасспортаMaskedTextBox"
+        Me.Номер_пасспортаMaskedTextBox.Size = New System.Drawing.Size(321, 20)
+        Me.Номер_пасспортаMaskedTextBox.TabIndex = 28
+        '
+        'FormErrorProvider
+        '
+        Me.FormErrorProvider.ContainerControl = Me
+        Me.FormErrorProvider.DataMember = "Работник"
+        Me.FormErrorProvider.DataSource = Me.SalariesDataSet
+        '
+        'РаботникСпециальностьBindingSource
+        '
+        Me.РаботникСпециальностьBindingSource.DataMember = "Работник_Специальность"
+        Me.РаботникСпециальностьBindingSource.DataSource = Me.РаботникBindingSource
+        '
         'EmployerCRUD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(468, 321)
+        Me.ClientSize = New System.Drawing.Size(468, 286)
+        Me.Controls.Add(Me.Номер_пасспортаMaskedTextBox)
+        Me.Controls.Add(Me.ТелефонMaskedTextBox)
         Me.Controls.Add(Me.RetairBtn)
         Me.Controls.Add(Me.СтавкаComboBox)
         Me.Controls.Add(Me.СпециальностьComboBox)
@@ -366,14 +365,11 @@ Partial Class EmployerCRUD
         Me.Controls.Add(Дата_приёмаLabel)
         Me.Controls.Add(Me.Дата_приёмаDateTimePicker)
         Me.Controls.Add(ТелефонLabel)
-        Me.Controls.Add(Me.ТелефонTextBox)
         Me.Controls.Add(Номер_пасспортаLabel)
-        Me.Controls.Add(Me.Номер_пасспортаTextBox)
-        Me.Controls.Add(СтажLabel)
-        Me.Controls.Add(Me.СтажTextBox)
         Me.Controls.Add(Код_ставкиLabel)
         Me.Controls.Add(Код_отделаLabel)
         Me.Controls.Add(Код_специальностиLabel)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "EmployerCRUD"
         Me.Text = "Добавление/Редактирование работника"
         CType(Me.SalariesDataSet, System.ComponentModel.ISupportInitialize).EndInit()
@@ -381,6 +377,8 @@ Partial Class EmployerCRUD
         CType(Me.ОтделBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.СпециальностьBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.СтавкаBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FormErrorProvider, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.РаботникСпециальностьBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -393,9 +391,6 @@ Partial Class EmployerCRUD
     Friend WithEvents ФамилияTextBox As System.Windows.Forms.TextBox
     Friend WithEvents ОтчествоTextBox As System.Windows.Forms.TextBox
     Friend WithEvents Дата_приёмаDateTimePicker As System.Windows.Forms.DateTimePicker
-    Friend WithEvents ТелефонTextBox As System.Windows.Forms.TextBox
-    Friend WithEvents Номер_пасспортаTextBox As System.Windows.Forms.TextBox
-    Friend WithEvents СтажTextBox As System.Windows.Forms.TextBox
     Friend WithEvents SaveBtn As System.Windows.Forms.Button
     Friend WithEvents CancelBtn As System.Windows.Forms.Button
     Friend WithEvents DeleteBtn As System.Windows.Forms.Button
@@ -409,4 +404,8 @@ Partial Class EmployerCRUD
     Friend WithEvents СтавкаBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents СтавкаComboBox As System.Windows.Forms.ComboBox
     Friend WithEvents RetairBtn As System.Windows.Forms.Button
+    Friend WithEvents ТелефонMaskedTextBox As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents Номер_пасспортаMaskedTextBox As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents FormErrorProvider As System.Windows.Forms.ErrorProvider
+    Friend WithEvents РаботникСпециальностьBindingSource As System.Windows.Forms.BindingSource
 End Class

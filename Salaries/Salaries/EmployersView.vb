@@ -90,4 +90,16 @@
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         EmployersReportView.InitList()
     End Sub
+
+    Private Sub SearchButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SearchButton.Click
+        Dim query As String = SearchTextBox.Text.Trim()
+        If (Not [String].IsNullOrEmpty(query)) Then
+            EmployersViewBindingSource.Filter =
+                "Имя LIKE '" & query & "%'" &
+                "OR Фамилия LIKE '" & query & "%'" &
+                "OR Отчество LIKE '" & query & "%'"
+        Else
+            EmployersViewBindingSource.RemoveFilter()
+        End If
+    End Sub
 End Class
