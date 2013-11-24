@@ -72,6 +72,9 @@
             РаботникBindingSource.EndEdit()
             TableAdapterManager.UpdateAll(Me.SalariesDataSet)
 
+            ' reload ds
+            EmployersView.reloadDs()
+
             Me.Close()
         End If
     End Sub
@@ -84,5 +87,11 @@
         Dim current As DataRowView = РаботникBindingSource.Current
         Dim employerId As Integer = current.Item("Код_работника")
         EmployerCRUD.LoadForm(employerId)
+    End Sub
+
+    Private Sub ToolStripButton3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton3.Click
+        Dim current As DataRowView = РаботникBindingSource.Current
+        Dim employerId As Integer = current.Item("Код_работника")
+        EmployersReportView.InitSingle(employerId)
     End Sub
 End Class

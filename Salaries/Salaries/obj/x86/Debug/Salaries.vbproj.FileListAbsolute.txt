@@ -1,4 +1,3 @@
-D:\Курсовые\БД\Salaries\Salaries\bin\Debug\Salaries.exe.config
 D:\Курсовые\БД\Salaries\Salaries\bin\Debug\Salaries.exe
 D:\Курсовые\БД\Salaries\Salaries\bin\Debug\Salaries.pdb
 D:\Курсовые\БД\Salaries\Salaries\bin\Debug\Salaries.xml
@@ -12,7 +11,7 @@ D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.xml
 D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.pdb
 D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.EmployersView.resources
 D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.EmployersReportView.resources
-D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\RdlCompile.cache
-D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\RdlCompile.compiled
 D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.EmployerView.resources
 D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.EmployerCRUD.resources
+d:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\RdlCompile.cache
+d:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\RdlCompile.compiled

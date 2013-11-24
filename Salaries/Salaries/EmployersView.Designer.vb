@@ -173,6 +173,8 @@ Partial Class EmployersView
         '
         'ОтделComboBox
         '
+        Me.ОтделComboBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ОтделComboBox.DataSource = Me.ОтделBindingSource
         Me.ОтделComboBox.DisplayMember = "Название"
         Me.ОтделComboBox.FormattingEnabled = True
@@ -184,6 +186,8 @@ Partial Class EmployersView
         '
         'btnFilterByDepartment
         '
+        Me.btnFilterByDepartment.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnFilterByDepartment.Location = New System.Drawing.Point(400, 17)
         Me.btnFilterByDepartment.Name = "btnFilterByDepartment"
         Me.btnFilterByDepartment.Size = New System.Drawing.Size(95, 23)
@@ -193,6 +197,8 @@ Partial Class EmployersView
         '
         'Label1
         '
+        Me.Label1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(6, 22)
         Me.Label1.Name = "Label1"
@@ -202,7 +208,7 @@ Partial Class EmployersView
         '
         'GroupBox1
         '
-        Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Controls.Add(Me.btnResetFilters)
@@ -211,7 +217,7 @@ Partial Class EmployersView
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.btnFilterByDepartment)
         Me.GroupBox1.Controls.Add(Me.ОтделComboBox)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 348)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 356)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(1021, 80)
         Me.GroupBox1.TabIndex = 5
@@ -229,6 +235,8 @@ Partial Class EmployersView
         '
         'btnResetFilters
         '
+        Me.btnResetFilters.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnResetFilters.Location = New System.Drawing.Point(501, 17)
         Me.btnResetFilters.Name = "btnResetFilters"
         Me.btnResetFilters.Size = New System.Drawing.Size(75, 23)
@@ -238,6 +246,8 @@ Partial Class EmployersView
         '
         'Label2
         '
+        Me.Label2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(6, 49)
         Me.Label2.Name = "Label2"
@@ -247,6 +257,8 @@ Partial Class EmployersView
         '
         'СпециальностьComboBox
         '
+        Me.СпециальностьComboBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.СпециальностьComboBox.DataSource = Me.СпециальностьBindingSource
         Me.СпециальностьComboBox.DisplayMember = "Название"
         Me.СпециальностьComboBox.FormattingEnabled = True

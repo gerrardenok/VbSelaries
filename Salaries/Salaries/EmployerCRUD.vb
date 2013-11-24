@@ -1,11 +1,9 @@
 ﻿Public Class EmployerCRUD
 
-    Public Shared Sub InitForm()
-        Dim form As New EmployerCRUD
-        ' LoadForm from and set binding source
-        form.Show()
+    Public Sub InitForm()
+        Me.Show()
         ' Fill form
-        form.Init()
+        Me.Init()
     End Sub
 
     Private Sub Init()
@@ -16,12 +14,10 @@
         DateTimePickersInit()
     End Sub
 
-    Public Shared Sub LoadForm(ByVal id As Integer)
-        Dim form As New EmployerCRUD
-        ' LoadForm from and set binding source
-        form.Show()
+    Public Sub LoadForm(ByVal id As Integer)
+        Me.Show()
         ' Fill form
-        form.Load(id)
+        Me.Load(id)
     End Sub
 
     Private Sub Load(ByVal employerId As Integer)
@@ -83,6 +79,9 @@
             Me.РаботникBindingSource.EndEdit()
             Me.TableAdapterManager.UpdateAll(Me.SalariesDataSet)
             MsgBox("Изменения были сохранены.")
+
+            ' reload ds
+            EmployersView.reloadDs()
         Catch ex As Exception
             MsgBox("Ошибка при сохранении работника " & ex.Message)
         End Try
@@ -100,6 +99,10 @@
                 Dim current As DataRowView = РаботникBindingSource.Current
                 current.Delete()
                 TableAdapterManager.UpdateAll(Me.SalariesDataSet)
+
+                ' reload ds
+                EmployersView.reloadDs()
+
                 Me.Close()
             Catch ex As Exception
                 MsgBox("Ошибка при удалении работника " & ex.Message)

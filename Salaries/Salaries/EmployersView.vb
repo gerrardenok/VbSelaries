@@ -7,6 +7,11 @@
         EmployersViewDataGridView.Columns(10).Visible = False
     End Sub
 
+    Public Sub reloadDs()
+        EmployersViewTableAdapter.Fill(SalariesDataSet.EmployersView)
+        EmployersViewDataGridView.Refresh()
+    End Sub
+
     Private Sub EmployersViewSort()
         Dim sortCol As System.Windows.Forms.DataGridViewColumn
         Dim order As System.ComponentModel.ListSortDirection
@@ -67,7 +72,7 @@
     End Sub
 
     Private Sub btnFilterByDepartment_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFilterByDepartment.Click
-       EmployersViewBindingSource.Filter = EmployersViewFilterCriterion()
+        EmployersViewBindingSource.Filter = EmployersViewFilterCriterion()
     End Sub
 
     Private Sub btnResetFilters_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnResetFilters.Click
@@ -83,6 +88,6 @@
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        EmployersReportView.Show()
+        EmployersReportView.InitList()
     End Sub
 End Class
