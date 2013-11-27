@@ -140,6 +140,24 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="QualificationCRUD.Designer.vb">
+      <DependentUpon>QualificationCRUD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="QualificationCRUD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QualificationsReport.Designer.vb">
+      <DependentUpon>QualificationsReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="QualificationsReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QualificationsView.Designer.vb">
+      <DependentUpon>QualificationsView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="QualificationsView.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SalariesDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -186,6 +204,16 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QualificationCRUD.resx">
+      <DependentUpon>QualificationCRUD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QualificationsReport.rdlc" />
+    <EmbeddedResource Include="QualificationsReport.resx">
+      <DependentUpon>QualificationsReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QualificationsView.resx">
+      <DependentUpon>QualificationsView.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

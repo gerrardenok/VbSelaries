@@ -14,4 +14,12 @@
     Private Sub ДобавитьОтделToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ДобавитьОтделToolStripMenuItem.Click
         DepartamentCRUD.InitForm()
     End Sub
+
+    Private Sub ВсеСпециальностиToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ВсеСпециальностиToolStripMenuItem.Click
+        QualificationsView.Show()
+    End Sub
+
+    Private Sub ДобавитьСпециальностьToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ДобавитьСпециальностьToolStripMenuItem.Click
+        QualificationCRUD.InitForm()
+    End Sub
 End Class

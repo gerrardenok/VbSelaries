@@ -18,3 +18,6 @@ d:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\RdlCompile.compiled
 D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.DepartmentsView.resources
 D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.DepartamentCRUD.resources
 D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.DepartamentReport.resources
+D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.QualificationsView.resources
+D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.QualificationCRUD.resources
+D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.QualificationsReport.resources
