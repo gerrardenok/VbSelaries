@@ -292,6 +292,7 @@ Partial Class EmployersView
         Me.EmployersViewDataGridView.MultiSelect = False
         Me.EmployersViewDataGridView.Name = "EmployersViewDataGridView"
         Me.EmployersViewDataGridView.ReadOnly = True
+        Me.EmployersViewDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.EmployersViewDataGridView.Size = New System.Drawing.Size(1062, 272)
         Me.EmployersViewDataGridView.TabIndex = 5
         '

@@ -76,6 +76,24 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DepartamentCRUD.Designer.vb">
+      <DependentUpon>DepartamentCRUD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DepartamentCRUD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepartamentReport.Designer.vb">
+      <DependentUpon>DepartamentReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DepartamentReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepartmentsView.Designer.vb">
+      <DependentUpon>DepartmentsView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DepartmentsView.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="EmployerCRUD.Designer.vb">
       <DependentUpon>EmployerCRUD.vb</DependentUpon>
     </Compile>
@@ -137,6 +155,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DepartamentCRUD.resx">
+      <DependentUpon>DepartamentCRUD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepartamentReport.resx">
+      <DependentUpon>DepartamentReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepartamentsViewReport.rdlc" />
+    <EmbeddedResource Include="DepartmentsView.resx">
+      <DependentUpon>DepartmentsView.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmployerCRUD.resx">
       <DependentUpon>EmployerCRUD.vb</DependentUpon>
     </EmbeddedResource>

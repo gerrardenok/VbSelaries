@@ -767,7 +767,7 @@ SELECT Код_работника, Имя, Фамилия, Отчество, Да
                         </xs:restriction>
                       </xs:simpleType>
                     </xs:element>
-                    <xs:element name="Фонд_ЗП" msprop:Generator_ColumnVarNameInTable="columnФонд_ЗП" msprop:Generator_ColumnPropNameInRow="Фонд_ЗП" msprop:Generator_ColumnPropNameInTable="Фонд_ЗПColumn" msprop:Generator_UserColumnName="Фонд_ЗП" type="xs:decimal" />
+                    <xs:element name="Фонд_ЗП" msprop:nullValue="0" msprop:Generator_ColumnPropNameInRow="Фонд_ЗП" msprop:Generator_ColumnVarNameInTable="columnФонд_ЗП" msprop:Generator_ColumnPropNameInTable="Фонд_ЗПColumn" msprop:Generator_UserColumnName="Фонд_ЗП" type="xs:decimal" />
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
