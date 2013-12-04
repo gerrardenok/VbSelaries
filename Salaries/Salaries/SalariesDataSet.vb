@@ -3,7 +3,7 @@
 
     End Class
 
-    Partial Class DataTable1DataTable
+    Partial Class LostDayReportDataTable
 
     End Class
 

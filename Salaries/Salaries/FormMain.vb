@@ -22,4 +22,12 @@
     Private Sub ДобавитьСпециальностьToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ДобавитьСпециальностьToolStripMenuItem.Click
         QualificationCRUD.InitForm()
     End Sub
+
+    Private Sub ВсеПропукиToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ВсеПропукиToolStripMenuItem.Click
+        LostDaysForm.Show()
+    End Sub
+
+    Private Sub ДобавитьПропускToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ДобавитьПропускToolStripMenuItem.Click
+        LostDayCRUD.InitForm()
+    End Sub
 End Class

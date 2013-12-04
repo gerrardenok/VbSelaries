@@ -125,6 +125,24 @@
       <DependentUpon>FormMain.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="LostDayCRUD.Designer.vb">
+      <DependentUpon>LostDayCRUD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LostDayCRUD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LostDaysForm.Designer.vb">
+      <DependentUpon>LostDaysView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LostDaysView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LostDaysViewReport.Designer.vb">
+      <DependentUpon>LostDaysViewReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LostDaysViewReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -198,6 +216,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LostDayCRUD.resx">
+      <DependentUpon>LostDayCRUD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LostDaysForm.resx">
+      <DependentUpon>LostDaysView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LostDaysReport.rdlc" />
+    <EmbeddedResource Include="LostDaysViewReport.resx">
+      <DependentUpon>LostDaysViewReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
