@@ -131,12 +131,6 @@
     <Compile Include="LostDayCRUD.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LostDaysForm.Designer.vb">
-      <DependentUpon>LostDaysView.vb</DependentUpon>
-    </Compile>
-    <Compile Include="LostDaysView.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="LostDaysViewReport.Designer.vb">
       <DependentUpon>LostDaysViewReport.vb</DependentUpon>
     </Compile>
@@ -157,6 +151,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="OmissionsView.Designer.vb">
+      <DependentUpon>OmissionsView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="OmissionsView.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="QualificationCRUD.Designer.vb">
       <DependentUpon>QualificationCRUD.vb</DependentUpon>
@@ -183,6 +183,24 @@
     </Compile>
     <Compile Include="SalariesDataSet.vb">
       <DependentUpon>SalariesDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SalariesView.Designer.vb">
+      <DependentUpon>SalariesView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SalariesView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalaryCRUD.Designer.vb">
+      <DependentUpon>SalaryCRUD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SalaryCRUD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelaryView.Designer.vb">
+      <DependentUpon>SelaryView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SelaryView.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="ЗарплатыDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -220,9 +238,6 @@
     <EmbeddedResource Include="LostDayCRUD.resx">
       <DependentUpon>LostDayCRUD.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LostDaysForm.resx">
-      <DependentUpon>LostDaysView.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="LostDaysReport.rdlc" />
     <EmbeddedResource Include="LostDaysViewReport.resx">
       <DependentUpon>LostDaysViewReport.vb</DependentUpon>
@@ -233,6 +248,9 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="OmissionsView.resx">
+      <DependentUpon>OmissionsView.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QualificationCRUD.resx">
       <DependentUpon>QualificationCRUD.vb</DependentUpon>
     </EmbeddedResource>
@@ -242,6 +260,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QualificationsView.resx">
       <DependentUpon>QualificationsView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalariesView.resx">
+      <DependentUpon>SalariesView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalaryCRUD.resx">
+      <DependentUpon>SalaryCRUD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelaryView.resx">
+      <DependentUpon>SelaryView.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

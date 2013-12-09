@@ -37,15 +37,18 @@ Partial Class FormMain
         Me.ПропускиToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ВсеПропукиToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ДобавитьПропускToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ЗарплатыToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ВсеЗарплатыToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ДобавитьЗПToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ФайлToolStripMenuItem, Me.СотрудникиToolStripMenuItem, Me.ОтделыToolStripMenuItem, Me.СпециальностиToolStripMenuItem, Me.ПропускиToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ФайлToolStripMenuItem, Me.СотрудникиToolStripMenuItem, Me.ОтделыToolStripMenuItem, Me.СпециальностиToolStripMenuItem, Me.ПропускиToolStripMenuItem, Me.ЗарплатыToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(474, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(521, 24)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -138,11 +141,30 @@ Partial Class FormMain
         Me.ДобавитьПропускToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
         Me.ДобавитьПропускToolStripMenuItem.Text = "Добавить пропуск"
         '
+        'ЗарплатыToolStripMenuItem
+        '
+        Me.ЗарплатыToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ВсеЗарплатыToolStripMenuItem, Me.ДобавитьЗПToolStripMenuItem})
+        Me.ЗарплатыToolStripMenuItem.Name = "ЗарплатыToolStripMenuItem"
+        Me.ЗарплатыToolStripMenuItem.Size = New System.Drawing.Size(73, 20)
+        Me.ЗарплатыToolStripMenuItem.Text = "Зарплаты"
+        '
+        'ВсеЗарплатыToolStripMenuItem
+        '
+        Me.ВсеЗарплатыToolStripMenuItem.Name = "ВсеЗарплатыToolStripMenuItem"
+        Me.ВсеЗарплатыToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ВсеЗарплатыToolStripMenuItem.Text = "Все зарплаты"
+        '
+        'ДобавитьЗПToolStripMenuItem
+        '
+        Me.ДобавитьЗПToolStripMenuItem.Name = "ДобавитьЗПToolStripMenuItem"
+        Me.ДобавитьЗПToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ДобавитьЗПToolStripMenuItem.Text = "Добавить ЗП"
+        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(474, 262)
+        Me.ClientSize = New System.Drawing.Size(521, 262)
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "FormMain"
@@ -168,5 +190,8 @@ Partial Class FormMain
     Friend WithEvents ПропускиToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ВсеПропукиToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ДобавитьПропускToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ЗарплатыToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ВсеЗарплатыToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ДобавитьЗПToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

@@ -21,6 +21,9 @@ D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.DepartamentRep
 D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.QualificationsView.resources
 D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.QualificationCRUD.resources
 D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.QualificationsReport.resources
-D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.LostDaysForm.resources
 D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.LostDayCRUD.resources
 D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.LostDaysViewReport.resources
+D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.SalariesView.resources
+D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.OmissionsView.resources
+D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.SelaryView.resources
+D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.SalaryCRUD.resources

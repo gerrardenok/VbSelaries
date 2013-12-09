@@ -24,10 +24,18 @@
     End Sub
 
     Private Sub ВсеПропукиToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ВсеПропукиToolStripMenuItem.Click
-        LostDaysForm.Show()
+        OmissionsView.Init()
     End Sub
 
     Private Sub ДобавитьПропускToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ДобавитьПропускToolStripMenuItem.Click
         LostDayCRUD.InitForm()
+    End Sub
+
+    Private Sub ВсеЗарплатыToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ВсеЗарплатыToolStripMenuItem.Click
+        SalariesView.InitForm()
+    End Sub
+
+    Private Sub ДобавитьЗПToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ДобавитьЗПToolStripMenuItem.Click
+        SalaryCRUD.Show()
     End Sub
 End Class

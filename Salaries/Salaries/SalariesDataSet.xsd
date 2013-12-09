@@ -575,6 +575,35 @@ FROM            Работник INNER JOIN
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SalaryJoinEmployerTableAdapter" GeneratorDataComponentClassName="SalaryJoinEmployerTableAdapter" Name="SalaryJoinEmployer" UserDataComponentName="SalaryJoinEmployerTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ЗарплатыConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Зарплата.Месяц, Зарплата.Оклад, Зарплата.На_руки, Зарплата.Год, Зарплата.Код_зарплаты, Зарплата.Дата_выдачи, Зарплата.Код_работника, 
+                         Работник.Имя, Работник.Отчество, Работник.Фамилия, Зарплата.Код_работника AS Expr7
+FROM            Зарплата INNER JOIN
+                         Работник ON Зарплата.Код_работника = Работник.Код_работника</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Месяц" DataSetColumn="Месяц" />
+              <Mapping SourceColumn="Оклад" DataSetColumn="Оклад" />
+              <Mapping SourceColumn="На_руки" DataSetColumn="На_руки" />
+              <Mapping SourceColumn="Год" DataSetColumn="Год" />
+              <Mapping SourceColumn="Код_зарплаты" DataSetColumn="Код_зарплаты" />
+              <Mapping SourceColumn="Дата_выдачи" DataSetColumn="Дата_выдачи" />
+              <Mapping SourceColumn="Код_работника" DataSetColumn="Код_работника" />
+              <Mapping SourceColumn="Имя" DataSetColumn="Имя" />
+              <Mapping SourceColumn="Отчество" DataSetColumn="Отчество" />
+              <Mapping SourceColumn="Фамилия" DataSetColumn="Фамилия" />
+              <Mapping SourceColumn="Expr7" DataSetColumn="Expr7" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -755,7 +784,7 @@ FROM            Работник INNER JOIN
               <xs:element name="Специальность" msprop:Generator_TableClassName="СпециальностьDataTable" msprop:Generator_TableVarName="tableСпециальность" msprop:Generator_TablePropName="Специальность" msprop:Generator_RowDeletingName="СпециальностьRowDeleting" msprop:Generator_UserTableName="Специальность" msprop:Generator_RowChangingName="СпециальностьRowChanging" msprop:Generator_RowEvHandlerName="СпециальностьRowChangeEventHandler" msprop:Generator_RowDeletedName="СпециальностьRowDeleted" msprop:Generator_RowEvArgName="СпециальностьRowChangeEvent" msprop:Generator_RowChangedName="СпециальностьRowChanged" msprop:Generator_RowClassName="СпециальностьRow" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>
                   <xs:appinfo>
-                    <msdata:Relationship name="Работник_Специальность" msdata:parent="Работник" msdata:child="Специальность" msdata:parentkey="Код_специальности" msdata:childkey="Код_специальности" msprop:Generator_UserChildTable="Специальность" msprop:Generator_ChildPropName="GetСпециальностьRows" msprop:Generator_ParentPropName="РаботникRow" msprop:Generator_UserRelationName="Работник_Специальность" msprop:Generator_RelationVarName="relationРаботник_Специальность" msprop:Generator_UserParentTable="Работник" />
+                    <msdata:Relationship name="Работник_Специальность" msdata:parent="Работник" msdata:child="Специальность" msdata:parentkey="Код_специальности" msdata:childkey="Код_специальности" msprop:Generator_UserChildTable="Специальность" msprop:Generator_ChildPropName="GetСпециальностьRows" msprop:Generator_UserParentTable="Работник" msprop:Generator_UserRelationName="Работник_Специальность" msprop:Generator_RelationVarName="relationРаботник_Специальность" msprop:Generator_ParentPropName="РаботникRow" />
                   </xs:appinfo>
                 </xs:annotation>
                 <xs:complexType>
@@ -781,7 +810,7 @@ FROM            Работник INNER JOIN
               <xs:element name="Отдел" msprop:Generator_TableClassName="ОтделDataTable" msprop:Generator_TableVarName="tableОтдел" msprop:Generator_TablePropName="Отдел" msprop:Generator_RowDeletingName="ОтделRowDeleting" msprop:Generator_UserTableName="Отдел" msprop:Generator_RowChangingName="ОтделRowChanging" msprop:Generator_RowEvHandlerName="ОтделRowChangeEventHandler" msprop:Generator_RowDeletedName="ОтделRowDeleted" msprop:Generator_RowEvArgName="ОтделRowChangeEvent" msprop:Generator_RowChangedName="ОтделRowChanged" msprop:Generator_RowClassName="ОтделRow" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>
                   <xs:appinfo>
-                    <msdata:Relationship name="Работник_Отдел" msdata:parent="Работник" msdata:child="Отдел" msdata:parentkey="Код_отдела" msdata:childkey="Код_отдела" msprop:Generator_UserChildTable="Отдел" msprop:Generator_ChildPropName="GetОтделRows" msprop:Generator_ParentPropName="РаботникRow" msprop:Generator_UserRelationName="Работник_Отдел" msprop:Generator_RelationVarName="relationРаботник_Отдел" msprop:Generator_UserParentTable="Работник" />
+                    <msdata:Relationship name="Работник_Отдел" msdata:parent="Работник" msdata:child="Отдел" msdata:parentkey="Код_отдела" msdata:childkey="Код_отдела" msprop:Generator_UserChildTable="Отдел" msprop:Generator_ChildPropName="GetОтделRows" msprop:Generator_UserParentTable="Работник" msprop:Generator_UserRelationName="Работник_Отдел" msprop:Generator_RelationVarName="relationРаботник_Отдел" msprop:Generator_ParentPropName="РаботникRow" />
                   </xs:appinfo>
                 </xs:annotation>
                 <xs:complexType>
@@ -808,7 +837,7 @@ FROM            Работник INNER JOIN
               <xs:element name="Ставка" msprop:Generator_TableClassName="СтавкаDataTable" msprop:Generator_TableVarName="tableСтавка" msprop:Generator_TablePropName="Ставка" msprop:Generator_RowDeletingName="СтавкаRowDeleting" msprop:Generator_UserTableName="Ставка" msprop:Generator_RowChangingName="СтавкаRowChanging" msprop:Generator_RowEvHandlerName="СтавкаRowChangeEventHandler" msprop:Generator_RowDeletedName="СтавкаRowDeleted" msprop:Generator_RowEvArgName="СтавкаRowChangeEvent" msprop:Generator_RowChangedName="СтавкаRowChanged" msprop:Generator_RowClassName="СтавкаRow" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>
                   <xs:appinfo>
-                    <msdata:Relationship name="Работник_Ставка" msdata:parent="Работник" msdata:child="Ставка" msdata:parentkey="Код_ставки" msdata:childkey="Код_ставки" msprop:Generator_UserChildTable="Ставка" msprop:Generator_ChildPropName="GetСтавкаRows" msprop:Generator_ParentPropName="РаботникRow" msprop:Generator_UserRelationName="Работник_Ставка" msprop:Generator_RelationVarName="relationРаботник_Ставка" msprop:Generator_UserParentTable="Работник" />
+                    <msdata:Relationship name="Работник_Ставка" msdata:parent="Работник" msdata:child="Ставка" msdata:parentkey="Код_ставки" msdata:childkey="Код_ставки" msprop:Generator_UserChildTable="Ставка" msprop:Generator_ChildPropName="GetСтавкаRows" msprop:Generator_UserParentTable="Работник" msprop:Generator_UserRelationName="Работник_Ставка" msprop:Generator_RelationVarName="relationРаботник_Ставка" msprop:Generator_ParentPropName="РаботникRow" />
                   </xs:appinfo>
                 </xs:annotation>
                 <xs:complexType>
@@ -866,6 +895,41 @@ FROM            Работник INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="SalaryJoinEmployer" msprop:Generator_TableClassName="SalaryJoinEmployerDataTable" msprop:Generator_TableVarName="tableSalaryJoinEmployer" msprop:Generator_TablePropName="SalaryJoinEmployer" msprop:Generator_RowDeletingName="SalaryJoinEmployerRowDeleting" msprop:Generator_UserTableName="SalaryJoinEmployer" msprop:Generator_RowChangingName="SalaryJoinEmployerRowChanging" msprop:Generator_RowEvHandlerName="SalaryJoinEmployerRowChangeEventHandler" msprop:Generator_RowDeletedName="SalaryJoinEmployerRowDeleted" msprop:Generator_RowEvArgName="SalaryJoinEmployerRowChangeEvent" msprop:Generator_RowChangedName="SalaryJoinEmployerRowChanged" msprop:Generator_RowClassName="SalaryJoinEmployerRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Месяц" msprop:Generator_ColumnVarNameInTable="columnМесяц" msprop:Generator_ColumnPropNameInRow="Месяц" msprop:Generator_ColumnPropNameInTable="МесяцColumn" msprop:Generator_UserColumnName="Месяц" type="xs:unsignedByte" />
+              <xs:element name="Оклад" msprop:Generator_ColumnVarNameInTable="columnОклад" msprop:Generator_ColumnPropNameInRow="Оклад" msprop:Generator_ColumnPropNameInTable="ОкладColumn" msprop:Generator_UserColumnName="Оклад" type="xs:decimal" />
+              <xs:element name="На_руки" msprop:Generator_ColumnVarNameInTable="columnНа_руки" msprop:Generator_ColumnPropNameInRow="На_руки" msprop:Generator_ColumnPropNameInTable="На_рукиColumn" msprop:Generator_UserColumnName="На_руки" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Год" msprop:Generator_ColumnVarNameInTable="columnГод" msprop:Generator_ColumnPropNameInRow="Год" msprop:Generator_ColumnPropNameInTable="ГодColumn" msprop:Generator_UserColumnName="Год" type="xs:int" />
+              <xs:element name="Код_зарплаты" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnКод_зарплаты" msprop:Generator_ColumnPropNameInRow="Код_зарплаты" msprop:Generator_ColumnPropNameInTable="Код_зарплатыColumn" msprop:Generator_UserColumnName="Код_зарплаты" type="xs:long" />
+              <xs:element name="Дата_выдачи" msprop:Generator_ColumnVarNameInTable="columnДата_выдачи" msprop:Generator_ColumnPropNameInRow="Дата_выдачи" msprop:Generator_ColumnPropNameInTable="Дата_выдачиColumn" msprop:Generator_UserColumnName="Дата_выдачи" type="xs:dateTime" />
+              <xs:element name="Код_работника" msprop:Generator_ColumnVarNameInTable="columnКод_работника" msprop:Generator_ColumnPropNameInRow="Код_работника" msprop:Generator_ColumnPropNameInTable="Код_работникаColumn" msprop:Generator_UserColumnName="Код_работника" type="xs:long" />
+              <xs:element name="Имя" msprop:Generator_ColumnVarNameInTable="columnИмя" msprop:Generator_ColumnPropNameInRow="Имя" msprop:Generator_ColumnPropNameInTable="ИмяColumn" msprop:Generator_UserColumnName="Имя">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Отчество" msprop:Generator_ColumnVarNameInTable="columnОтчество" msprop:Generator_ColumnPropNameInRow="Отчество" msprop:Generator_ColumnPropNameInTable="ОтчествоColumn" msprop:Generator_UserColumnName="Отчество">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Фамилия" msprop:Generator_ColumnVarNameInTable="columnФамилия" msprop:Generator_ColumnPropNameInRow="Фамилия" msprop:Generator_ColumnPropNameInTable="ФамилияColumn" msprop:Generator_UserColumnName="Фамилия">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr7" msprop:Generator_ColumnVarNameInTable="columnExpr7" msprop:Generator_ColumnPropNameInRow="Expr7" msprop:Generator_ColumnPropNameInTable="Expr7Column" msprop:Generator_UserColumnName="Expr7" type="xs:long" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -904,17 +968,24 @@ FROM            Работник INNER JOIN
       <xs:selector xpath=".//mstns:Работник" />
       <xs:field xpath="mstns:Код_работника" />
     </xs:unique>
+    <xs:unique name="SalaryJoinEmployer_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SalaryJoinEmployer" />
+      <xs:field xpath="mstns:Код_зарплаты" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_Вычет_ЗП_Зарплата" msdata:parent="Зарплата" msdata:child="Вычет_ЗП" msdata:parentkey="Код_зарплаты" msdata:childkey="Код_зарплаты" msprop:Generator_UserChildTable="Вычет_ЗП" msprop:Generator_ChildPropName="GetВычет_ЗПRows" msprop:Generator_UserParentTable="Зарплата" msprop:Generator_UserRelationName="FK_Вычет_ЗП_Зарплата" msprop:Generator_RelationVarName="relationFK_Вычет_ЗП_Зарплата" msprop:Generator_ParentPropName="ЗарплатаRow" />
-      <msdata:Relationship name="FK_Прибавка_ЗП_Зарплата" msdata:parent="Зарплата" msdata:child="Прибавка_ЗП" msdata:parentkey="Код_зарплаты" msdata:childkey="Код_зарплаты" msprop:Generator_UserChildTable="Прибавка_ЗП" msprop:Generator_ChildPropName="GetПрибавка_ЗПRows" msprop:Generator_UserParentTable="Зарплата" msprop:Generator_UserRelationName="FK_Прибавка_ЗП_Зарплата" msprop:Generator_RelationVarName="relationFK_Прибавка_ЗП_Зарплата" msprop:Generator_ParentPropName="ЗарплатаRow" />
-      <msdata:Relationship name="FK_Зарплата_Работник" msdata:parent="Работник" msdata:child="Зарплата" msdata:parentkey="Код_работника" msdata:childkey="Код_работника" msprop:Generator_UserChildTable="Зарплата" msprop:Generator_ChildPropName="GetЗарплатаRows" msprop:Generator_ParentPropName="РаботникRow" msprop:Generator_UserRelationName="FK_Зарплата_Работник" msprop:Generator_RelationVarName="relationFK_Зарплата_Работник" msprop:Generator_UserParentTable="Работник" />
-      <msdata:Relationship name="FK_Пропуск_Работник" msdata:parent="Работник" msdata:child="Пропуск" msdata:parentkey="Код_работника" msdata:childkey="Код_работника" msprop:Generator_UserChildTable="Пропуск" msprop:Generator_ChildPropName="GetПропускRows" msprop:Generator_ParentPropName="РаботникRow" msprop:Generator_UserRelationName="FK_Пропуск_Работник" msprop:Generator_RelationVarName="relationFK_Пропуск_Работник" msprop:Generator_UserParentTable="Работник" />
-      <msdata:Relationship name="FK_Работник_Отдел" msdata:parent="Отдел" msdata:child="Работник" msdata:parentkey="Код_отдела" msdata:childkey="Код_отдела" msprop:Generator_UserChildTable="Работник" msprop:Generator_ChildPropName="GetРаботникRows" msprop:Generator_ParentPropName="ОтделRow" msprop:Generator_UserRelationName="FK_Работник_Отдел" msprop:Generator_RelationVarName="relationFK_Работник_Отдел" msprop:Generator_UserParentTable="Отдел" />
-      <msdata:Relationship name="FK_Работник_Специальность" msdata:parent="Специальность" msdata:child="Работник" msdata:parentkey="Код_специальности" msdata:childkey="Код_специальности" msprop:Generator_UserChildTable="Работник" msprop:Generator_ChildPropName="GetРаботникRows" msprop:Generator_ParentPropName="СпециальностьRow" msprop:Generator_UserRelationName="FK_Работник_Специальность" msprop:Generator_RelationVarName="relationFK_Работник_Специальность" msprop:Generator_UserParentTable="Специальность" />
-      <msdata:Relationship name="FK_Работник_Ставка" msdata:parent="Ставка" msdata:child="Работник" msdata:parentkey="Код_ставки" msdata:childkey="Код_ставки" msprop:Generator_UserChildTable="Работник" msprop:Generator_ChildPropName="GetРаботникRows" msprop:Generator_ParentPropName="СтавкаRow" msprop:Generator_UserRelationName="FK_Работник_Ставка" msprop:Generator_RelationVarName="relationFK_Работник_Ставка" msprop:Generator_UserParentTable="Ставка" />
-      <msdata:Relationship name="FK_Пропуск_Работник1" msdata:parent="Работник" msdata:child="LostDayReport" msdata:parentkey="Код_работника" msdata:childkey="Код_работника" msprop:Generator_UserChildTable="LostDayReport" msprop:Generator_ChildPropName="GetLostDayReportRows" msprop:Generator_ParentPropName="РаботникRow" msprop:Generator_UserRelationName="FK_Пропуск_Работник1" msprop:Generator_RelationVarName="relationFK_Пропуск_Работник1" msprop:Generator_UserParentTable="Работник" />
+      <msdata:Relationship name="FK_Вычет_ЗП_Зарплата" msdata:parent="Зарплата" msdata:child="Вычет_ЗП" msdata:parentkey="Код_зарплаты" msdata:childkey="Код_зарплаты" msprop:Generator_UserChildTable="Вычет_ЗП" msprop:Generator_ChildPropName="GetВычет_ЗПRows" msprop:Generator_ParentPropName="ЗарплатаRow" msprop:Generator_UserRelationName="FK_Вычет_ЗП_Зарплата" msprop:Generator_RelationVarName="relationFK_Вычет_ЗП_Зарплата" msprop:Generator_UserParentTable="Зарплата" />
+      <msdata:Relationship name="FK_Прибавка_ЗП_Зарплата" msdata:parent="Зарплата" msdata:child="Прибавка_ЗП" msdata:parentkey="Код_зарплаты" msdata:childkey="Код_зарплаты" msprop:Generator_UserChildTable="Прибавка_ЗП" msprop:Generator_ChildPropName="GetПрибавка_ЗПRows" msprop:Generator_ParentPropName="ЗарплатаRow" msprop:Generator_UserRelationName="FK_Прибавка_ЗП_Зарплата" msprop:Generator_RelationVarName="relationFK_Прибавка_ЗП_Зарплата" msprop:Generator_UserParentTable="Зарплата" />
+      <msdata:Relationship name="FK_Зарплата_Работник" msdata:parent="Работник" msdata:child="Зарплата" msdata:parentkey="Код_работника" msdata:childkey="Код_работника" msprop:Generator_UserChildTable="Зарплата" msprop:Generator_ChildPropName="GetЗарплатаRows" msprop:Generator_UserParentTable="Работник" msprop:Generator_UserRelationName="FK_Зарплата_Работник" msprop:Generator_RelationVarName="relationFK_Зарплата_Работник" msprop:Generator_ParentPropName="РаботникRow" />
+      <msdata:Relationship name="FK_Пропуск_Работник" msdata:parent="Работник" msdata:child="Пропуск" msdata:parentkey="Код_работника" msdata:childkey="Код_работника" msprop:Generator_UserChildTable="Пропуск" msprop:Generator_ChildPropName="GetПропускRows" msprop:Generator_UserParentTable="Работник" msprop:Generator_UserRelationName="FK_Пропуск_Работник" msprop:Generator_RelationVarName="relationFK_Пропуск_Работник" msprop:Generator_ParentPropName="РаботникRow" />
+      <msdata:Relationship name="FK_Работник_Отдел" msdata:parent="Отдел" msdata:child="Работник" msdata:parentkey="Код_отдела" msdata:childkey="Код_отдела" msprop:Generator_UserChildTable="Работник" msprop:Generator_ChildPropName="GetРаботникRows" msprop:Generator_UserParentTable="Отдел" msprop:Generator_UserRelationName="FK_Работник_Отдел" msprop:Generator_RelationVarName="relationFK_Работник_Отдел" msprop:Generator_ParentPropName="ОтделRow" />
+      <msdata:Relationship name="FK_Работник_Специальность" msdata:parent="Специальность" msdata:child="Работник" msdata:parentkey="Код_специальности" msdata:childkey="Код_специальности" msprop:Generator_UserChildTable="Работник" msprop:Generator_ChildPropName="GetРаботникRows" msprop:Generator_UserParentTable="Специальность" msprop:Generator_UserRelationName="FK_Работник_Специальность" msprop:Generator_RelationVarName="relationFK_Работник_Специальность" msprop:Generator_ParentPropName="СпециальностьRow" />
+      <msdata:Relationship name="FK_Работник_Ставка" msdata:parent="Ставка" msdata:child="Работник" msdata:parentkey="Код_ставки" msdata:childkey="Код_ставки" msprop:Generator_UserChildTable="Работник" msprop:Generator_ChildPropName="GetРаботникRows" msprop:Generator_UserParentTable="Ставка" msprop:Generator_UserRelationName="FK_Работник_Ставка" msprop:Generator_RelationVarName="relationFK_Работник_Ставка" msprop:Generator_ParentPropName="СтавкаRow" />
+      <msdata:Relationship name="FK_Пропуск_Работник1" msdata:parent="Работник" msdata:child="LostDayReport" msdata:parentkey="Код_работника" msdata:childkey="Код_работника" msprop:Generator_UserChildTable="LostDayReport" msprop:Generator_ChildPropName="GetLostDayReportRows" msprop:Generator_UserParentTable="Работник" msprop:Generator_UserRelationName="FK_Пропуск_Работник1" msprop:Generator_RelationVarName="relationFK_Пропуск_Работник1" msprop:Generator_ParentPropName="РаботникRow" />
+      <msdata:Relationship name="FK_Вычет_ЗП_Зарплата1" msdata:parent="SalaryJoinEmployer" msdata:child="Вычет_ЗП" msdata:parentkey="Код_зарплаты" msdata:childkey="Код_зарплаты" msprop:Generator_UserChildTable="Вычет_ЗП" msprop:Generator_ChildPropName="GetВычет_ЗПRows" msprop:Generator_ParentPropName="SalaryJoinEmployerRow" msprop:Generator_UserRelationName="FK_Вычет_ЗП_Зарплата1" msprop:Generator_RelationVarName="relationFK_Вычет_ЗП_Зарплата1" msprop:Generator_UserParentTable="SalaryJoinEmployer" />
+      <msdata:Relationship name="FK_Прибавка_ЗП_Зарплата1" msdata:parent="SalaryJoinEmployer" msdata:child="Прибавка_ЗП" msdata:parentkey="Код_зарплаты" msdata:childkey="Код_зарплаты" msprop:Generator_UserChildTable="Прибавка_ЗП" msprop:Generator_ChildPropName="GetПрибавка_ЗПRows" msprop:Generator_ParentPropName="SalaryJoinEmployerRow" msprop:Generator_UserRelationName="FK_Прибавка_ЗП_Зарплата1" msprop:Generator_RelationVarName="relationFK_Прибавка_ЗП_Зарплата1" msprop:Generator_UserParentTable="SalaryJoinEmployer" />
+      <msdata:Relationship name="FK_Зарплата_Работник1" msdata:parent="Работник" msdata:child="SalaryJoinEmployer" msdata:parentkey="Код_работника" msdata:childkey="Код_работника" msprop:Generator_UserChildTable="SalaryJoinEmployer" msprop:Generator_ChildPropName="GetSalaryJoinEmployerRows" msprop:Generator_ParentPropName="РаботникRow" msprop:Generator_UserRelationName="FK_Зарплата_Работник1" msprop:Generator_RelationVarName="relationFK_Зарплата_Работник1" msprop:Generator_UserParentTable="Работник" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

@@ -46,6 +46,10 @@ Represents the strongly named DataTable class.
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
+</member><member name="T:Salaries.SalariesDataSet.SalaryJoinEmployerDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
 </member><member name="T:Salaries.SalariesDataSet.Вычет_ЗПRow">
 	<summary>
 Represents strongly named DataRow class.
@@ -86,6 +90,10 @@ Represents strongly named DataRow class.
 	<summary>
 Represents strongly named DataRow class.
 </summary>
+</member><member name="T:Salaries.SalariesDataSet.SalaryJoinEmployerRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
 </member><member name="T:Salaries.SalariesDataSet.Вычет_ЗПRowChangeEvent">
 	<summary>
 Row event argument class
@@ -123,6 +131,10 @@ Row event argument class
 Row event argument class
 </summary>
 </member><member name="T:Salaries.SalariesDataSet.LostDayReportRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Salaries.SalariesDataSet.SalaryJoinEmployerRowChangeEvent">
 	<summary>
 Row event argument class
 </summary>
@@ -167,6 +179,10 @@ Represents the connection and commands used to retrieve and save data.
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member><member name="T:Salaries.SalariesDataSetTableAdapters.LostDayReportTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Salaries.SalariesDataSetTableAdapters.SalaryJoinEmployerTableAdapter">
 	<summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
