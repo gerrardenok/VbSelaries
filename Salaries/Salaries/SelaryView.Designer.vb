@@ -23,7 +23,6 @@ Partial Class SelaryView
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SelaryView))
         Dim МесяцLabel As System.Windows.Forms.Label
         Dim ОкладLabel As System.Windows.Forms.Label
         Dim На_рукиLabel As System.Windows.Forms.Label
@@ -36,6 +35,7 @@ Partial Class SelaryView
         Dim Сумма_вычетаLabel As System.Windows.Forms.Label
         Dim НазваниеLabel2 As System.Windows.Forms.Label
         Dim Сумма_прибавкиLabel As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SelaryView))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -43,19 +43,18 @@ Partial Class SelaryView
         Me.SalaryJoinEmployerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SalaryJoinEmployerTableAdapter = New Salaries.SalariesDataSetTableAdapters.SalaryJoinEmployerTableAdapter()
         Me.TableAdapterManager = New Salaries.SalariesDataSetTableAdapters.TableAdapterManager()
+        Me.Вычет_ЗПTableAdapter = New Salaries.SalariesDataSetTableAdapters.Вычет_ЗПTableAdapter()
+        Me.Прибавка_ЗПTableAdapter = New Salaries.SalariesDataSetTableAdapters.Прибавка_ЗПTableAdapter()
         Me.SalaryJoinEmployerBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
+        Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
         Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
         Me.BindingNavigatorPositionItem = New System.Windows.Forms.ToolStripTextBox()
-        Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
         Me.BindingNavigatorSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
-        Me.SalaryJoinEmployerBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
         Me.МесяцLabel1 = New System.Windows.Forms.Label()
         Me.ОкладLabel1 = New System.Windows.Forms.Label()
         Me.На_рукиLabel1 = New System.Windows.Forms.Label()
@@ -66,15 +65,15 @@ Partial Class SelaryView
         Me.ФамилияLabel1 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Вычет_ЗПBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Вычет_ЗПTableAdapter = New Salaries.SalariesDataSetTableAdapters.Вычет_ЗПTableAdapter()
         Me.Вычет_ЗПDataRepeater = New Microsoft.VisualBasic.PowerPacks.DataRepeater()
-        Me.НазваниеLabel1 = New System.Windows.Forms.Label()
         Me.Сумма_вычетаLabel1 = New System.Windows.Forms.Label()
+        Me.НазваниеLabel1 = New System.Windows.Forms.Label()
         Me.Прибавка_ЗПBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Прибавка_ЗПTableAdapter = New Salaries.SalariesDataSetTableAdapters.Прибавка_ЗПTableAdapter()
         Me.Прибавка_ЗПDataRepeater = New Microsoft.VisualBasic.PowerPacks.DataRepeater()
-        Me.НазваниеLabel3 = New System.Windows.Forms.Label()
         Me.Сумма_прибавкиLabel1 = New System.Windows.Forms.Label()
+        Me.НазваниеLabel3 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         МесяцLabel = New System.Windows.Forms.Label()
         ОкладLabel = New System.Windows.Forms.Label()
         На_рукиLabel = New System.Windows.Forms.Label()
@@ -99,6 +98,114 @@ Partial Class SelaryView
         Me.Прибавка_ЗПDataRepeater.ItemTemplate.SuspendLayout()
         Me.Прибавка_ЗПDataRepeater.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'МесяцLabel
+        '
+        МесяцLabel.AutoSize = True
+        МесяцLabel.Location = New System.Drawing.Point(191, 16)
+        МесяцLabel.Name = "МесяцLabel"
+        МесяцLabel.Size = New System.Drawing.Size(43, 13)
+        МесяцLabel.TabIndex = 20
+        МесяцLabel.Text = "Месяц:"
+        '
+        'ОкладLabel
+        '
+        ОкладLabel.AutoSize = True
+        ОкладLabel.Location = New System.Drawing.Point(17, 100)
+        ОкладLabel.Name = "ОкладLabel"
+        ОкладLabel.Size = New System.Drawing.Size(42, 13)
+        ОкладLabel.TabIndex = 22
+        ОкладLabel.Text = "Оклад:"
+        '
+        'На_рукиLabel
+        '
+        На_рукиLabel.AutoSize = True
+        На_рукиLabel.Location = New System.Drawing.Point(191, 100)
+        На_рукиLabel.Name = "На_рукиLabel"
+        На_рукиLabel.Size = New System.Drawing.Size(50, 13)
+        На_рукиLabel.TabIndex = 24
+        На_рукиLabel.Text = "На руки:"
+        '
+        'ГодLabel
+        '
+        ГодLabel.AutoSize = True
+        ГодLabel.Location = New System.Drawing.Point(191, 39)
+        ГодLabel.Name = "ГодLabel"
+        ГодLabel.Size = New System.Drawing.Size(28, 13)
+        ГодLabel.TabIndex = 26
+        ГодLabel.Text = "Год:"
+        '
+        'Дата_выдачиLabel
+        '
+        Дата_выдачиLabel.AutoSize = True
+        Дата_выдачиLabel.Location = New System.Drawing.Point(15, 123)
+        Дата_выдачиLabel.Name = "Дата_выдачиLabel"
+        Дата_выдачиLabel.Size = New System.Drawing.Size(76, 13)
+        Дата_выдачиLabel.TabIndex = 30
+        Дата_выдачиLabel.Text = "Дата выдачи:"
+        '
+        'ИмяLabel
+        '
+        ИмяLabel.AutoSize = True
+        ИмяLabel.Location = New System.Drawing.Point(15, 16)
+        ИмяLabel.Name = "ИмяLabel"
+        ИмяLabel.Size = New System.Drawing.Size(32, 13)
+        ИмяLabel.TabIndex = 34
+        ИмяLabel.Text = "Имя:"
+        '
+        'ОтчествоLabel
+        '
+        ОтчествоLabel.AutoSize = True
+        ОтчествоLabel.Location = New System.Drawing.Point(15, 39)
+        ОтчествоLabel.Name = "ОтчествоLabel"
+        ОтчествоLabel.Size = New System.Drawing.Size(57, 13)
+        ОтчествоLabel.TabIndex = 36
+        ОтчествоLabel.Text = "Отчество:"
+        '
+        'ФамилияLabel
+        '
+        ФамилияLabel.AutoSize = True
+        ФамилияLabel.Location = New System.Drawing.Point(15, 62)
+        ФамилияLabel.Name = "ФамилияLabel"
+        ФамилияLabel.Size = New System.Drawing.Size(59, 13)
+        ФамилияLabel.TabIndex = 38
+        ФамилияLabel.Text = "Фамилия:"
+        '
+        'НазваниеLabel
+        '
+        НазваниеLabel.AutoSize = True
+        НазваниеLabel.Location = New System.Drawing.Point(19, 12)
+        НазваниеLabel.Name = "НазваниеLabel"
+        НазваниеLabel.Size = New System.Drawing.Size(60, 13)
+        НазваниеLabel.TabIndex = 0
+        НазваниеLabel.Text = "Название:"
+        '
+        'Сумма_вычетаLabel
+        '
+        Сумма_вычетаLabel.AutoSize = True
+        Сумма_вычетаLabel.Location = New System.Drawing.Point(22, 48)
+        Сумма_вычетаLabel.Name = "Сумма_вычетаLabel"
+        Сумма_вычетаLabel.Size = New System.Drawing.Size(83, 13)
+        Сумма_вычетаLabel.TabIndex = 2
+        Сумма_вычетаLabel.Text = "Сумма вычета:"
+        '
+        'НазваниеLabel2
+        '
+        НазваниеLabel2.AutoSize = True
+        НазваниеLabel2.Location = New System.Drawing.Point(16, 12)
+        НазваниеLabel2.Name = "НазваниеLabel2"
+        НазваниеLabel2.Size = New System.Drawing.Size(60, 13)
+        НазваниеLabel2.TabIndex = 0
+        НазваниеLabel2.Text = "Название:"
+        '
+        'Сумма_прибавкиLabel
+        '
+        Сумма_прибавкиLabel.AutoSize = True
+        Сумма_прибавкиLabel.Location = New System.Drawing.Point(17, 47)
+        Сумма_прибавкиLabel.Name = "Сумма_прибавкиLabel"
+        Сумма_прибавкиLabel.Size = New System.Drawing.Size(95, 13)
+        Сумма_прибавкиLabel.TabIndex = 2
+        Сумма_прибавкиLabel.Text = "Сумма прибавки:"
         '
         'Label1
         '
@@ -160,13 +267,21 @@ Partial Class SelaryView
         Me.TableAdapterManager.СпециальностьTableAdapter = Nothing
         Me.TableAdapterManager.СтавкаTableAdapter = Nothing
         '
+        'Вычет_ЗПTableAdapter
+        '
+        Me.Вычет_ЗПTableAdapter.ClearBeforeFill = True
+        '
+        'Прибавка_ЗПTableAdapter
+        '
+        Me.Прибавка_ЗПTableAdapter.ClearBeforeFill = True
+        '
         'SalaryJoinEmployerBindingNavigator
         '
-        Me.SalaryJoinEmployerBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
+        Me.SalaryJoinEmployerBindingNavigator.AddNewItem = Nothing
         Me.SalaryJoinEmployerBindingNavigator.BindingSource = Me.SalaryJoinEmployerBindingSource
         Me.SalaryJoinEmployerBindingNavigator.CountItem = Me.BindingNavigatorCountItem
-        Me.SalaryJoinEmployerBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
-        Me.SalaryJoinEmployerBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.SalaryJoinEmployerBindingNavigatorSaveItem})
+        Me.SalaryJoinEmployerBindingNavigator.DeleteItem = Nothing
+        Me.SalaryJoinEmployerBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2})
         Me.SalaryJoinEmployerBindingNavigator.Location = New System.Drawing.Point(0, 0)
         Me.SalaryJoinEmployerBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
         Me.SalaryJoinEmployerBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
@@ -177,6 +292,13 @@ Partial Class SelaryView
         Me.SalaryJoinEmployerBindingNavigator.Size = New System.Drawing.Size(759, 25)
         Me.SalaryJoinEmployerBindingNavigator.TabIndex = 20
         Me.SalaryJoinEmployerBindingNavigator.Text = "BindingNavigator1"
+        '
+        'BindingNavigatorCountItem
+        '
+        Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
+        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(35, 22)
+        Me.BindingNavigatorCountItem.Text = "of {0}"
+        Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
         '
         'BindingNavigatorMoveFirstItem
         '
@@ -210,17 +332,10 @@ Partial Class SelaryView
         Me.BindingNavigatorPositionItem.Text = "0"
         Me.BindingNavigatorPositionItem.ToolTipText = "Current position"
         '
-        'BindingNavigatorCountItem
-        '
-        Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
-        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(35, 15)
-        Me.BindingNavigatorCountItem.Text = "of {0}"
-        Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
-        '
         'BindingNavigatorSeparator1
         '
-        Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator"
-        Me.BindingNavigatorSeparator1.Size = New System.Drawing.Size(6, 6)
+        Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator1"
+        Me.BindingNavigatorSeparator1.Size = New System.Drawing.Size(6, 25)
         '
         'BindingNavigatorMoveNextItem
         '
@@ -228,7 +343,7 @@ Partial Class SelaryView
         Me.BindingNavigatorMoveNextItem.Image = CType(resources.GetObject("BindingNavigatorMoveNextItem.Image"), System.Drawing.Image)
         Me.BindingNavigatorMoveNextItem.Name = "BindingNavigatorMoveNextItem"
         Me.BindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveNextItem.Size = New System.Drawing.Size(23, 20)
+        Me.BindingNavigatorMoveNextItem.Size = New System.Drawing.Size(23, 22)
         Me.BindingNavigatorMoveNextItem.Text = "Move next"
         '
         'BindingNavigatorMoveLastItem
@@ -237,49 +352,13 @@ Partial Class SelaryView
         Me.BindingNavigatorMoveLastItem.Image = CType(resources.GetObject("BindingNavigatorMoveLastItem.Image"), System.Drawing.Image)
         Me.BindingNavigatorMoveLastItem.Name = "BindingNavigatorMoveLastItem"
         Me.BindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveLastItem.Size = New System.Drawing.Size(23, 20)
+        Me.BindingNavigatorMoveLastItem.Size = New System.Drawing.Size(23, 22)
         Me.BindingNavigatorMoveLastItem.Text = "Move last"
         '
         'BindingNavigatorSeparator2
         '
-        Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator"
-        Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 6)
-        '
-        'BindingNavigatorAddNewItem
-        '
-        Me.BindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorAddNewItem.Image = CType(resources.GetObject("BindingNavigatorAddNewItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorAddNewItem.Name = "BindingNavigatorAddNewItem"
-        Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorAddNewItem.Text = "Add new"
-        '
-        'BindingNavigatorDeleteItem
-        '
-        Me.BindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorDeleteItem.Image = CType(resources.GetObject("BindingNavigatorDeleteItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
-        Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(23, 20)
-        Me.BindingNavigatorDeleteItem.Text = "Delete"
-        '
-        'SalaryJoinEmployerBindingNavigatorSaveItem
-        '
-        Me.SalaryJoinEmployerBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.SalaryJoinEmployerBindingNavigatorSaveItem.Enabled = False
-        Me.SalaryJoinEmployerBindingNavigatorSaveItem.Image = CType(resources.GetObject("SalaryJoinEmployerBindingNavigatorSaveItem.Image"), System.Drawing.Image)
-        Me.SalaryJoinEmployerBindingNavigatorSaveItem.Name = "SalaryJoinEmployerBindingNavigatorSaveItem"
-        Me.SalaryJoinEmployerBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 20)
-        Me.SalaryJoinEmployerBindingNavigatorSaveItem.Text = "Save Data"
-        '
-        'МесяцLabel
-        '
-        МесяцLabel.AutoSize = True
-        МесяцLabel.Location = New System.Drawing.Point(191, 16)
-        МесяцLabel.Name = "МесяцLabel"
-        МесяцLabel.Size = New System.Drawing.Size(43, 13)
-        МесяцLabel.TabIndex = 20
-        МесяцLabel.Text = "Месяц:"
+        Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
+        Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
         '
         'МесяцLabel1
         '
@@ -290,15 +369,6 @@ Partial Class SelaryView
         Me.МесяцLabel1.TabIndex = 21
         Me.МесяцLabel1.Text = "Label4"
         '
-        'ОкладLabel
-        '
-        ОкладLabel.AutoSize = True
-        ОкладLabel.Location = New System.Drawing.Point(17, 100)
-        ОкладLabel.Name = "ОкладLabel"
-        ОкладLabel.Size = New System.Drawing.Size(42, 13)
-        ОкладLabel.TabIndex = 22
-        ОкладLabel.Text = "Оклад:"
-        '
         'ОкладLabel1
         '
         Me.ОкладLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SalaryJoinEmployerBindingSource, "Оклад", True))
@@ -307,15 +377,6 @@ Partial Class SelaryView
         Me.ОкладLabel1.Size = New System.Drawing.Size(101, 23)
         Me.ОкладLabel1.TabIndex = 23
         Me.ОкладLabel1.Text = "Label4"
-        '
-        'На_рукиLabel
-        '
-        На_рукиLabel.AutoSize = True
-        На_рукиLabel.Location = New System.Drawing.Point(191, 100)
-        На_рукиLabel.Name = "На_рукиLabel"
-        На_рукиLabel.Size = New System.Drawing.Size(50, 13)
-        На_рукиLabel.TabIndex = 24
-        На_рукиLabel.Text = "На руки:"
         '
         'На_рукиLabel1
         '
@@ -326,15 +387,6 @@ Partial Class SelaryView
         Me.На_рукиLabel1.TabIndex = 25
         Me.На_рукиLabel1.Text = "Label4"
         '
-        'ГодLabel
-        '
-        ГодLabel.AutoSize = True
-        ГодLabel.Location = New System.Drawing.Point(191, 39)
-        ГодLabel.Name = "ГодLabel"
-        ГодLabel.Size = New System.Drawing.Size(28, 13)
-        ГодLabel.TabIndex = 26
-        ГодLabel.Text = "Год:"
-        '
         'ГодLabel1
         '
         Me.ГодLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SalaryJoinEmployerBindingSource, "Год", True))
@@ -343,15 +395,6 @@ Partial Class SelaryView
         Me.ГодLabel1.Size = New System.Drawing.Size(77, 23)
         Me.ГодLabel1.TabIndex = 27
         Me.ГодLabel1.Text = "Label4"
-        '
-        'Дата_выдачиLabel
-        '
-        Дата_выдачиLabel.AutoSize = True
-        Дата_выдачиLabel.Location = New System.Drawing.Point(15, 123)
-        Дата_выдачиLabel.Name = "Дата_выдачиLabel"
-        Дата_выдачиLabel.Size = New System.Drawing.Size(76, 13)
-        Дата_выдачиLabel.TabIndex = 30
-        Дата_выдачиLabel.Text = "Дата выдачи:"
         '
         'Дата_выдачиLabel1
         '
@@ -362,15 +405,6 @@ Partial Class SelaryView
         Me.Дата_выдачиLabel1.TabIndex = 31
         Me.Дата_выдачиLabel1.Text = "Label4"
         '
-        'ИмяLabel
-        '
-        ИмяLabel.AutoSize = True
-        ИмяLabel.Location = New System.Drawing.Point(15, 16)
-        ИмяLabel.Name = "ИмяLabel"
-        ИмяLabel.Size = New System.Drawing.Size(32, 13)
-        ИмяLabel.TabIndex = 34
-        ИмяLabel.Text = "Имя:"
-        '
         'ИмяLabel1
         '
         Me.ИмяLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SalaryJoinEmployerBindingSource, "Имя", True))
@@ -380,15 +414,6 @@ Partial Class SelaryView
         Me.ИмяLabel1.TabIndex = 35
         Me.ИмяLabel1.Text = "Label4"
         '
-        'ОтчествоLabel
-        '
-        ОтчествоLabel.AutoSize = True
-        ОтчествоLabel.Location = New System.Drawing.Point(15, 39)
-        ОтчествоLabel.Name = "ОтчествоLabel"
-        ОтчествоLabel.Size = New System.Drawing.Size(57, 13)
-        ОтчествоLabel.TabIndex = 36
-        ОтчествоLabel.Text = "Отчество:"
-        '
         'ОтчествоLabel1
         '
         Me.ОтчествоLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SalaryJoinEmployerBindingSource, "Отчество", True))
@@ -397,15 +422,6 @@ Partial Class SelaryView
         Me.ОтчествоLabel1.Size = New System.Drawing.Size(100, 23)
         Me.ОтчествоLabel1.TabIndex = 37
         Me.ОтчествоLabel1.Text = "Label4"
-        '
-        'ФамилияLabel
-        '
-        ФамилияLabel.AutoSize = True
-        ФамилияLabel.Location = New System.Drawing.Point(15, 62)
-        ФамилияLabel.Name = "ФамилияLabel"
-        ФамилияLabel.Size = New System.Drawing.Size(59, 13)
-        ФамилияLabel.TabIndex = 38
-        ФамилияLabel.Text = "Фамилия:"
         '
         'ФамилияLabel1
         '
@@ -445,10 +461,6 @@ Partial Class SelaryView
         Me.Вычет_ЗПBindingSource.DataMember = "FK_Вычет_ЗП_Зарплата1"
         Me.Вычет_ЗПBindingSource.DataSource = Me.SalaryJoinEmployerBindingSource
         '
-        'Вычет_ЗПTableAdapter
-        '
-        Me.Вычет_ЗПTableAdapter.ClearBeforeFill = True
-        '
         'Вычет_ЗПDataRepeater
         '
         Me.Вычет_ЗПDataRepeater.DataSource = Me.Вычет_ЗПBindingSource
@@ -466,14 +478,14 @@ Partial Class SelaryView
         Me.Вычет_ЗПDataRepeater.TabIndex = 40
         Me.Вычет_ЗПDataRepeater.Text = "DataRepeater1"
         '
-        'НазваниеLabel
+        'Сумма_вычетаLabel1
         '
-        НазваниеLabel.AutoSize = True
-        НазваниеLabel.Location = New System.Drawing.Point(19, 12)
-        НазваниеLabel.Name = "НазваниеLabel"
-        НазваниеLabel.Size = New System.Drawing.Size(60, 13)
-        НазваниеLabel.TabIndex = 0
-        НазваниеLabel.Text = "Название:"
+        Me.Сумма_вычетаLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Вычет_ЗПBindingSource, "Сумма_вычета", True))
+        Me.Сумма_вычетаLabel1.Location = New System.Drawing.Point(111, 48)
+        Me.Сумма_вычетаLabel1.Name = "Сумма_вычетаLabel1"
+        Me.Сумма_вычетаLabel1.Size = New System.Drawing.Size(100, 23)
+        Me.Сумма_вычетаLabel1.TabIndex = 3
+        Me.Сумма_вычетаLabel1.Text = "Label4"
         '
         'НазваниеLabel1
         '
@@ -484,32 +496,10 @@ Partial Class SelaryView
         Me.НазваниеLabel1.TabIndex = 1
         Me.НазваниеLabel1.Text = "Label4"
         '
-        'Сумма_вычетаLabel
-        '
-        Сумма_вычетаLabel.AutoSize = True
-        Сумма_вычетаLabel.Location = New System.Drawing.Point(22, 48)
-        Сумма_вычетаLabel.Name = "Сумма_вычетаLabel"
-        Сумма_вычетаLabel.Size = New System.Drawing.Size(83, 13)
-        Сумма_вычетаLabel.TabIndex = 2
-        Сумма_вычетаLabel.Text = "Сумма вычета:"
-        '
-        'Сумма_вычетаLabel1
-        '
-        Me.Сумма_вычетаLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Вычет_ЗПBindingSource, "Сумма_вычета", True))
-        Me.Сумма_вычетаLabel1.Location = New System.Drawing.Point(111, 48)
-        Me.Сумма_вычетаLabel1.Name = "Сумма_вычетаLabel1"
-        Me.Сумма_вычетаLabel1.Size = New System.Drawing.Size(100, 23)
-        Me.Сумма_вычетаLabel1.TabIndex = 3
-        Me.Сумма_вычетаLabel1.Text = "Label4"
-        '
         'Прибавка_ЗПBindingSource
         '
         Me.Прибавка_ЗПBindingSource.DataMember = "FK_Прибавка_ЗП_Зарплата1"
         Me.Прибавка_ЗПBindingSource.DataSource = Me.SalaryJoinEmployerBindingSource
-        '
-        'Прибавка_ЗПTableAdapter
-        '
-        Me.Прибавка_ЗПTableAdapter.ClearBeforeFill = True
         '
         'Прибавка_ЗПDataRepeater
         '
@@ -528,14 +518,14 @@ Partial Class SelaryView
         Me.Прибавка_ЗПDataRepeater.TabIndex = 40
         Me.Прибавка_ЗПDataRepeater.Text = "DataRepeater1"
         '
-        'НазваниеLabel2
+        'Сумма_прибавкиLabel1
         '
-        НазваниеLabel2.AutoSize = True
-        НазваниеLabel2.Location = New System.Drawing.Point(16, 12)
-        НазваниеLabel2.Name = "НазваниеLabel2"
-        НазваниеLabel2.Size = New System.Drawing.Size(60, 13)
-        НазваниеLabel2.TabIndex = 0
-        НазваниеLabel2.Text = "Название:"
+        Me.Сумма_прибавкиLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Прибавка_ЗПBindingSource, "Сумма_прибавки", True))
+        Me.Сумма_прибавкиLabel1.Location = New System.Drawing.Point(118, 47)
+        Me.Сумма_прибавкиLabel1.Name = "Сумма_прибавкиLabel1"
+        Me.Сумма_прибавкиLabel1.Size = New System.Drawing.Size(100, 23)
+        Me.Сумма_прибавкиLabel1.TabIndex = 3
+        Me.Сумма_прибавкиLabel1.Text = "Label4"
         '
         'НазваниеLabel3
         '
@@ -546,29 +536,31 @@ Partial Class SelaryView
         Me.НазваниеLabel3.TabIndex = 1
         Me.НазваниеLabel3.Text = "Label4"
         '
-        'Сумма_прибавкиLabel
+        'Button1
         '
-        Сумма_прибавкиLabel.AutoSize = True
-        Сумма_прибавкиLabel.Location = New System.Drawing.Point(17, 47)
-        Сумма_прибавкиLabel.Name = "Сумма_прибавкиLabel"
-        Сумма_прибавкиLabel.Size = New System.Drawing.Size(95, 13)
-        Сумма_прибавкиLabel.TabIndex = 2
-        Сумма_прибавкиLabel.Text = "Сумма прибавки:"
+        Me.Button1.Location = New System.Drawing.Point(161, 29)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(148, 23)
+        Me.Button1.TabIndex = 41
+        Me.Button1.Text = "Добавить/Редактировать"
+        Me.Button1.UseVisualStyleBackColor = True
         '
-        'Сумма_прибавкиLabel1
+        'Button2
         '
-        Me.Сумма_прибавкиLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Прибавка_ЗПBindingSource, "Сумма_прибавки", True))
-        Me.Сумма_прибавкиLabel1.Location = New System.Drawing.Point(118, 47)
-        Me.Сумма_прибавкиLabel1.Name = "Сумма_прибавкиLabel1"
-        Me.Сумма_прибавкиLabel1.Size = New System.Drawing.Size(100, 23)
-        Me.Сумма_прибавкиLabel1.TabIndex = 3
-        Me.Сумма_прибавкиLabel1.Text = "Label4"
+        Me.Button2.Location = New System.Drawing.Point(315, 29)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 42
+        Me.Button2.Text = "Отчёт"
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'SelaryView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(759, 524)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Прибавка_ЗПDataRepeater)
         Me.Controls.Add(Me.Вычет_ЗПDataRepeater)
         Me.Controls.Add(Me.GroupBox1)
@@ -605,9 +597,7 @@ Partial Class SelaryView
     Friend WithEvents SalaryJoinEmployerTableAdapter As Salaries.SalariesDataSetTableAdapters.SalaryJoinEmployerTableAdapter
     Friend WithEvents TableAdapterManager As Salaries.SalariesDataSetTableAdapters.TableAdapterManager
     Friend WithEvents SalaryJoinEmployerBindingNavigator As System.Windows.Forms.BindingNavigator
-    Friend WithEvents BindingNavigatorAddNewItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorCountItem As System.Windows.Forms.ToolStripLabel
-    Friend WithEvents BindingNavigatorDeleteItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorMoveFirstItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorMovePreviousItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorSeparator As System.Windows.Forms.ToolStripSeparator
@@ -616,7 +606,6 @@ Partial Class SelaryView
     Friend WithEvents BindingNavigatorMoveNextItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorMoveLastItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorSeparator2 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents SalaryJoinEmployerBindingNavigatorSaveItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents Вычет_ЗПTableAdapter As Salaries.SalariesDataSetTableAdapters.Вычет_ЗПTableAdapter
     Friend WithEvents МесяцLabel1 As System.Windows.Forms.Label
     Friend WithEvents ОкладLabel1 As System.Windows.Forms.Label
@@ -636,4 +625,6 @@ Partial Class SelaryView
     Friend WithEvents Прибавка_ЗПDataRepeater As Microsoft.VisualBasic.PowerPacks.DataRepeater
     Friend WithEvents Сумма_прибавкиLabel1 As System.Windows.Forms.Label
     Friend WithEvents НазваниеLabel3 As System.Windows.Forms.Label
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
 End Class

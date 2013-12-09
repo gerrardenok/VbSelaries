@@ -47,7 +47,6 @@
         Me.РаботникTableAdapter.Fill(Me.SalariesDataSet.Работник)
         'TODO: This line of code loads data into the 'SalariesDataSet.Зарплата' table. You can move, or remove it, as needed.
         Me.ЗарплатаTableAdapter.Fill(Me.SalariesDataSet.Зарплата)
-
     End Sub
 
     Private Sub BindingNavigatorMoveNextItem_OwnerChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BindingNavigatorMoveNextItem.OwnerChanged
@@ -59,6 +58,7 @@
         Dim isNewCurrent As Boolean = (IsDBNull(current.Item("Код_работника")))
         If (isNewCurrent) Then
             current.Item("Код_работника") = currentEployerId
+            current.Item("Дата_выдачи") = Дата_выдачиDateTimePicker.Value
         Else
             РаботникComboBox.SelectedValue = current.Item("Код_работника")
         End If
@@ -69,6 +69,14 @@
         Dim currentEployerId = РаботникComboBox.SelectedValue
         If (Not (current Is Nothing) And Not (currentEployerId Is Nothing)) Then
             current.Item("Код_работника") = currentEployerId
+        End If
+    End Sub
+
+    Private Sub BindingNavigatorDeleteItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BindingNavigatorDeleteItem.Click
+        If (MessageBox.Show("Вы уверены что хотите удалить запись?", "Подтверждение", MessageBoxButtons.YesNo) = System.Windows.Forms.DialogResult.Yes) Then
+            If (ЗарплатаBindingSource.Count > 0) Then
+                ЗарплатаBindingSource.RemoveCurrent()
+            End If
         End If
     End Sub
 End Class

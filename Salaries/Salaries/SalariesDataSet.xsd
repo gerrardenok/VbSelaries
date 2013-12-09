@@ -97,7 +97,7 @@ SELECT Месяц, Оклад, На_руки, Год, Код_зарплаты, �
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT Месяц, Оклад, На_руки, Год, Код_зарплаты, Дата_выдачи, Код_работника FROM dbo.Зарплата</CommandText>
                     <Parameters />
                   </DbCommand>

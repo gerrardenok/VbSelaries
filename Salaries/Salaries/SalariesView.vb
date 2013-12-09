@@ -57,4 +57,8 @@
             EmployerView.ShowById(employerId)
         End If
     End Sub
+
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        SalaryCRUD.Show()
+    End Sub
 End Class

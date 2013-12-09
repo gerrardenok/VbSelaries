@@ -27,9 +27,9 @@ Partial Class SalaryCRUD
         Dim На_рукиLabel As System.Windows.Forms.Label
         Dim Дата_выдачиLabel As System.Windows.Forms.Label
         Dim Код_работникаLabel As System.Windows.Forms.Label
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SalaryCRUD))
         Dim МесяцLabel1 As System.Windows.Forms.Label
         Dim ГодLabel As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SalaryCRUD))
         Me.SalariesDataSet = New Salaries.SalariesDataSet()
         Me.ЗарплатаBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ЗарплатаTableAdapter = New Salaries.SalariesDataSetTableAdapters.ЗарплатаTableAdapter()
@@ -106,6 +106,24 @@ Partial Class SalaryCRUD
         Код_работникаLabel.TabIndex = 13
         Код_работникаLabel.Text = "Работник:"
         '
+        'МесяцLabel1
+        '
+        МесяцLabel1.AutoSize = True
+        МесяцLabel1.Location = New System.Drawing.Point(12, 68)
+        МесяцLabel1.Name = "МесяцLabel1"
+        МесяцLabel1.Size = New System.Drawing.Size(43, 13)
+        МесяцLabel1.TabIndex = 13
+        МесяцLabel1.Text = "Месяц:"
+        '
+        'ГодLabel
+        '
+        ГодLabel.AutoSize = True
+        ГодLabel.Location = New System.Drawing.Point(12, 97)
+        ГодLabel.Name = "ГодLabel"
+        ГодLabel.Size = New System.Drawing.Size(28, 13)
+        ГодLabel.TabIndex = 14
+        ГодLabel.Text = "Год:"
+        '
         'SalariesDataSet
         '
         Me.SalariesDataSet.DataSetName = "SalariesDataSet"
@@ -142,7 +160,7 @@ Partial Class SalaryCRUD
         Me.ЗарплатаBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
         Me.ЗарплатаBindingNavigator.BindingSource = Me.ЗарплатаBindingSource
         Me.ЗарплатаBindingNavigator.CountItem = Me.BindingNavigatorCountItem
-        Me.ЗарплатаBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
+        Me.ЗарплатаBindingNavigator.DeleteItem = Nothing
         Me.ЗарплатаBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.ЗарплатаBindingNavigatorSaveItem})
         Me.ЗарплатаBindingNavigator.Location = New System.Drawing.Point(0, 0)
         Me.ЗарплатаBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
@@ -151,7 +169,7 @@ Partial Class SalaryCRUD
         Me.ЗарплатаBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.ЗарплатаBindingNavigator.Name = "ЗарплатаBindingNavigator"
         Me.ЗарплатаBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.ЗарплатаBindingNavigator.Size = New System.Drawing.Size(598, 25)
+        Me.ЗарплатаBindingNavigator.Size = New System.Drawing.Size(334, 25)
         Me.ЗарплатаBindingNavigator.TabIndex = 0
         Me.ЗарплатаBindingNavigator.Text = "BindingNavigator1"
         '
@@ -292,15 +310,6 @@ Partial Class SalaryCRUD
         '
         Me.FormErrorProvider.ContainerControl = Me
         '
-        'МесяцLabel1
-        '
-        МесяцLabel1.AutoSize = True
-        МесяцLabel1.Location = New System.Drawing.Point(12, 68)
-        МесяцLabel1.Name = "МесяцLabel1"
-        МесяцLabel1.Size = New System.Drawing.Size(43, 13)
-        МесяцLabel1.TabIndex = 13
-        МесяцLabel1.Text = "Месяц:"
-        '
         'МесяцMaskedTextBox
         '
         Me.МесяцMaskedTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ЗарплатаBindingSource, "Месяц", True))
@@ -309,15 +318,6 @@ Partial Class SalaryCRUD
         Me.МесяцMaskedTextBox.Name = "МесяцMaskedTextBox"
         Me.МесяцMaskedTextBox.Size = New System.Drawing.Size(200, 20)
         Me.МесяцMaskedTextBox.TabIndex = 14
-        '
-        'ГодLabel
-        '
-        ГодLabel.AutoSize = True
-        ГодLabel.Location = New System.Drawing.Point(12, 97)
-        ГодLabel.Name = "ГодLabel"
-        ГодLabel.Size = New System.Drawing.Size(28, 13)
-        ГодLabel.TabIndex = 14
-        ГодLabel.Text = "Год:"
         '
         'ГодMaskedTextBox
         '
@@ -332,7 +332,7 @@ Partial Class SalaryCRUD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(598, 313)
+        Me.ClientSize = New System.Drawing.Size(334, 203)
         Me.Controls.Add(ГодLabel)
         Me.Controls.Add(Me.ГодMaskedTextBox)
         Me.Controls.Add(МесяцLabel1)
@@ -346,8 +346,9 @@ Partial Class SalaryCRUD
         Me.Controls.Add(Me.Дата_выдачиDateTimePicker)
         Me.Controls.Add(Код_работникаLabel)
         Me.Controls.Add(Me.ЗарплатаBindingNavigator)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "SalaryCRUD"
-        Me.Text = "SalaryCRUD"
+        Me.Text = "Работники"
         CType(Me.SalariesDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ЗарплатаBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ЗарплатаBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
