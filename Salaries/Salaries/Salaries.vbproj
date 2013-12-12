@@ -152,6 +152,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="OffreckoningCRUD.Designer.vb">
+      <DependentUpon>OffreckoningCRUD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="OffreckoningCRUD.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="OmissionsView.Designer.vb">
       <DependentUpon>OmissionsView.vb</DependentUpon>
     </Compile>
@@ -247,6 +253,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OffreckoningCRUD.resx">
+      <DependentUpon>OffreckoningCRUD.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OmissionsView.resx">
       <DependentUpon>OmissionsView.vb</DependentUpon>

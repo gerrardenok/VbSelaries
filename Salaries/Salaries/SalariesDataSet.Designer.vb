@@ -47,6 +47,8 @@ Partial Public Class SalariesDataSet
     
     Private tableSalaryJoinEmployer As SalaryJoinEmployerDataTable
     
+    Private relationПрибавка_ЗП_Зарплата As Global.System.Data.DataRelation
+    
     Private relationРаботник_Специальность As Global.System.Data.DataRelation
     
     Private relationРаботник_Отдел As Global.System.Data.DataRelation
@@ -74,6 +76,8 @@ Partial Public Class SalariesDataSet
     Private relationFK_Прибавка_ЗП_Зарплата1 As Global.System.Data.DataRelation
     
     Private relationFK_Зарплата_Работник1 As Global.System.Data.DataRelation
+    
+    Private relationЗарплата_Работник As Global.System.Data.DataRelation
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -468,6 +472,7 @@ Partial Public Class SalariesDataSet
                 Me.tableSalaryJoinEmployer.InitVars
             End If
         End If
+        Me.relationПрибавка_ЗП_Зарплата = Me.Relations("Прибавка_ЗП_Зарплата")
         Me.relationРаботник_Специальность = Me.Relations("Работник_Специальность")
         Me.relationРаботник_Отдел = Me.Relations("Работник_Отдел")
         Me.relationРаботник_Ставка = Me.Relations("Работник_Ставка")
@@ -482,6 +487,7 @@ Partial Public Class SalariesDataSet
         Me.relationFK_Вычет_ЗП_Зарплата1 = Me.Relations("FK_Вычет_ЗП_Зарплата1")
         Me.relationFK_Прибавка_ЗП_Зарплата1 = Me.Relations("FK_Прибавка_ЗП_Зарплата1")
         Me.relationFK_Зарплата_Работник1 = Me.Relations("FK_Зарплата_Работник1")
+        Me.relationЗарплата_Работник = Me.Relations("Зарплата_Работник")
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -494,7 +500,7 @@ Partial Public Class SalariesDataSet
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
         Me.tableВычет_ЗП = New Вычет_ЗПDataTable()
         MyBase.Tables.Add(Me.tableВычет_ЗП)
-        Me.tableЗарплата = New ЗарплатаDataTable()
+        Me.tableЗарплата = New ЗарплатаDataTable(false)
         MyBase.Tables.Add(Me.tableЗарплата)
         Me.tableОтдел = New ОтделDataTable()
         MyBase.Tables.Add(Me.tableОтдел)
@@ -514,6 +520,9 @@ Partial Public Class SalariesDataSet
         MyBase.Tables.Add(Me.tableLostDayReport)
         Me.tableSalaryJoinEmployer = New SalaryJoinEmployerDataTable()
         MyBase.Tables.Add(Me.tableSalaryJoinEmployer)
+        Me.relationПрибавка_ЗП_Зарплата = New Global.System.Data.DataRelation("Прибавка_ЗП_Зарплата", New Global.System.Data.DataColumn() {Me.tableПрибавка_ЗП.Код_зарплатыColumn}, New Global.System.Data.DataColumn() {Me.tableЗарплата.Код_зарплатыColumn}, false)
+        Me.relationПрибавка_ЗП_Зарплата.Nested = true
+        Me.Relations.Add(Me.relationПрибавка_ЗП_Зарплата)
         Me.relationРаботник_Специальность = New Global.System.Data.DataRelation("Работник_Специальность", New Global.System.Data.DataColumn() {Me.tableРаботник.Код_специальностиColumn}, New Global.System.Data.DataColumn() {Me.tableСпециальность.Код_специальностиColumn}, false)
         Me.relationРаботник_Специальность.Nested = true
         Me.Relations.Add(Me.relationРаботник_Специальность)
@@ -545,6 +554,8 @@ Partial Public Class SalariesDataSet
         Me.Relations.Add(Me.relationFK_Прибавка_ЗП_Зарплата1)
         Me.relationFK_Зарплата_Работник1 = New Global.System.Data.DataRelation("FK_Зарплата_Работник1", New Global.System.Data.DataColumn() {Me.tableРаботник.Код_работникаColumn}, New Global.System.Data.DataColumn() {Me.tableSalaryJoinEmployer.Код_работникаColumn}, false)
         Me.Relations.Add(Me.relationFK_Зарплата_Работник1)
+        Me.relationЗарплата_Работник = New Global.System.Data.DataRelation("Зарплата_Работник", New Global.System.Data.DataColumn() {Me.tableЗарплата.Код_работникаColumn}, New Global.System.Data.DataColumn() {Me.tableРаботник.Код_работникаColumn}, false)
+        Me.Relations.Add(Me.relationЗарплата_Работник)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -674,6 +685,7 @@ Partial Public Class SalariesDataSet
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Private Sub InitExpressions()
+        Me.Зарплата.DisplyedColumn.Expression = "'За ' + Месяц + '/'+ Год"
         Me.Работник.ФИОColumn.Expression = "TRIM(Имя)+' '+ TRIM(Фамилия)+ ' '+ TRIM(Отчество)  "
     End Sub
     
@@ -1043,13 +1055,24 @@ Partial Public Class SalariesDataSet
         
         Private columnКод_работника As Global.System.Data.DataColumn
         
+        Private columnDisplyed As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
+            Me.New(false)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New(ByVal initExpressions As Boolean)
             MyBase.New
             Me.TableName = "Зарплата"
             Me.BeginInit
             Me.InitClass
+            If (initExpressions = true) Then
+                Me.InitExpressions
+            End If
             Me.EndInit
         End Sub
         
@@ -1135,6 +1158,14 @@ Partial Public Class SalariesDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property DisplyedColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDisplyed
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1171,9 +1202,22 @@ Partial Public Class SalariesDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Function AddЗарплатаRow(ByVal Месяц As Byte, ByVal Оклад As Decimal, ByVal На_руки As Decimal, ByVal Год As Integer, ByVal Дата_выдачи As Date, ByVal parentРаботникRowByFK_Зарплата_Работник As РаботникRow, ByVal Displyed As String) As ЗарплатаRow
+            Dim rowЗарплатаRow As ЗарплатаRow = CType(Me.NewRow,ЗарплатаRow)
+            Dim columnValuesArray() As Object = New Object() {Месяц, Оклад, На_руки, Год, Nothing, Дата_выдачи, Nothing, Displyed}
+            If (Not (parentРаботникRowByFK_Зарплата_Работник) Is Nothing) Then
+                columnValuesArray(6) = parentРаботникRowByFK_Зарплата_Работник(0)
+            End If
+            rowЗарплатаRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowЗарплатаRow)
+            Return rowЗарплатаRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Overloads Function AddЗарплатаRow(ByVal Месяц As Byte, ByVal Оклад As Decimal, ByVal На_руки As Decimal, ByVal Год As Integer, ByVal Дата_выдачи As Date, ByVal parentРаботникRowByFK_Зарплата_Работник As РаботникRow) As ЗарплатаRow
             Dim rowЗарплатаRow As ЗарплатаRow = CType(Me.NewRow,ЗарплатаRow)
-            Dim columnValuesArray() As Object = New Object() {Месяц, Оклад, На_руки, Год, Nothing, Дата_выдачи, Nothing}
+            Dim columnValuesArray() As Object = New Object() {Месяц, Оклад, На_руки, Год, Nothing, Дата_выдачи, Nothing, Nothing}
             If (Not (parentРаботникRowByFK_Зарплата_Работник) Is Nothing) Then
                 columnValuesArray(6) = parentРаботникRowByFK_Зарплата_Работник(0)
             End If
@@ -1212,6 +1256,7 @@ Partial Public Class SalariesDataSet
             Me.columnКод_зарплаты = MyBase.Columns("Код_зарплаты")
             Me.columnДата_выдачи = MyBase.Columns("Дата_выдачи")
             Me.columnКод_работника = MyBase.Columns("Код_работника")
+            Me.columnDisplyed = MyBase.Columns("Displyed")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1231,6 +1276,8 @@ Partial Public Class SalariesDataSet
             MyBase.Columns.Add(Me.columnДата_выдачи)
             Me.columnКод_работника = New Global.System.Data.DataColumn("Код_работника", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnКод_работника)
+            Me.columnDisplyed = New Global.System.Data.DataColumn("Displyed", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDisplyed)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnКод_зарплаты}, true))
             Me.columnМесяц.AllowDBNull = false
             Me.columnОклад.AllowDBNull = false
@@ -1243,6 +1290,7 @@ Partial Public Class SalariesDataSet
             Me.columnКод_зарплаты.Unique = true
             Me.columnДата_выдачи.AllowDBNull = false
             Me.columnКод_работника.AllowDBNull = false
+            Me.columnDisplyed.ReadOnly = true
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1262,6 +1310,12 @@ Partial Public Class SalariesDataSet
         Protected Overrides Function GetRowType() As Global.System.Type
             Return GetType(ЗарплатаRow)
         End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitExpressions()
+            Me.DisplyedColumn.Expression = "'За ' + Месяц + '/'+ Год"
+        End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -4774,6 +4828,32 @@ Partial Public Class SalariesDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Displyed() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableЗарплата.DisplyedColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Displyed' in table 'Зарплата' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableЗарплата.DisplyedColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Прибавка_ЗПRow() As Прибавка_ЗПRow
+            Get
+                Return CType(Me.GetParentRow(Me.Table.ParentRelations("Прибавка_ЗП_Зарплата")),Прибавка_ЗПRow)
+            End Get
+            Set
+                Me.SetParentRow(value, Me.Table.ParentRelations("Прибавка_ЗП_Зарплата"))
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property РаботникRow() As РаботникRow
             Get
                 Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK_Зарплата_Работник")),РаботникRow)
@@ -4797,6 +4877,18 @@ Partial Public Class SalariesDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsDisplyedNull() As Boolean
+            Return Me.IsNull(Me.tableЗарплата.DisplyedColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetDisplyedNull()
+            Me(Me.tableЗарплата.DisplyedColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function GetВычет_ЗПRows() As Вычет_ЗПRow()
             If (Me.Table.ChildRelations("FK_Вычет_ЗП_Зарплата") Is Nothing) Then
                 Return New Вычет_ЗПRow(-1) {}
@@ -4812,6 +4904,16 @@ Partial Public Class SalariesDataSet
                 Return New Прибавка_ЗПRow(-1) {}
             Else
                 Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK_Прибавка_ЗП_Зарплата")),Прибавка_ЗПRow())
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function GetРаботникRows() As РаботникRow()
+            If (Me.Table.ChildRelations("Зарплата_Работник") Is Nothing) Then
+                Return New РаботникRow(-1) {}
+            Else
+                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("Зарплата_Работник")),РаботникRow())
             End If
         End Function
     End Class
@@ -4993,6 +5095,16 @@ Partial Public Class SalariesDataSet
                 Me.SetParentRow(value, Me.Table.ParentRelations("FK_Прибавка_ЗП_Зарплата1"))
             End Set
         End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function GetЗарплатаRows() As ЗарплатаRow()
+            If (Me.Table.ChildRelations("Прибавка_ЗП_Зарплата") Is Nothing) Then
+                Return New ЗарплатаRow(-1) {}
+            Else
+                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("Прибавка_ЗП_Зарплата")),ЗарплатаRow())
+            End If
+        End Function
     End Class
     
     '''<summary>
@@ -5597,6 +5709,17 @@ Partial Public Class SalariesDataSet
             End Get
             Set
                 Me.SetParentRow(value, Me.Table.ParentRelations("FK_Работник_Ставка"))
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ЗарплатаRow() As ЗарплатаRow
+            Get
+                Return CType(Me.GetParentRow(Me.Table.ParentRelations("Зарплата_Работник")),ЗарплатаRow)
+            End Get
+            Set
+                Me.SetParentRow(value, Me.Table.ParentRelations("Зарплата_Работник"))
             End Set
         End Property
         
@@ -6983,7 +7106,7 @@ Namespace SalariesDataSetTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
         Public Overloads Overridable Function GetData() As SalariesDataSet.ЗарплатаDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As SalariesDataSet.ЗарплатаDataTable = New SalariesDataSet.ЗарплатаDataTable()
+            Dim dataTable As SalariesDataSet.ЗарплатаDataTable = New SalariesDataSet.ЗарплатаDataTable(true)
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -10207,6 +10330,15 @@ Namespace SalariesDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Function UpdateUpdatedRows(ByVal dataSet As SalariesDataSet, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
+            If (Not (Me._прибавка_ЗПTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.Прибавка_ЗП.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._прибавка_ЗПTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
             If (Not (Me._зарплатаTableAdapter) Is Nothing) Then
                 Dim updatedRows() As Global.System.Data.DataRow = dataSet.Зарплата.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
@@ -10243,15 +10375,6 @@ Namespace SalariesDataSetTableAdapters
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
-            If (Not (Me._специальностьTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.Специальность.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._специальностьTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
             If (Not (Me._пропускTableAdapter) Is Nothing) Then
                 Dim updatedRows() As Global.System.Data.DataRow = dataSet.Пропуск.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
@@ -10261,21 +10384,21 @@ Namespace SalariesDataSetTableAdapters
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
-            If (Not (Me._прибавка_ЗПTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.Прибавка_ЗП.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._прибавка_ЗПTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
             If (Not (Me._вычет_ЗПTableAdapter) Is Nothing) Then
                 Dim updatedRows() As Global.System.Data.DataRow = dataSet.Вычет_ЗП.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
                     result = (result + Me._вычет_ЗПTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
+            If (Not (Me._специальностьTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.Специальность.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._специальностьTableAdapter.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
@@ -10289,6 +10412,14 @@ Namespace SalariesDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Function UpdateInsertedRows(ByVal dataSet As SalariesDataSet, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
+            If (Not (Me._прибавка_ЗПTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.Прибавка_ЗП.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._прибавка_ЗПTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
             If (Not (Me._зарплатаTableAdapter) Is Nothing) Then
                 Dim addedRows() As Global.System.Data.DataRow = dataSet.Зарплата.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
@@ -10321,14 +10452,6 @@ Namespace SalariesDataSetTableAdapters
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
-            If (Not (Me._специальностьTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.Специальность.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._специальностьTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
             If (Not (Me._пропускTableAdapter) Is Nothing) Then
                 Dim addedRows() As Global.System.Data.DataRow = dataSet.Пропуск.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
@@ -10337,19 +10460,19 @@ Namespace SalariesDataSetTableAdapters
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
-            If (Not (Me._прибавка_ЗПTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.Прибавка_ЗП.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._прибавка_ЗПTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
             If (Not (Me._вычет_ЗПTableAdapter) Is Nothing) Then
                 Dim addedRows() As Global.System.Data.DataRow = dataSet.Вычет_ЗП.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
                     result = (result + Me._вычет_ЗПTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
+            If (Not (Me._специальностьTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.Специальность.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._специальностьTableAdapter.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
@@ -10363,6 +10486,14 @@ Namespace SalariesDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Function UpdateDeletedRows(ByVal dataSet As SalariesDataSet, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
+            If (Not (Me._специальностьTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.Специальность.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._специальностьTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
             If (Not (Me._вычет_ЗПTableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.Вычет_ЗП.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
@@ -10371,27 +10502,11 @@ Namespace SalariesDataSetTableAdapters
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
-            If (Not (Me._прибавка_ЗПTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.Прибавка_ЗП.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._прибавка_ЗПTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
             If (Not (Me._пропускTableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.Пропуск.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
                     result = (result + Me._пропускTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
-            If (Not (Me._специальностьTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.Специальность.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._специальностьTableAdapter.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
@@ -10424,6 +10539,14 @@ Namespace SalariesDataSetTableAdapters
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
                     result = (result + Me._зарплатаTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
+            If (Not (Me._прибавка_ЗПTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.Прибавка_ЗП.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._прибавка_ЗПTableAdapter.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If

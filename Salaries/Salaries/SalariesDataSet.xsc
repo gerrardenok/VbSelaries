@@ -10,12 +10,12 @@
       <ColumnUISettings>
         <ColumnUISetting Name="Название">
           <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-              <BindableControlInfo Name="Label" Type="System.Windows.Forms.Label" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+              <BindableControlInfo Name="TextBox" Type="System.Windows.Forms.TextBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
             </ControlSetting></ControlSettings>
         </ColumnUISetting>
         <ColumnUISetting Name="Сумма_вычета">
           <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-              <BindableControlInfo Name="Label" Type="System.Windows.Forms.Label" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+              <BindableControlInfo Name="TextBox" Type="System.Windows.Forms.TextBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
             </ControlSetting></ControlSettings>
         </ColumnUISetting>
       </ColumnUISettings>
@@ -23,14 +23,18 @@
     <TableUISetting Name="Зарплата">
       <ColumnUISettings>
         <ColumnUISetting Name="Месяц">
-          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
               <BindableControlInfo Name="MaskedTextBox" Type="System.Windows.Forms.MaskedTextBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Frameworks=".NETFramework,Version=v2.0;.NETFramework,Version=v3.0;.NETFramework,Version=v3.5;.NETFramework,Version=v4.0" />
-            </ControlSetting></ControlSettings>
+            </ControlSetting>
+          </ControlSettings>
         </ColumnUISetting>
         <ColumnUISetting Name="Год">
-          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
               <BindableControlInfo Name="MaskedTextBox" Type="System.Windows.Forms.MaskedTextBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Frameworks=".NETFramework,Version=v2.0;.NETFramework,Version=v3.0;.NETFramework,Version=v3.5;.NETFramework,Version=v4.0" />
-            </ControlSetting></ControlSettings>
+            </ControlSetting>
+          </ControlSettings>
         </ColumnUISetting>
       </ColumnUISettings>
     </TableUISetting>
@@ -94,19 +98,25 @@
     <TableUISetting Name="Работник">
       <ColumnUISettings>
         <ColumnUISetting Name="Телефон">
-          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
               <BindableControlInfo Name="MaskedTextBox" Type="System.Windows.Forms.MaskedTextBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Frameworks=".NETFramework,Version=v2.0;.NETFramework,Version=v3.0;.NETFramework,Version=v3.5;.NETFramework,Version=v4.0" />
-            </ControlSetting></ControlSettings>
+            </ControlSetting>
+          </ControlSettings>
         </ColumnUISetting>
         <ColumnUISetting Name="Номер_пасспорта">
-          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
               <BindableControlInfo Name="MaskedTextBox" Type="System.Windows.Forms.MaskedTextBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Frameworks=".NETFramework,Version=v2.0;.NETFramework,Version=v3.0;.NETFramework,Version=v3.5;.NETFramework,Version=v4.0" />
-            </ControlSetting></ControlSettings>
+            </ControlSetting>
+          </ControlSettings>
         </ColumnUISetting>
         <ColumnUISetting Name="Стаж">
-          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
               <BindableControlInfo Name="NumericUpDown" Type="System.Windows.Forms.NumericUpDown" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-            </ControlSetting></ControlSettings>
+            </ControlSetting>
+          </ControlSettings>
         </ColumnUISetting>
       </ColumnUISettings>
     </TableUISetting>
