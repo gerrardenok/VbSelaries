@@ -46,4 +46,8 @@
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         Help.ShowHelp(ParentForm, "D:\Курсовые\БД\Report\Справка.chm")
     End Sub
+
+    Private Sub ДобавитьРедактироватьToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ДобавитьРедактироватьToolStripMenuItem1.Click
+        RFPIncreaseCRUD.Show()
+    End Sub
 End Class

@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class OffreckoningCRUD
+Partial Class RFPIncreaseCRUD
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,16 +23,18 @@ Partial Class OffreckoningCRUD
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim Код_прибавкиLabel As System.Windows.Forms.Label
         Dim НазваниеLabel As System.Windows.Forms.Label
-        Dim Сумма_вычетаLabel As System.Windows.Forms.Label
-        Dim Label1 As System.Windows.Forms.Label
-        Dim Label2 As System.Windows.Forms.Label
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(OffreckoningCRUD))
+        Dim Сумма_прибавкиLabel As System.Windows.Forms.Label
+        Dim Код_зарплатыLabel As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RFPIncreaseCRUD))
         Me.SalariesDataSet = New Salaries.SalariesDataSet()
-        Me.Вычет_ЗПBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Вычет_ЗПTableAdapter = New Salaries.SalariesDataSetTableAdapters.Вычет_ЗПTableAdapter()
+        Me.Прибавка_ЗПBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Прибавка_ЗПTableAdapter = New Salaries.SalariesDataSetTableAdapters.Прибавка_ЗПTableAdapter()
         Me.TableAdapterManager = New Salaries.SalariesDataSetTableAdapters.TableAdapterManager()
-        Me.Вычет_ЗПBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
+        Me.ЗарплатаTableAdapter = New Salaries.SalariesDataSetTableAdapters.ЗарплатаTableAdapter()
+        Me.РаботникTableAdapter = New Salaries.SalariesDataSetTableAdapters.РаботникTableAdapter()
+        Me.Прибавка_ЗПBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
         Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
@@ -44,109 +46,115 @@ Partial Class OffreckoningCRUD
         Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.Вычет_ЗПBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
+        Me.Прибавка_ЗПBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
         Me.НазваниеTextBox = New System.Windows.Forms.TextBox()
-        Me.Сумма_вычетаTextBox = New System.Windows.Forms.TextBox()
+        Me.Сумма_прибавкиTextBox = New System.Windows.Forms.TextBox()
         Me.РаботникBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.РаботникTableAdapter = New Salaries.SalariesDataSetTableAdapters.РаботникTableAdapter()
         Me.РаботникComboBox = New System.Windows.Forms.ComboBox()
         Me.ЗарплатаBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ЗарплатаTableAdapter = New Salaries.SalariesDataSetTableAdapters.ЗарплатаTableAdapter()
         Me.ЗарплатаComboBox = New System.Windows.Forms.ComboBox()
         Me.FormErrorProvider = New System.Windows.Forms.ErrorProvider(Me.components)
+        Код_прибавкиLabel = New System.Windows.Forms.Label()
         НазваниеLabel = New System.Windows.Forms.Label()
-        Сумма_вычетаLabel = New System.Windows.Forms.Label()
-        Label1 = New System.Windows.Forms.Label()
-        Label2 = New System.Windows.Forms.Label()
+        Сумма_прибавкиLabel = New System.Windows.Forms.Label()
+        Код_зарплатыLabel = New System.Windows.Forms.Label()
         CType(Me.SalariesDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Вычет_ЗПBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Вычет_ЗПBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Вычет_ЗПBindingNavigator.SuspendLayout()
+        CType(Me.Прибавка_ЗПBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Прибавка_ЗПBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Прибавка_ЗПBindingNavigator.SuspendLayout()
         CType(Me.РаботникBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ЗарплатаBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FormErrorProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
+        'Код_прибавкиLabel
+        '
+        Код_прибавкиLabel.AutoSize = True
+        Код_прибавкиLabel.Location = New System.Drawing.Point(13, 43)
+        Код_прибавкиLabel.Name = "Код_прибавкиLabel"
+        Код_прибавкиLabel.Size = New System.Drawing.Size(58, 13)
+        Код_прибавкиLabel.TabIndex = 1
+        Код_прибавкиLabel.Text = "Работник:"
+        '
         'НазваниеLabel
         '
         НазваниеLabel.AutoSize = True
-        НазваниеLabel.Location = New System.Drawing.Point(8, 90)
+        НазваниеLabel.Location = New System.Drawing.Point(15, 104)
         НазваниеLabel.Name = "НазваниеLabel"
         НазваниеLabel.Size = New System.Drawing.Size(60, 13)
         НазваниеLabel.TabIndex = 3
         НазваниеLabel.Text = "Название:"
         '
-        'Сумма_вычетаLabel
+        'Сумма_прибавкиLabel
         '
-        Сумма_вычетаLabel.AutoSize = True
-        Сумма_вычетаLabel.Location = New System.Drawing.Point(8, 116)
-        Сумма_вычетаLabel.Name = "Сумма_вычетаLabel"
-        Сумма_вычетаLabel.Size = New System.Drawing.Size(83, 13)
-        Сумма_вычетаLabel.TabIndex = 5
-        Сумма_вычетаLabel.Text = "Сумма вычета:"
+        Сумма_прибавкиLabel.AutoSize = True
+        Сумма_прибавкиLabel.Location = New System.Drawing.Point(15, 130)
+        Сумма_прибавкиLabel.Name = "Сумма_прибавкиLabel"
+        Сумма_прибавкиLabel.Size = New System.Drawing.Size(95, 13)
+        Сумма_прибавкиLabel.TabIndex = 5
+        Сумма_прибавкиLabel.Text = "Сумма прибавки:"
         '
-        'Label1
+        'Код_зарплатыLabel
         '
-        Label1.AutoSize = True
-        Label1.Location = New System.Drawing.Point(8, 31)
-        Label1.Name = "Label1"
-        Label1.Size = New System.Drawing.Size(58, 13)
-        Label1.TabIndex = 7
-        Label1.Text = "Работник:"
-        '
-        'Label2
-        '
-        Label2.AutoSize = True
-        Label2.Location = New System.Drawing.Point(10, 58)
-        Label2.Name = "Label2"
-        Label2.Size = New System.Drawing.Size(55, 13)
-        Label2.TabIndex = 8
-        Label2.Text = "Зарплата"
+        Код_зарплатыLabel.AutoSize = True
+        Код_зарплатыLabel.Location = New System.Drawing.Point(12, 74)
+        Код_зарплатыLabel.Name = "Код_зарплатыLabel"
+        Код_зарплатыLabel.Size = New System.Drawing.Size(58, 13)
+        Код_зарплатыLabel.TabIndex = 7
+        Код_зарплатыLabel.Text = "Зарплата:"
         '
         'SalariesDataSet
         '
         Me.SalariesDataSet.DataSetName = "SalariesDataSet"
         Me.SalariesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'Вычет_ЗПBindingSource
+        'Прибавка_ЗПBindingSource
         '
-        Me.Вычет_ЗПBindingSource.DataMember = "Вычет_ЗП"
-        Me.Вычет_ЗПBindingSource.DataSource = Me.SalariesDataSet
+        Me.Прибавка_ЗПBindingSource.DataMember = "Прибавка_ЗП"
+        Me.Прибавка_ЗПBindingSource.DataSource = Me.SalariesDataSet
         '
-        'Вычет_ЗПTableAdapter
+        'Прибавка_ЗПTableAdapter
         '
-        Me.Вычет_ЗПTableAdapter.ClearBeforeFill = True
+        Me.Прибавка_ЗПTableAdapter.ClearBeforeFill = True
         '
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.UpdateOrder = Salaries.SalariesDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        Me.TableAdapterManager.Вычет_ЗПTableAdapter = Me.Вычет_ЗПTableAdapter
-        Me.TableAdapterManager.ЗарплатаTableAdapter = Nothing
+        Me.TableAdapterManager.Вычет_ЗПTableAdapter = Nothing
+        Me.TableAdapterManager.ЗарплатаTableAdapter = Me.ЗарплатаTableAdapter
         Me.TableAdapterManager.ОтделTableAdapter = Nothing
-        Me.TableAdapterManager.Прибавка_ЗПTableAdapter = Nothing
+        Me.TableAdapterManager.Прибавка_ЗПTableAdapter = Me.Прибавка_ЗПTableAdapter
         Me.TableAdapterManager.ПропускTableAdapter = Nothing
-        Me.TableAdapterManager.РаботникTableAdapter = Nothing
+        Me.TableAdapterManager.РаботникTableAdapter = Me.РаботникTableAdapter
         Me.TableAdapterManager.СпециальностьTableAdapter = Nothing
         Me.TableAdapterManager.СтавкаTableAdapter = Nothing
         '
-        'Вычет_ЗПBindingNavigator
+        'ЗарплатаTableAdapter
         '
-        Me.Вычет_ЗПBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
-        Me.Вычет_ЗПBindingNavigator.BindingSource = Me.Вычет_ЗПBindingSource
-        Me.Вычет_ЗПBindingNavigator.CountItem = Me.BindingNavigatorCountItem
-        Me.Вычет_ЗПBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
-        Me.Вычет_ЗПBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.Вычет_ЗПBindingNavigatorSaveItem})
-        Me.Вычет_ЗПBindingNavigator.Location = New System.Drawing.Point(0, 0)
-        Me.Вычет_ЗПBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
-        Me.Вычет_ЗПBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
-        Me.Вычет_ЗПBindingNavigator.MoveNextItem = Me.BindingNavigatorMoveNextItem
-        Me.Вычет_ЗПBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
-        Me.Вычет_ЗПBindingNavigator.Name = "Вычет_ЗПBindingNavigator"
-        Me.Вычет_ЗПBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.Вычет_ЗПBindingNavigator.Size = New System.Drawing.Size(457, 25)
-        Me.Вычет_ЗПBindingNavigator.TabIndex = 0
-        Me.Вычет_ЗПBindingNavigator.Text = "BindingNavigator1"
+        Me.ЗарплатаTableAdapter.ClearBeforeFill = True
+        '
+        'РаботникTableAdapter
+        '
+        Me.РаботникTableAdapter.ClearBeforeFill = True
+        '
+        'Прибавка_ЗПBindingNavigator
+        '
+        Me.Прибавка_ЗПBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
+        Me.Прибавка_ЗПBindingNavigator.BindingSource = Me.Прибавка_ЗПBindingSource
+        Me.Прибавка_ЗПBindingNavigator.CountItem = Me.BindingNavigatorCountItem
+        Me.Прибавка_ЗПBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
+        Me.Прибавка_ЗПBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.Прибавка_ЗПBindingNavigatorSaveItem})
+        Me.Прибавка_ЗПBindingNavigator.Location = New System.Drawing.Point(0, 0)
+        Me.Прибавка_ЗПBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
+        Me.Прибавка_ЗПBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
+        Me.Прибавка_ЗПBindingNavigator.MoveNextItem = Me.BindingNavigatorMoveNextItem
+        Me.Прибавка_ЗПBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
+        Me.Прибавка_ЗПBindingNavigator.Name = "Прибавка_ЗПBindingNavigator"
+        Me.Прибавка_ЗПBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
+        Me.Прибавка_ЗПBindingNavigator.Size = New System.Drawing.Size(454, 25)
+        Me.Прибавка_ЗПBindingNavigator.TabIndex = 0
+        Me.Прибавка_ЗПBindingNavigator.Text = "BindingNavigator1"
         '
         'BindingNavigatorAddNewItem
         '
@@ -233,48 +241,44 @@ Partial Class OffreckoningCRUD
         Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
         Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
         '
-        'Вычет_ЗПBindingNavigatorSaveItem
+        'Прибавка_ЗПBindingNavigatorSaveItem
         '
-        Me.Вычет_ЗПBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.Вычет_ЗПBindingNavigatorSaveItem.Image = CType(resources.GetObject("Вычет_ЗПBindingNavigatorSaveItem.Image"), System.Drawing.Image)
-        Me.Вычет_ЗПBindingNavigatorSaveItem.Name = "Вычет_ЗПBindingNavigatorSaveItem"
-        Me.Вычет_ЗПBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
-        Me.Вычет_ЗПBindingNavigatorSaveItem.Text = "Save Data"
+        Me.Прибавка_ЗПBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.Прибавка_ЗПBindingNavigatorSaveItem.Image = CType(resources.GetObject("Прибавка_ЗПBindingNavigatorSaveItem.Image"), System.Drawing.Image)
+        Me.Прибавка_ЗПBindingNavigatorSaveItem.Name = "Прибавка_ЗПBindingNavigatorSaveItem"
+        Me.Прибавка_ЗПBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
+        Me.Прибавка_ЗПBindingNavigatorSaveItem.Text = "Save Data"
         '
         'НазваниеTextBox
         '
-        Me.НазваниеTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Вычет_ЗПBindingSource, "Название", True))
-        Me.НазваниеTextBox.Location = New System.Drawing.Point(97, 87)
+        Me.НазваниеTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Прибавка_ЗПBindingSource, "Название", True))
+        Me.НазваниеTextBox.Location = New System.Drawing.Point(116, 101)
         Me.НазваниеTextBox.Name = "НазваниеTextBox"
-        Me.НазваниеTextBox.Size = New System.Drawing.Size(293, 20)
+        Me.НазваниеTextBox.Size = New System.Drawing.Size(300, 20)
         Me.НазваниеTextBox.TabIndex = 4
         '
-        'Сумма_вычетаTextBox
+        'Сумма_прибавкиTextBox
         '
-        Me.Сумма_вычетаTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Вычет_ЗПBindingSource, "Сумма_вычета", True))
-        Me.Сумма_вычетаTextBox.Location = New System.Drawing.Point(97, 113)
-        Me.Сумма_вычетаTextBox.Name = "Сумма_вычетаTextBox"
-        Me.Сумма_вычетаTextBox.Size = New System.Drawing.Size(293, 20)
-        Me.Сумма_вычетаTextBox.TabIndex = 6
+        Me.Сумма_прибавкиTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Прибавка_ЗПBindingSource, "Сумма_прибавки", True))
+        Me.Сумма_прибавкиTextBox.Location = New System.Drawing.Point(116, 127)
+        Me.Сумма_прибавкиTextBox.Name = "Сумма_прибавкиTextBox"
+        Me.Сумма_прибавкиTextBox.Size = New System.Drawing.Size(300, 20)
+        Me.Сумма_прибавкиTextBox.TabIndex = 6
         '
         'РаботникBindingSource
         '
         Me.РаботникBindingSource.DataMember = "Работник"
         Me.РаботникBindingSource.DataSource = Me.SalariesDataSet
         '
-        'РаботникTableAdapter
-        '
-        Me.РаботникTableAdapter.ClearBeforeFill = True
-        '
         'РаботникComboBox
         '
         Me.РаботникComboBox.DataSource = Me.РаботникBindingSource
         Me.РаботникComboBox.DisplayMember = "ФИО"
         Me.РаботникComboBox.FormattingEnabled = True
-        Me.РаботникComboBox.Location = New System.Drawing.Point(97, 28)
+        Me.РаботникComboBox.Location = New System.Drawing.Point(116, 43)
         Me.РаботникComboBox.Name = "РаботникComboBox"
-        Me.РаботникComboBox.Size = New System.Drawing.Size(293, 21)
-        Me.РаботникComboBox.TabIndex = 6
+        Me.РаботникComboBox.Size = New System.Drawing.Size(300, 21)
+        Me.РаботникComboBox.TabIndex = 7
         Me.РаботникComboBox.ValueMember = "Код_работника"
         '
         'ЗарплатаBindingSource
@@ -282,18 +286,14 @@ Partial Class OffreckoningCRUD
         Me.ЗарплатаBindingSource.DataMember = "Зарплата"
         Me.ЗарплатаBindingSource.DataSource = Me.SalariesDataSet
         '
-        'ЗарплатаTableAdapter
-        '
-        Me.ЗарплатаTableAdapter.ClearBeforeFill = True
-        '
         'ЗарплатаComboBox
         '
         Me.ЗарплатаComboBox.DataSource = Me.ЗарплатаBindingSource
         Me.ЗарплатаComboBox.DisplayMember = "Displyed"
         Me.ЗарплатаComboBox.FormattingEnabled = True
-        Me.ЗарплатаComboBox.Location = New System.Drawing.Point(97, 55)
+        Me.ЗарплатаComboBox.Location = New System.Drawing.Point(116, 71)
         Me.ЗарплатаComboBox.Name = "ЗарплатаComboBox"
-        Me.ЗарплатаComboBox.Size = New System.Drawing.Size(293, 21)
+        Me.ЗарплатаComboBox.Size = New System.Drawing.Size(300, 21)
         Me.ЗарплатаComboBox.TabIndex = 8
         Me.ЗарплатаComboBox.ValueMember = "Код_зарплаты"
         '
@@ -301,27 +301,27 @@ Partial Class OffreckoningCRUD
         '
         Me.FormErrorProvider.ContainerControl = Me
         '
-        'OffreckoningCRUD
+        'RFPIncreaseCRUD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(457, 171)
+        Me.ClientSize = New System.Drawing.Size(454, 171)
         Me.Controls.Add(Me.ЗарплатаComboBox)
-        Me.Controls.Add(Label2)
-        Me.Controls.Add(Label1)
         Me.Controls.Add(Me.РаботникComboBox)
+        Me.Controls.Add(Код_прибавкиLabel)
         Me.Controls.Add(НазваниеLabel)
         Me.Controls.Add(Me.НазваниеTextBox)
-        Me.Controls.Add(Сумма_вычетаLabel)
-        Me.Controls.Add(Me.Сумма_вычетаTextBox)
-        Me.Controls.Add(Me.Вычет_ЗПBindingNavigator)
-        Me.Name = "OffreckoningCRUD"
-        Me.Text = "Вычеты"
+        Me.Controls.Add(Сумма_прибавкиLabel)
+        Me.Controls.Add(Me.Сумма_прибавкиTextBox)
+        Me.Controls.Add(Код_зарплатыLabel)
+        Me.Controls.Add(Me.Прибавка_ЗПBindingNavigator)
+        Me.Name = "RFPIncreaseCRUD"
+        Me.Text = "Прибавка к ЗП"
         CType(Me.SalariesDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Вычет_ЗПBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Вычет_ЗПBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Вычет_ЗПBindingNavigator.ResumeLayout(False)
-        Me.Вычет_ЗПBindingNavigator.PerformLayout()
+        CType(Me.Прибавка_ЗПBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Прибавка_ЗПBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Прибавка_ЗПBindingNavigator.ResumeLayout(False)
+        Me.Прибавка_ЗПBindingNavigator.PerformLayout()
         CType(Me.РаботникBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ЗарплатаBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FormErrorProvider, System.ComponentModel.ISupportInitialize).EndInit()
@@ -330,10 +330,10 @@ Partial Class OffreckoningCRUD
 
     End Sub
     Friend WithEvents SalariesDataSet As Salaries.SalariesDataSet
-    Friend WithEvents Вычет_ЗПBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents Вычет_ЗПTableAdapter As Salaries.SalariesDataSetTableAdapters.Вычет_ЗПTableAdapter
+    Friend WithEvents Прибавка_ЗПBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents Прибавка_ЗПTableAdapter As Salaries.SalariesDataSetTableAdapters.Прибавка_ЗПTableAdapter
     Friend WithEvents TableAdapterManager As Salaries.SalariesDataSetTableAdapters.TableAdapterManager
-    Friend WithEvents Вычет_ЗПBindingNavigator As System.Windows.Forms.BindingNavigator
+    Friend WithEvents Прибавка_ЗПBindingNavigator As System.Windows.Forms.BindingNavigator
     Friend WithEvents BindingNavigatorAddNewItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorCountItem As System.Windows.Forms.ToolStripLabel
     Friend WithEvents BindingNavigatorDeleteItem As System.Windows.Forms.ToolStripButton
@@ -345,14 +345,14 @@ Partial Class OffreckoningCRUD
     Friend WithEvents BindingNavigatorMoveNextItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorMoveLastItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorSeparator2 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents Вычет_ЗПBindingNavigatorSaveItem As System.Windows.Forms.ToolStripButton
-    Friend WithEvents НазваниеTextBox As System.Windows.Forms.TextBox
-    Friend WithEvents Сумма_вычетаTextBox As System.Windows.Forms.TextBox
-    Friend WithEvents РаботникBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents Прибавка_ЗПBindingNavigatorSaveItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents РаботникTableAdapter As Salaries.SalariesDataSetTableAdapters.РаботникTableAdapter
+    Friend WithEvents НазваниеTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents Сумма_прибавкиTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents РаботникBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents ЗарплатаTableAdapter As Salaries.SalariesDataSetTableAdapters.ЗарплатаTableAdapter
     Friend WithEvents РаботникComboBox As System.Windows.Forms.ComboBox
     Friend WithEvents ЗарплатаBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents ЗарплатаTableAdapter As Salaries.SalariesDataSetTableAdapters.ЗарплатаTableAdapter
     Friend WithEvents ЗарплатаComboBox As System.Windows.Forms.ComboBox
     Friend WithEvents FormErrorProvider As System.Windows.Forms.ErrorProvider
 End Class

@@ -28,3 +28,4 @@ D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.OmissionsView.
 D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.SelaryView.resources
 D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.SalaryCRUD.resources
 D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.OffreckoningCRUD.resources
+D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.RFPIncreaseCRUD.resources

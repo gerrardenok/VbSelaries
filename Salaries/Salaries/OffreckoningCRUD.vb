@@ -24,18 +24,40 @@
       
     End Sub
 
-    Private Sub РаботникBindingNavigatorSaveItem_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Me.Validate()
-        Me.РаботникBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.SalariesDataSet)
+    Private Function ShowErrors() As Boolean
+        FormErrorProvider.Dispose()
+        Dim result As Boolean = False
 
-    End Sub
+        If ([String].IsNullOrEmpty(НазваниеTextBox.Text.Trim())) Then
+            FormErrorProvider.SetError(НазваниеTextBox, "Это поле не может быть пустым!")
+            result = True
+        End If
+
+        If ([String].IsNullOrEmpty(Сумма_вычетаTextBox.Text.Trim())) Then
+            FormErrorProvider.SetError(Сумма_вычетаTextBox, "Это поле не может быть пустым!")
+            result = True
+        Else
+            Dim parsed As Double
+            If (Not Double.TryParse(Сумма_вычетаTextBox.Text, parsed)) Then
+                FormErrorProvider.SetError(Сумма_вычетаTextBox, "Это должно быть числовым!")
+                result = True
+            End If
+        End If
+
+        Return result
+    End Function
 
     Private Sub Вычет_ЗПBindingNavigatorSaveItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Вычет_ЗПBindingNavigatorSaveItem.Click
-        Me.Validate()
-        Me.Вычет_ЗПBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.SalariesDataSet)
-
+        Try
+            'UI validation 
+            If (Not ShowErrors()) Then
+                Me.Validate()
+                Me.Вычет_ЗПBindingSource.EndEdit()
+                Me.TableAdapterManager.UpdateAll(Me.SalariesDataSet)
+            End If
+        Catch ex As Exception
+            MsgBox("Ошибка при сохранении работника " & ex.Message)
+        End Try
     End Sub
 
     Private Sub Вычет_ЗПBindingSource_CurrentChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Вычет_ЗПBindingSource.CurrentChanged
@@ -66,6 +88,11 @@
 
     Private Sub РаботникComboBox_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles РаботникComboBox.SelectedIndexChanged
         ЗарплатаBindingSource.Filter = "Код_работника=" & РаботникComboBox.SelectedValue
+        Dim current As DataRowView = Вычет_ЗПBindingSource.Current
+        Dim currentSelaryId = ЗарплатаComboBox.SelectedValue
+        If (Not current Is Nothing) Then
+            current.Item("Код_зарплаты") = currentSelaryId
+        End If
     End Sub
 
     Private Sub ЗарплатаComboBox_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ЗарплатаComboBox.SelectedIndexChanged

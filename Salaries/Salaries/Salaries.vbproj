@@ -182,6 +182,12 @@
     <Compile Include="QualificationsView.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="RFPIncreaseCRUD.Designer.vb">
+      <DependentUpon>RFPIncreaseCRUD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RFPIncreaseCRUD.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SalariesDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -269,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QualificationsView.resx">
       <DependentUpon>QualificationsView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RFPIncreaseCRUD.resx">
+      <DependentUpon>RFPIncreaseCRUD.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalariesView.resx">
       <DependentUpon>SalariesView.vb</DependentUpon>
