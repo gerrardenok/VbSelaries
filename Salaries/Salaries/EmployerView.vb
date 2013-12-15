@@ -94,4 +94,12 @@
         Dim employerId As Integer = current.Item("Код_работника")
         EmployersReportView.InitSingle(employerId)
     End Sub
+
+    Private Sub ЗарплатаDataGridView_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles ЗарплатаDataGridView.CellContentClick
+        If e.RowIndex >= 0 AndAlso e.ColumnIndex >= 0 Then
+            Dim selectedRow = ЗарплатаDataGridView.Rows(e.RowIndex)
+            Dim selaryId As Integer = selectedRow.Cells(4).Value
+            SelaryView.ShowById(selaryId)
+        End If
+    End Sub
 End Class

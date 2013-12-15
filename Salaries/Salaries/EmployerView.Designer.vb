@@ -60,8 +60,6 @@ Partial Class EmployerView
         Me.ТелефонTextBox = New System.Windows.Forms.TextBox()
         Me.Номер_пасспортаTextBox = New System.Windows.Forms.TextBox()
         Me.СтажTextBox = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.ЗарплатаBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ЗарплатаTableAdapter = New Salaries.SalariesDataSetTableAdapters.ЗарплатаTableAdapter()
         Me.ЗарплатаDataGridView = New System.Windows.Forms.DataGridView()
@@ -90,6 +88,8 @@ Partial Class EmployerView
         Me.СтавкаBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.СтавкаTableAdapter = New Salaries.SalariesDataSetTableAdapters.СтавкаTableAdapter()
         Me.НазваниеTextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         ИмяLabel = New System.Windows.Forms.Label()
         ФамилияLabel = New System.Windows.Forms.Label()
         ОтчествоLabel = New System.Windows.Forms.Label()
@@ -419,26 +419,6 @@ Partial Class EmployerView
         Me.СтажTextBox.Size = New System.Drawing.Size(200, 20)
         Me.СтажTextBox.TabIndex = 16
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Label1.Location = New System.Drawing.Point(341, 31)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(93, 20)
-        Me.Label1.TabIndex = 23
-        Me.Label1.Text = "Пропуски:"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Label2.Location = New System.Drawing.Point(13, 296)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(99, 20)
-        Me.Label2.TabIndex = 24
-        Me.Label2.Text = "Зарплаты:"
-        '
         'ЗарплатаBindingSource
         '
         Me.ЗарплатаBindingSource.DataMember = "FK_Зарплата_Работник"
@@ -460,6 +440,7 @@ Partial Class EmployerView
         Me.ЗарплатаDataGridView.Location = New System.Drawing.Point(12, 319)
         Me.ЗарплатаDataGridView.Name = "ЗарплатаDataGridView"
         Me.ЗарплатаDataGridView.ReadOnly = True
+        Me.ЗарплатаDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.ЗарплатаDataGridView.Size = New System.Drawing.Size(760, 273)
         Me.ЗарплатаDataGridView.TabIndex = 24
         '
@@ -532,6 +513,7 @@ Partial Class EmployerView
         Me.ПропускDataGridView.Location = New System.Drawing.Point(345, 57)
         Me.ПропускDataGridView.Name = "ПропускDataGridView"
         Me.ПропускDataGridView.ReadOnly = True
+        Me.ПропускDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.ПропускDataGridView.Size = New System.Drawing.Size(427, 228)
         Me.ПропускDataGridView.TabIndex = 24
         '
@@ -631,11 +613,35 @@ Partial Class EmployerView
         Me.НазваниеTextBox2.Size = New System.Drawing.Size(200, 20)
         Me.НазваниеTextBox2.TabIndex = 27
         '
+        'Label3
+        '
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Chocolate
+        Me.Label3.Location = New System.Drawing.Point(340, 27)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(109, 27)
+        Me.Label3.TabIndex = 28
+        Me.Label3.Text = "Пропуски:"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label1
+        '
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Chocolate
+        Me.Label1.Location = New System.Drawing.Point(7, 289)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(119, 27)
+        Me.Label1.TabIndex = 29
+        Me.Label1.Text = "Зарплаты:"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'EmployerView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(784, 604)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(НазваниеLabel2)
         Me.Controls.Add(Me.НазваниеTextBox2)
         Me.Controls.Add(НазваниеLabel1)
@@ -644,8 +650,6 @@ Partial Class EmployerView
         Me.Controls.Add(Me.НазваниеTextBox)
         Me.Controls.Add(Me.ПропускDataGridView)
         Me.Controls.Add(Me.ЗарплатаDataGridView)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(ИмяLabel)
         Me.Controls.Add(Me.ИмяTextBox)
         Me.Controls.Add(ФамилияLabel)
@@ -700,8 +704,6 @@ Partial Class EmployerView
     Friend WithEvents ТелефонTextBox As System.Windows.Forms.TextBox
     Friend WithEvents Номер_пасспортаTextBox As System.Windows.Forms.TextBox
     Friend WithEvents СтажTextBox As System.Windows.Forms.TextBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents ЗарплатаBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents ЗарплатаTableAdapter As Salaries.SalariesDataSetTableAdapters.ЗарплатаTableAdapter
     Friend WithEvents ЗарплатаDataGridView As System.Windows.Forms.DataGridView
@@ -735,4 +737,6 @@ Partial Class EmployerView
     Friend WithEvents СтавкаBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents СтавкаTableAdapter As Salaries.SalariesDataSetTableAdapters.СтавкаTableAdapter
     Friend WithEvents НазваниеTextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 End Class

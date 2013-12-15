@@ -1,5 +1,9 @@
 ﻿Public Class RFPIncreaseCRUD
 
+    Public Sub InitAll()
+        Me.Show()
+    End Sub
+
     Private Sub Прибавка_ЗПBindingNavigatorSaveItem_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Прибавка_ЗПBindingNavigatorSaveItem.Click
         Try
             'UI validation 
@@ -7,6 +11,9 @@
                 Me.Validate()
                 Me.Прибавка_ЗПBindingSource.EndEdit()
                 Me.TableAdapterManager.UpdateAll(Me.SalariesDataSet)
+
+                ' reload ds
+                SelaryView.reloadDs()
             End If
         Catch ex As Exception
             MsgBox("Ошибка при сохранении работника " & ex.Message)

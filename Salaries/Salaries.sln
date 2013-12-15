@@ -17,4 +17,14 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VSStyle = Office2007 (Silver).vssf
+		VSTargetControls = FormsAndControls
+		VSToolStripStyle = Mixed
+		VSTextShadow = True
+		VSSkinFlatStyles = True
+		VSSkinToggleButtons = True
+		VSUseSystemFonts = False
+		VSCustomBkgrdPaint = True
+	EndGlobalSection
 EndGlobal

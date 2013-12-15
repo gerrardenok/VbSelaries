@@ -412,7 +412,7 @@ Partial Class EmployersView
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "EmployersView"
         Me.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Text = "EmployersView"
+        Me.Text = "Все работники"
         CType(Me.SalariesDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmployersViewBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmployersViewBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()

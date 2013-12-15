@@ -1,10 +1,7 @@
 ﻿Public Class OffreckoningCRUD
 
-    Private Sub РаботникBindingNavigatorSaveItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Me.Validate()
-        Me.РаботникBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.SalariesDataSet)
-
+    Public Sub InitAll()
+        Me.Show()
     End Sub
 
     Private Sub OffreckoningCRUD_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -54,6 +51,9 @@
                 Me.Validate()
                 Me.Вычет_ЗПBindingSource.EndEdit()
                 Me.TableAdapterManager.UpdateAll(Me.SalariesDataSet)
+
+                ' reload ds
+                SelaryView.reloadDs()
             End If
         Catch ex As Exception
             MsgBox("Ошибка при сохранении работника " & ex.Message)

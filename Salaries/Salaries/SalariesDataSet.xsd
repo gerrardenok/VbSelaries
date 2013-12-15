@@ -604,6 +604,88 @@ FROM            Зарплата INNER JOIN
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SelaryesReportTableAdapter" GeneratorDataComponentClassName="SelaryesReportTableAdapter" Name="SelaryesReport" UserDataComponentName="SelaryesReportTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ЗарплатыConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Работник.Имя, Работник.Фамилия, Работник.Отчество, Зарплата.Месяц, Зарплата.Оклад, Зарплата.На_руки, Зарплата.Год, Зарплата.Дата_выдачи
+FROM            Зарплата INNER JOIN
+                         Работник ON Зарплата.Код_работника = Работник.Код_работника</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Имя" DataSetColumn="Имя" />
+              <Mapping SourceColumn="Фамилия" DataSetColumn="Фамилия" />
+              <Mapping SourceColumn="Отчество" DataSetColumn="Отчество" />
+              <Mapping SourceColumn="Месяц" DataSetColumn="Месяц" />
+              <Mapping SourceColumn="Оклад" DataSetColumn="Оклад" />
+              <Mapping SourceColumn="На_руки" DataSetColumn="На_руки" />
+              <Mapping SourceColumn="Год" DataSetColumn="Год" />
+              <Mapping SourceColumn="Дата_выдачи" DataSetColumn="Дата_выдачи" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="OfferckoningReportTableAdapter" GeneratorDataComponentClassName="OfferckoningReportTableAdapter" Name="OfferckoningReport" UserDataComponentName="OfferckoningReportTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ЗарплатыConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Вычет_ЗП.Название, Вычет_ЗП.Сумма_вычета, Зарплата.Месяц, Зарплата.Год, Зарплата.Дата_выдачи, Работник.Имя, Работник.Фамилия, 
+                         Работник.Отчество
+FROM            Вычет_ЗП INNER JOIN
+                         Зарплата ON Вычет_ЗП.Код_зарплаты = Зарплата.Код_зарплаты INNER JOIN
+                         Работник ON Зарплата.Код_работника = Работник.Код_работника</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Название" DataSetColumn="Название" />
+              <Mapping SourceColumn="Сумма_вычета" DataSetColumn="Сумма_вычета" />
+              <Mapping SourceColumn="Месяц" DataSetColumn="Месяц" />
+              <Mapping SourceColumn="Год" DataSetColumn="Год" />
+              <Mapping SourceColumn="Дата_выдачи" DataSetColumn="Дата_выдачи" />
+              <Mapping SourceColumn="Имя" DataSetColumn="Имя" />
+              <Mapping SourceColumn="Фамилия" DataSetColumn="Фамилия" />
+              <Mapping SourceColumn="Отчество" DataSetColumn="Отчество" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RFPIncreaseReportTableAdapter" GeneratorDataComponentClassName="RFPIncreaseReportTableAdapter" Name="RFPIncreaseReport" UserDataComponentName="RFPIncreaseReportTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ЗарплатыConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Зарплата.Код_зарплаты, Прибавка_ЗП.Код_прибавки, Работник.Имя, Работник.Код_работника, Работник.Фамилия, Работник.Отчество, 
+                         Прибавка_ЗП.Название, Прибавка_ЗП.Сумма_прибавки, Зарплата.Дата_выдачи, Зарплата.Год, Зарплата.Месяц
+FROM            Зарплата INNER JOIN
+                         Прибавка_ЗП ON Зарплата.Код_зарплаты = Прибавка_ЗП.Код_зарплаты INNER JOIN
+                         Работник ON Зарплата.Код_работника = Работник.Код_работника</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Код_зарплаты" DataSetColumn="Код_зарплаты" />
+              <Mapping SourceColumn="Код_прибавки" DataSetColumn="Код_прибавки" />
+              <Mapping SourceColumn="Имя" DataSetColumn="Имя" />
+              <Mapping SourceColumn="Код_работника" DataSetColumn="Код_работника" />
+              <Mapping SourceColumn="Фамилия" DataSetColumn="Фамилия" />
+              <Mapping SourceColumn="Отчество" DataSetColumn="Отчество" />
+              <Mapping SourceColumn="Название" DataSetColumn="Название" />
+              <Mapping SourceColumn="Сумма_прибавки" DataSetColumn="Сумма_прибавки" />
+              <Mapping SourceColumn="Дата_выдачи" DataSetColumn="Дата_выдачи" />
+              <Mapping SourceColumn="Год" DataSetColumn="Год" />
+              <Mapping SourceColumn="Месяц" DataSetColumn="Месяц" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -936,6 +1018,117 @@ FROM            Зарплата INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="SelaryesReport" msprop:Generator_TableClassName="SelaryesReportDataTable" msprop:Generator_TableVarName="tableSelaryesReport" msprop:Generator_TablePropName="SelaryesReport" msprop:Generator_RowDeletingName="SelaryesReportRowDeleting" msprop:Generator_UserTableName="SelaryesReport" msprop:Generator_RowChangingName="SelaryesReportRowChanging" msprop:Generator_RowEvHandlerName="SelaryesReportRowChangeEventHandler" msprop:Generator_RowDeletedName="SelaryesReportRowDeleted" msprop:Generator_RowEvArgName="SelaryesReportRowChangeEvent" msprop:Generator_RowChangedName="SelaryesReportRowChanged" msprop:Generator_RowClassName="SelaryesReportRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Имя" msprop:Generator_ColumnVarNameInTable="columnИмя" msprop:Generator_ColumnPropNameInRow="Имя" msprop:Generator_ColumnPropNameInTable="ИмяColumn" msprop:Generator_UserColumnName="Имя">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Фамилия" msprop:Generator_ColumnVarNameInTable="columnФамилия" msprop:Generator_ColumnPropNameInRow="Фамилия" msprop:Generator_ColumnPropNameInTable="ФамилияColumn" msprop:Generator_UserColumnName="Фамилия">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Отчество" msprop:Generator_ColumnVarNameInTable="columnОтчество" msprop:Generator_ColumnPropNameInRow="Отчество" msprop:Generator_ColumnPropNameInTable="ОтчествоColumn" msprop:Generator_UserColumnName="Отчество">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Месяц" msprop:Generator_ColumnVarNameInTable="columnМесяц" msprop:Generator_ColumnPropNameInRow="Месяц" msprop:Generator_ColumnPropNameInTable="МесяцColumn" msprop:Generator_UserColumnName="Месяц" type="xs:unsignedByte" />
+              <xs:element name="Оклад" msprop:Generator_ColumnVarNameInTable="columnОклад" msprop:Generator_ColumnPropNameInRow="Оклад" msprop:Generator_ColumnPropNameInTable="ОкладColumn" msprop:Generator_UserColumnName="Оклад" type="xs:decimal" />
+              <xs:element name="На_руки" msprop:Generator_ColumnVarNameInTable="columnНа_руки" msprop:Generator_ColumnPropNameInRow="На_руки" msprop:Generator_ColumnPropNameInTable="На_рукиColumn" msprop:Generator_UserColumnName="На_руки" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Год" msprop:Generator_ColumnVarNameInTable="columnГод" msprop:Generator_ColumnPropNameInRow="Год" msprop:Generator_ColumnPropNameInTable="ГодColumn" msprop:Generator_UserColumnName="Год" type="xs:int" />
+              <xs:element name="Дата_выдачи" msprop:Generator_ColumnVarNameInTable="columnДата_выдачи" msprop:Generator_ColumnPropNameInRow="Дата_выдачи" msprop:Generator_ColumnPropNameInTable="Дата_выдачиColumn" msprop:Generator_UserColumnName="Дата_выдачи" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="OfferckoningReport" msprop:Generator_TableClassName="OfferckoningReportDataTable" msprop:Generator_TableVarName="tableOfferckoningReport" msprop:Generator_TablePropName="OfferckoningReport" msprop:Generator_RowDeletingName="OfferckoningReportRowDeleting" msprop:Generator_UserTableName="OfferckoningReport" msprop:Generator_RowChangingName="OfferckoningReportRowChanging" msprop:Generator_RowEvHandlerName="OfferckoningReportRowChangeEventHandler" msprop:Generator_RowDeletedName="OfferckoningReportRowDeleted" msprop:Generator_RowEvArgName="OfferckoningReportRowChangeEvent" msprop:Generator_RowChangedName="OfferckoningReportRowChanged" msprop:Generator_RowClassName="OfferckoningReportRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Название" msprop:Generator_ColumnVarNameInTable="columnНазвание" msprop:Generator_ColumnPropNameInRow="Название" msprop:Generator_ColumnPropNameInTable="НазваниеColumn" msprop:Generator_UserColumnName="Название">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Сумма_вычета" msprop:Generator_ColumnVarNameInTable="columnСумма_вычета" msprop:Generator_ColumnPropNameInRow="Сумма_вычета" msprop:Generator_ColumnPropNameInTable="Сумма_вычетаColumn" msprop:Generator_UserColumnName="Сумма_вычета" type="xs:decimal" />
+              <xs:element name="Месяц" msprop:Generator_ColumnVarNameInTable="columnМесяц" msprop:Generator_ColumnPropNameInRow="Месяц" msprop:Generator_ColumnPropNameInTable="МесяцColumn" msprop:Generator_UserColumnName="Месяц" type="xs:unsignedByte" />
+              <xs:element name="Год" msprop:Generator_ColumnVarNameInTable="columnГод" msprop:Generator_ColumnPropNameInRow="Год" msprop:Generator_ColumnPropNameInTable="ГодColumn" msprop:Generator_UserColumnName="Год" type="xs:int" />
+              <xs:element name="Дата_выдачи" msprop:Generator_ColumnVarNameInTable="columnДата_выдачи" msprop:Generator_ColumnPropNameInRow="Дата_выдачи" msprop:Generator_ColumnPropNameInTable="Дата_выдачиColumn" msprop:Generator_UserColumnName="Дата_выдачи" type="xs:dateTime" />
+              <xs:element name="Имя" msprop:Generator_ColumnVarNameInTable="columnИмя" msprop:Generator_ColumnPropNameInRow="Имя" msprop:Generator_ColumnPropNameInTable="ИмяColumn" msprop:Generator_UserColumnName="Имя">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Фамилия" msprop:Generator_ColumnVarNameInTable="columnФамилия" msprop:Generator_ColumnPropNameInRow="Фамилия" msprop:Generator_ColumnPropNameInTable="ФамилияColumn" msprop:Generator_UserColumnName="Фамилия">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Отчество" msprop:Generator_ColumnVarNameInTable="columnОтчество" msprop:Generator_ColumnPropNameInRow="Отчество" msprop:Generator_ColumnPropNameInTable="ОтчествоColumn" msprop:Generator_UserColumnName="Отчество">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RFPIncreaseReport" msprop:Generator_TableClassName="RFPIncreaseReportDataTable" msprop:Generator_TableVarName="tableRFPIncreaseReport" msprop:Generator_TablePropName="RFPIncreaseReport" msprop:Generator_RowDeletingName="RFPIncreaseReportRowDeleting" msprop:Generator_UserTableName="RFPIncreaseReport" msprop:Generator_RowChangingName="RFPIncreaseReportRowChanging" msprop:Generator_RowEvHandlerName="RFPIncreaseReportRowChangeEventHandler" msprop:Generator_RowDeletedName="RFPIncreaseReportRowDeleted" msprop:Generator_RowEvArgName="RFPIncreaseReportRowChangeEvent" msprop:Generator_RowChangedName="RFPIncreaseReportRowChanged" msprop:Generator_RowClassName="RFPIncreaseReportRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Код_зарплаты" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnКод_зарплаты" msprop:Generator_ColumnPropNameInRow="Код_зарплаты" msprop:Generator_ColumnPropNameInTable="Код_зарплатыColumn" msprop:Generator_UserColumnName="Код_зарплаты" type="xs:long" />
+              <xs:element name="Код_прибавки" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnКод_прибавки" msprop:Generator_ColumnPropNameInRow="Код_прибавки" msprop:Generator_ColumnPropNameInTable="Код_прибавкиColumn" msprop:Generator_UserColumnName="Код_прибавки" type="xs:long" />
+              <xs:element name="Имя" msprop:Generator_ColumnVarNameInTable="columnИмя" msprop:Generator_ColumnPropNameInRow="Имя" msprop:Generator_ColumnPropNameInTable="ИмяColumn" msprop:Generator_UserColumnName="Имя">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Код_работника" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnКод_работника" msprop:Generator_ColumnPropNameInRow="Код_работника" msprop:Generator_ColumnPropNameInTable="Код_работникаColumn" msprop:Generator_UserColumnName="Код_работника" type="xs:long" />
+              <xs:element name="Фамилия" msprop:Generator_ColumnVarNameInTable="columnФамилия" msprop:Generator_ColumnPropNameInRow="Фамилия" msprop:Generator_ColumnPropNameInTable="ФамилияColumn" msprop:Generator_UserColumnName="Фамилия">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Отчество" msprop:Generator_ColumnVarNameInTable="columnОтчество" msprop:Generator_ColumnPropNameInRow="Отчество" msprop:Generator_ColumnPropNameInTable="ОтчествоColumn" msprop:Generator_UserColumnName="Отчество">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Название" msprop:Generator_ColumnVarNameInTable="columnНазвание" msprop:Generator_ColumnPropNameInRow="Название" msprop:Generator_ColumnPropNameInTable="НазваниеColumn" msprop:Generator_UserColumnName="Название">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Сумма_прибавки" msprop:Generator_ColumnVarNameInTable="columnСумма_прибавки" msprop:Generator_ColumnPropNameInRow="Сумма_прибавки" msprop:Generator_ColumnPropNameInTable="Сумма_прибавкиColumn" msprop:Generator_UserColumnName="Сумма_прибавки" type="xs:decimal" />
+              <xs:element name="Дата_выдачи" msprop:Generator_ColumnVarNameInTable="columnДата_выдачи" msprop:Generator_ColumnPropNameInRow="Дата_выдачи" msprop:Generator_ColumnPropNameInTable="Дата_выдачиColumn" msprop:Generator_UserColumnName="Дата_выдачи" type="xs:dateTime" />
+              <xs:element name="Год" msprop:Generator_ColumnVarNameInTable="columnГод" msprop:Generator_ColumnPropNameInRow="Год" msprop:Generator_ColumnPropNameInTable="ГодColumn" msprop:Generator_UserColumnName="Год" type="xs:int" />
+              <xs:element name="Месяц" msprop:Generator_ColumnVarNameInTable="columnМесяц" msprop:Generator_ColumnPropNameInRow="Месяц" msprop:Generator_ColumnPropNameInTable="МесяцColumn" msprop:Generator_UserColumnName="Месяц" type="xs:unsignedByte" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -978,6 +1171,12 @@ FROM            Зарплата INNER JOIN
       <xs:selector xpath=".//mstns:SalaryJoinEmployer" />
       <xs:field xpath="mstns:Код_зарплаты" />
     </xs:unique>
+    <xs:unique name="RFPIncreaseReport_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:RFPIncreaseReport" />
+      <xs:field xpath="mstns:Код_зарплаты" />
+      <xs:field xpath="mstns:Код_прибавки" />
+      <xs:field xpath="mstns:Код_работника" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
@@ -993,6 +1192,9 @@ FROM            Зарплата INNER JOIN
       <msdata:Relationship name="FK_Прибавка_ЗП_Зарплата1" msdata:parent="SalaryJoinEmployer" msdata:child="Прибавка_ЗП" msdata:parentkey="Код_зарплаты" msdata:childkey="Код_зарплаты" msprop:Generator_UserChildTable="Прибавка_ЗП" msprop:Generator_ChildPropName="GetПрибавка_ЗПRows" msprop:Generator_UserParentTable="SalaryJoinEmployer" msprop:Generator_UserRelationName="FK_Прибавка_ЗП_Зарплата1" msprop:Generator_RelationVarName="relationFK_Прибавка_ЗП_Зарплата1" msprop:Generator_ParentPropName="SalaryJoinEmployerRow" />
       <msdata:Relationship name="FK_Зарплата_Работник1" msdata:parent="Работник" msdata:child="SalaryJoinEmployer" msdata:parentkey="Код_работника" msdata:childkey="Код_работника" msprop:Generator_UserChildTable="SalaryJoinEmployer" msprop:Generator_ChildPropName="GetSalaryJoinEmployerRows" msprop:Generator_UserParentTable="Работник" msprop:Generator_UserRelationName="FK_Зарплата_Работник1" msprop:Generator_RelationVarName="relationFK_Зарплата_Работник1" msprop:Generator_ParentPropName="РаботникRow" />
       <msdata:Relationship name="Зарплата_Работник" msdata:parent="Зарплата" msdata:child="Работник" msdata:parentkey="Код_работника" msdata:childkey="Код_работника" msprop:Generator_UserChildTable="Работник" msprop:Generator_ChildPropName="GetРаботникRows" msprop:Generator_UserParentTable="Зарплата" msprop:Generator_UserRelationName="Зарплата_Работник" msprop:Generator_RelationVarName="relationЗарплата_Работник" msprop:Generator_ParentPropName="ЗарплатаRow" />
+      <msdata:Relationship name="FK_Вычет_ЗП_Зарплата2" msdata:parent="RFPIncreaseReport" msdata:child="Вычет_ЗП" msdata:parentkey="Код_зарплаты" msdata:childkey="Код_зарплаты" msprop:Generator_UserChildTable="Вычет_ЗП" msprop:Generator_ChildPropName="GetВычет_ЗПRows" msprop:Generator_ParentPropName="RFPIncreaseReportRow" msprop:Generator_UserRelationName="FK_Вычет_ЗП_Зарплата2" msprop:Generator_RelationVarName="relationFK_Вычет_ЗП_Зарплата2" msprop:Generator_UserParentTable="RFPIncreaseReport" />
+      <msdata:Relationship name="FK_Прибавка_ЗП_Зарплата2" msdata:parent="RFPIncreaseReport" msdata:child="Прибавка_ЗП" msdata:parentkey="Код_зарплаты" msdata:childkey="Код_зарплаты" msprop:Generator_UserChildTable="Прибавка_ЗП" msprop:Generator_ChildPropName="GetПрибавка_ЗПRows" msprop:Generator_ParentPropName="RFPIncreaseReportRow" msprop:Generator_UserRelationName="FK_Прибавка_ЗП_Зарплата2" msprop:Generator_RelationVarName="relationFK_Прибавка_ЗП_Зарплата2" msprop:Generator_UserParentTable="RFPIncreaseReport" />
+      <msdata:Relationship name="FK_Зарплата_Работник2" msdata:parent="Работник" msdata:child="RFPIncreaseReport" msdata:parentkey="Код_работника" msdata:childkey="Код_работника" msprop:Generator_UserChildTable="RFPIncreaseReport" msprop:Generator_ChildPropName="GetRFPIncreaseReportRows" msprop:Generator_ParentPropName="РаботникRow" msprop:Generator_UserRelationName="FK_Зарплата_Работник2" msprop:Generator_RelationVarName="relationFK_Зарплата_Работник2" msprop:Generator_UserParentTable="Работник" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

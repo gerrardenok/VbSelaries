@@ -1,5 +1,9 @@
 ﻿Public Class SalaryCRUD
 
+    Public Sub InitAll()
+        Me.Show()
+    End Sub
+
     Private Function ShowErrors() As Boolean
         FormErrorProvider.Dispose()
         Dim result As Boolean = False
@@ -39,6 +43,9 @@
             Me.Validate()
             Me.ЗарплатаBindingSource.EndEdit()
             Me.TableAdapterManager.UpdateAll(Me.SalariesDataSet)
+
+            ' reload ds
+            SelaryView.reloadDs()
         End If
     End Sub
 

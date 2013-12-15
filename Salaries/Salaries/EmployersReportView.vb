@@ -1,4 +1,8 @@
 ﻿Public Class EmployersReportView
+    Public Sub InitAll()
+        Me.Show()
+        'Me.ReportViewer1.RefreshReport()
+    End Sub
 
     Public Sub InitList()
         Me.Show()

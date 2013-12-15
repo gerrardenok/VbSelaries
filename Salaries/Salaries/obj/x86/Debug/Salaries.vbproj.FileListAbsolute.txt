@@ -29,3 +29,6 @@ D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.SelaryView.res
 D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.SalaryCRUD.resources
 D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.OffreckoningCRUD.resources
 D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.RFPIncreaseCRUD.resources
+D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.SelariesReportingForm.resources
+D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.OffreckoningReportForm.resources
+D:\Курсовые\БД\Salaries\Salaries\obj\x86\Debug\Salaries.RFPIncreaseReportForm.resources

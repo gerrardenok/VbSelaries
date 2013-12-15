@@ -7,13 +7,23 @@
         form.FillById(id)
     End Sub
 
+    Public Sub reloadDs()
+        'SalaryJoinEmployerBindingSource.ResetBindings(False)
+        SalaryJoinEmployerTableAdapter.Fill(SalariesDataSet.SalaryJoinEmployer)
+        Вычет_ЗПTableAdapter.Fill(SalariesDataSet.Вычет_ЗП)
+        Прибавка_ЗПTableAdapter.Fill(SalariesDataSet.Прибавка_ЗП)
+
+        SalaryJoinEmployerBindingNavigator.Refresh()
+        Вычет_ЗПDataRepeater.Refresh()
+        Прибавка_ЗПDataRepeater.Refresh()
+    End Sub
+
     Private Sub FillById(ByVal id As Integer)
         Dim index As Integer = SalaryJoinEmployerBindingSource.Find("Код_зарплаты", id)
         SalaryJoinEmployerBindingSource.Position = index
         ' Set current position
         SalaryJoinEmployerBindingNavigator.Refresh()
     End Sub
-
 
     Private Sub SelaryView_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'SalariesDataSet.Прибавка_ЗП' table. You can move, or remove it, as needed.
@@ -29,10 +39,14 @@
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        SalaryCRUD.Show()
+        SalaryCRUD.InitAll()
     End Sub
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        OffreckoningCRUD.Show()
+        OffreckoningCRUD.InitAll()
+    End Sub
+
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        RFPIncreaseCRUD.InitAll()
     End Sub
 End Class

@@ -43,21 +43,23 @@
         If (Not МесяцMaskedTextBox.MaskFull) Then
             FormErrorProvider.SetError(МесяцMaskedTextBox, "Это поле не может быть пустым!")
             result = True
+        Else
+            If (Not (Integer.Parse(МесяцMaskedTextBox.Text) >= 1 And Integer.Parse(МесяцMaskedTextBox.Text) <= 12)) Then
+                FormErrorProvider.SetError(МесяцMaskedTextBox, "Неправильные номер месяца!")
+                result = True
+            End If
         End If
 
-        If (Not (Integer.Parse(МесяцMaskedTextBox.Text) >= 1 And Integer.Parse(МесяцMaskedTextBox.Text) <= 12)) Then
-            FormErrorProvider.SetError(МесяцMaskedTextBox, "Неправильные номер месяца!")
-            result = True
-        End If
+        
 
         If (Not ДеньMaskedTextBox.MaskFull) Then
             FormErrorProvider.SetError(ДеньMaskedTextBox, "Это поле не может быть пустым!")
             result = True
-        End If
-
-        If (Not (Integer.Parse(ДеньMaskedTextBox.Text) >= 1 And Integer.Parse(ДеньMaskedTextBox.Text) <= 31)) Then
-            FormErrorProvider.SetError(МесяцMaskedTextBox, "Неправильное число в месяце!")
-            result = True
+        Else
+            If (Not (Integer.Parse(ДеньMaskedTextBox.Text) >= 1 And Integer.Parse(ДеньMaskedTextBox.Text) <= 31)) Then
+                FormErrorProvider.SetError(МесяцMaskedTextBox, "Неправильное число в месяце!")
+                result = True
+            End If
         End If
 
         Return result

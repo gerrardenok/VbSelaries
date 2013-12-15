@@ -19,7 +19,7 @@
     End Sub
 
     Private Sub Load(ByVal deptartamnetId As Integer)
-        Text = "Редактировать работника"
+        Text = "Редактировать Отдел"
 
         Dim index As Integer = ОтделBindingSource.Find("Код_отдела", deptartamnetId)
 

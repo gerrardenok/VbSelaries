@@ -75,6 +75,7 @@ Partial Class SelaryView
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         МесяцLabel = New System.Windows.Forms.Label()
         ОкладLabel = New System.Windows.Forms.Label()
         На_рукиLabel = New System.Windows.Forms.Label()
@@ -473,9 +474,9 @@ Partial Class SelaryView
         Me.Вычет_ЗПDataRepeater.ItemTemplate.Controls.Add(НазваниеLabel)
         Me.Вычет_ЗПDataRepeater.ItemTemplate.Controls.Add(Me.НазваниеLabel1)
         Me.Вычет_ЗПDataRepeater.ItemTemplate.Size = New System.Drawing.Size(330, 81)
-        Me.Вычет_ЗПDataRepeater.Location = New System.Drawing.Point(401, 65)
+        Me.Вычет_ЗПDataRepeater.Location = New System.Drawing.Point(401, 66)
         Me.Вычет_ЗПDataRepeater.Name = "Вычет_ЗПDataRepeater"
-        Me.Вычет_ЗПDataRepeater.Size = New System.Drawing.Size(338, 161)
+        Me.Вычет_ЗПDataRepeater.Size = New System.Drawing.Size(338, 160)
         Me.Вычет_ЗПDataRepeater.TabIndex = 40
         Me.Вычет_ЗПDataRepeater.Text = "DataRepeater1"
         '
@@ -564,11 +565,21 @@ Partial Class SelaryView
         Me.Button3.Text = "Добавить/Редактировать"
         Me.Button3.UseVisualStyleBackColor = True
         '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(233, 231)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(148, 23)
+        Me.Button4.TabIndex = 44
+        Me.Button4.Text = "Добавить/Редактировать"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
         'SelaryView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(759, 524)
+        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
@@ -580,7 +591,7 @@ Partial Class SelaryView
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Name = "SelaryView"
-        Me.Text = "SelaryView"
+        Me.Text = "Зарплата"
         CType(Me.SalariesDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SalaryJoinEmployerBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SalaryJoinEmployerBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
@@ -639,4 +650,5 @@ Partial Class SelaryView
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Button4 As System.Windows.Forms.Button
 End Class
