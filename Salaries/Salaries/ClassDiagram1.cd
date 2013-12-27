@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Salaries.FormMain">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="GroupBox5_Enter" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IADAAIAwEGEAgAgAgACAzD8CUCDBcB8BAJAAAIgABEA=</HashCode>
+      <FileName>FormMain.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salaries.DepartamentCRUD">
+    <Position X="2.25" Y="0.5" Width="2" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EABAhAIQAWAgBQAAEACAAAgCAAAAAggAAAACAECAAQA=</HashCode>
+      <FileName>DepartamentCRUD.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salaries.DepartamentReport">
+    <Position X="6.75" Y="0.5" Width="2" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAACAAAAAAEACAAAACAAAAAAAAAAABAAQAAAA=</HashCode>
+      <FileName>DepartamentReport.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salaries.DepartmentsView">
+    <Position X="4.5" Y="0.5" Width="2" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAEAAEYAEGCAAAEAEADAABgCBAAQYEAAAoFKCAAAAAA=</HashCode>
+      <FileName>DepartmentsView.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salaries.EmployerCRUD">
+    <Position X="6.75" Y="2.25" Width="2" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EARAhAKaAWigJAAAEACCAAgiGAApCACgQgAKAEAAAwA=</HashCode>
+      <FileName>EmployerCRUD.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salaries.EmployersReportView">
+    <Position X="9" Y="0.5" Width="1.75" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAgEACAACBGAAAAAAgEAAAAAAQAAAA=</HashCode>
+      <FileName>EmployersReportView.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salaries.EmployersView">
+    <Position X="11" Y="0.5" Width="1.75" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AiAVAkICEGAiABAAEACAEigKDCQYaAgAA5FKAABBAAA=</HashCode>
+      <FileName>EmployersView.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salaries.EmployerView">
+    <Position X="9" Y="3" Width="1.75" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ATCABEKAEWCghVACkUSCADACTLQ5AUUIApEIoAABAYA=</HashCode>
+      <FileName>EmployerView.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salaries.LostDayCRUD">
+    <Position X="11" Y="4.25" Width="1.75" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AKAAAAAYEGCABAAAEACAABlCAA4QYAAAAgCCAAAgACA=</HashCode>
+      <FileName>LostDayCRUD.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salaries.LostDaysViewReport">
+    <Position X="2.25" Y="3.75" Width="2" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAEACAAAACAgEAAAAAAAQAAAQAAAA=</HashCode>
+      <FileName>LostDaysViewReport.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salaries.OffreckoningReportForm">
+    <Position X="4.5" Y="3.75" Width="2" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAACAAAACAEACAAAACAAAAAAAMAAAAAAQAAAA=</HashCode>
+      <FileName>OffreckoningReportForm.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salaries.OmissionsView">
+    <Position X="2.25" Y="5.5" Width="2" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAABAAAAEGCAAAACFADAABgCCAQQYAAAAgACAAAAAIA=</HashCode>
+      <FileName>OmissionsView.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salaries.QualificationCRUD">
+    <Position X="4.5" Y="5.75" Width="2" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EABAhAAQAWAgBQAgEACAAAgCAAAIAAgAAAAKAEAAAQA=</HashCode>
+      <FileName>QualificationCRUD.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salaries.QualificationsReport">
+    <Position X="6.75" Y="7" Width="2" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAEACAAAACIAAIAAAAAAAIAAQAAAA=</HashCode>
+      <FileName>QualificationsReport.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salaries.QualificationsView">
+    <Position X="9" Y="6.75" Width="1.75" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAEAAEAAEGCAAAAAEADAQBgCBCAZYAAAAgFKAAAAAAA=</HashCode>
+      <FileName>QualificationsView.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salaries.RFPIncreaseCRUD">
+    <Position X="0.5" Y="6" Width="1.5" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ABGQgAAYAGGAgVAAEGCAACxCQAgAABAkAhAAIAABAQA=</HashCode>
+      <FileName>RFPIncreaseCRUD.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salaries.SalariesView">
+    <Position X="11" Y="7.75" Width="1.75" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AIGIAEAMEmSABEAAECDEABgCBCAQIAAIAjEIAAABAIA=</HashCode>
+      <FileName>SalariesView.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salaries.SalaryCRUD">
+    <Position X="4.5" Y="9" Width="2" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ABGAAAAQAGGAgFAAEkCQAClCQAgAAAIkAgAAIAADAyA=</HashCode>
+      <FileName>SalaryCRUD.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salaries.SelariesReportingForm">
+    <Position X="6.75" Y="8.75" Width="2" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAiAAAAAAEACAAAACAAAAAAAEAEAAAgQAAAA=</HashCode>
+      <FileName>SelariesReportingForm.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salaries.SelaryView">
+    <Position X="9" Y="9.75" Width="1.75" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IMCIAAAIFmiAgBAAEGCAQDwCQAAA8RgREABB4AABAQA=</HashCode>
+      <FileName>SelaryView.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

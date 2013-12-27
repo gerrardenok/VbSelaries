@@ -49,4 +49,8 @@
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
         RFPIncreaseCRUD.InitAll()
     End Sub
+
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        SelariesReportingForm.InitAll()
+    End Sub
 End Class
